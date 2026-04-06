@@ -29,7 +29,7 @@ export default function Research() {
           >
             <Image
               src={Avatar}
-              alt="Janindu"
+              alt="FabricVision"
               width="155"
               height="155"
               quality="95"

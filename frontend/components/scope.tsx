@@ -5,9 +5,19 @@ import { motion, Variants } from "framer-motion";
 import { useSectionInView } from "@/lib/hook";
 import SectionHeading from "./section-heading";
 import Image from "next/image";
-import { AlertTriangle, BookOpen, Cpu, Microscope, Search } from "lucide-react";
+import { AlertTriangle, BookOpen, Microscope, Search } from "lucide-react";
 
 import OverallDiagram from "@/app/images/diagrams/Overall System Diagram.png";
+import ComponentOneDiagram from "@/app/images/diagrams/Component 1 System Architecture Diagram.png";
+
+import piImage from "@/app/images/hardware/pi4modelB.webp";
+import cameraImage from "@/app/images/hardware/camera module 3.jpg";
+import enclosureImage from "@/app/images/hardware/enclouse box.jpg";
+import fanImage from "@/app/images/hardware/cooling fan.webp";
+import mountImage from "@/app/images/hardware/connected.png";
+import setupImage from "@/app/images/hardware/finalproduct.png";
+import pipelineImage from "@/app/images/hardware/pipelineprocess.jpeg";
+import frameImage from "@/app/images/hardware/captured frame.jpeg";
 
 const fadeUp: Variants = {
   hidden: {
@@ -35,17 +45,17 @@ export default function Scope() {
     <section
       ref={ref}
       id="scope"
-      className="max-w-6xl mx-auto px-4 sm:px-6 py-18 scroll-mt-28"
+      className="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-18 scroll-mt-28"
     >
       {/* ================= HEADER ================= */}
-      <div className="text-center mb-16">
-        <p className="text-sm text-blue-600 dark:text-blue-400 font-medium">
+      <div className="text-center mb-12 sm:mb-16">
+        <p className="text-xs sm:text-sm text-blue-600 dark:text-blue-400 font-medium">
           Foundation of Research
         </p>
 
         <SectionHeading>Research Scope</SectionHeading>
 
-        <p className="mt-4 text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+        <p className="mt-3 sm:mt-4 text-sm sm:text-base text-gray-600 dark:text-gray-400 max-w-2xl mx-auto px-2">
           This section presents the background study, identified research gaps,
           and the core problem addressed by the FabricVision system.
         </p>
@@ -57,16 +67,16 @@ export default function Scope() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="mb-20"
+        className="mb-16 sm:mb-20"
       >
         <div className="flex gap-2 text-blue-600 dark:text-blue-100 mb-2">
-          <BookOpen className="w-5 sm:w-8 h-5 sm:h-8 sm:mt-1" />
-          <h2 className="sm:text-3xl text-xl font-semibold">
+          <BookOpen className="w-6 sm:w-8 h-6 sm:h-8 sm:mt-1 flex-shrink-0" />
+          <h2 className="text-2xl sm:text-3xl font-semibold">
             Literature Survey
           </h2>
         </div>
 
-        <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+        <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed">
           Traditional fabric inspection methods primarily rely on manual visual
           examination, which is time-consuming, subjective, and highly dependent
           on operator experience. These methods often result in inconsistent
@@ -103,7 +113,7 @@ export default function Scope() {
             alt="Literature Survey Illustration"
             width={800}
             height={400}
-            className="rounded-2xl border border-gray-200 dark:border-gray-700"
+            className="rounded-2xl border border-gray-200 dark:border-gray-700 w-full h-auto"
           />
         </div>
       </motion.div>
@@ -114,14 +124,14 @@ export default function Scope() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="mb-20"
+        className="mb-16 sm:mb-20"
       >
         <div className="flex gap-2 text-blue-600 dark:text-blue-100 mb-2">
-          <Search className="w-5 sm:w-8 h-5 sm:h-8 sm:mt-1" />
-          <h2 className="sm:text-3xl text-xl font-semibold">Research Gap</h2>
+          <Search className="w-6 sm:w-8 h-6 sm:h-8 sm:mt-1 flex-shrink-0" />
+          <h2 className="text-2xl sm:text-3xl font-semibold">Research Gap</h2>
         </div>
 
-        <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+        <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed">
           Despite significant improvements in automated defect detection,
           several limitations still exist in current fabric inspection systems.
           <br />
@@ -152,27 +162,22 @@ export default function Scope() {
         </p>
 
         {/* Example Table - Modern with Rounded Corners & Animations */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="mt-6 overflow-x-auto rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm"
-        >
+        <div className="mt-6 overflow-x-auto rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm">
           <motion.table
-            className="w-full text-sm"
+            className="w-full text-xs sm:text-sm min-w-[640px]"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
           >
             <thead>
               <tr className="bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900">
-                <th className="p-4 text-left font-semibold text-gray-900 dark:text-white rounded-tl-2xl">
+                <th className="p-3 sm:p-4 text-left font-semibold text-gray-900 dark:text-white rounded-tl-2xl">
                   Existing Systems
                 </th>
-                <th className="p-4 text-left font-semibold text-gray-900 dark:text-white">
+                <th className="p-3 sm:p-4 text-left font-semibold text-gray-900 dark:text-white">
                   Limitations
                 </th>
-                <th className="p-4 text-left font-semibold text-gray-900 dark:text-white rounded-tr-2xl">
+                <th className="p-3 sm:p-4 text-left font-semibold text-gray-900 dark:text-white rounded-tr-2xl">
                   Our Contribution
                 </th>
               </tr>
@@ -239,20 +244,20 @@ export default function Scope() {
                   }}
                   className="border-b border-gray-200 dark:border-gray-700 hover:bg-blue-50/50 dark:hover:bg-blue-900/10 transition-all duration-200"
                 >
-                  <td className="p-3.5 text-gray-900 dark:text-white font-medium">
+                  <td className="p-2.5 sm:p-3.5 text-gray-900 dark:text-white font-medium text-xs sm:text-sm">
                     {row.system}
                   </td>
-                  <td className="p-3.5 text-gray-600 dark:text-gray-400">
+                  <td className="p-2.5 sm:p-3.5 text-gray-600 dark:text-gray-400 text-xs sm:text-sm">
                     {row.limitations}
                   </td>
-                  <td className="p-3.5 text-gray-600 dark:text-gray-400">
+                  <td className="p-2.5 sm:p-3.5 text-gray-600 dark:text-gray-400 text-xs sm:text-sm">
                     {row.contribution}
                   </td>
                 </motion.tr>
               ))}
             </tbody>
           </motion.table>
-        </motion.div>
+        </div>
       </motion.div>
 
       {/* ================= RESEARCH PROBLEM ================= */}
@@ -261,16 +266,16 @@ export default function Scope() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="mb-20"
+        className="mb-16 sm:mb-20"
       >
         <div className="flex gap-2 text-blue-600 dark:text-blue-100 mb-2">
-          <AlertTriangle className="w-5 sm:w-8 h-5 sm:h-8 sm:mt-1" />
-          <h2 className="sm:text-3xl text-xl font-semibold">
+          <AlertTriangle className="w-6 sm:w-8 h-6 sm:h-8 sm:mt-1 flex-shrink-0" />
+          <h2 className="text-2xl sm:text-3xl font-semibold">
             Research Problem
           </h2>
         </div>
 
-        <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+        <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed">
           Fabric inspection processes in small and medium-scale apparel
           industries remain inefficient, inconsistent, and heavily dependent on
           manual labor. This leads to undetected defects, increased material
@@ -306,16 +311,16 @@ export default function Scope() {
           amount: 0.2,
           margin: "-30px",
         }}
-        className="mb-20"
+        className="mb-16 sm:mb-20"
       >
         <div className="flex gap-2 text-blue-600 dark:text-blue-100 mb-2">
-          <Microscope className="w-5 sm:w-8 h-5 sm:h-8" />
-          <h2 className="sm:text-3xl text-xl font-semibold">
+          <Microscope className="w-6 sm:w-8 h-6 sm:h-8 flex-shrink-0" />
+          <h2 className="text-2xl sm:text-3xl font-semibold">
             Proposed Solutions
           </h2>
         </div>
 
-        <p className="mt-4 text-gray-600 dark:text-gray-400 max-w-3xl mb-10">
+        <p className="mt-4 text-sm sm:text-base text-gray-600 dark:text-gray-400 max-w-3xl mb-8 sm:mb-10">
           A unified edge-level framework integrating intelligent frame
           acquisition, anomaly pre-screening, quality validation, and predictive
           analytics for the{" "}
@@ -325,7 +330,7 @@ export default function Scope() {
           system.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
           {/* COMPONENT 1 */}
           <motion.div
             variants={fadeUp}
@@ -333,7 +338,7 @@ export default function Scope() {
               y: -8,
               scale: 1.01,
             }}
-            className="group relative rounded-3xl border border-gray-200/60 dark:border-gray-800 bg-white/80 dark:bg-blue-900/40 backdrop-blur-sm p-6 text-left overflow-hidden h-full min-h-[280px] flex flex-col"
+            className="group relative rounded-3xl border border-gray-200/60 dark:border-gray-800 bg-white/80 dark:bg-blue-900/40 backdrop-blur-sm p-5 sm:p-6 text-left overflow-hidden h-full min-h-[280px] flex flex-col"
           >
             <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300">
               <div className="absolute -inset-px bg-gradient-to-br from-blue-500/10 via-indigo-500/10 to-transparent" />
@@ -344,13 +349,13 @@ export default function Scope() {
                 <p className="text-xs text-blue-700 dark:text-blue-300 font-medium">
                   Component 01
                 </p>
-                <h3 className="mt-2 text-lg font-semibold text-gray-900 dark:text-white">
+                <h3 className="mt-2 text-base sm:text-lg font-semibold text-gray-900 dark:text-white">
                   Intelligent Frame Capture & Pre-Screening
                 </h3>
               </div>
             </div>
 
-            <p className="relative z-10 mt-4 text-sm text-gray-600 dark:text-gray-400 leading-relaxed flex-1">
+            <p className="relative z-10 mt-3 sm:mt-4 text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed flex-1">
               Introduces an edge-level, encoder-driven frame acquisition
               mechanism that captures frames only at meaningful spatial
               intervals while verifying fabric presence to eliminate redundant
@@ -378,7 +383,7 @@ export default function Scope() {
               y: -8,
               scale: 1.01,
             }}
-            className="group relative rounded-3xl border border-gray-200/60 dark:border-gray-800 bg-white/80 dark:bg-green-900/40 backdrop-blur-sm p-6 text-left overflow-hidden h-full min-h-[280px] flex flex-col"
+            className="group relative rounded-3xl border border-gray-200/60 dark:border-gray-800 bg-white/80 dark:bg-green-900/40 backdrop-blur-sm p-5 sm:p-6 text-left overflow-hidden h-full min-h-[280px] flex flex-col"
           >
             <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300">
               <div className="absolute -inset-px bg-gradient-to-br from-blue-500/10 via-indigo-500/10 to-transparent" />
@@ -389,13 +394,13 @@ export default function Scope() {
                 <p className="text-xs text-blue-700 dark:text-blue-300 font-medium">
                   Component 02
                 </p>
-                <h3 className="mt-2 text-lg font-semibold text-gray-900 dark:text-white">
+                <h3 className="mt-2 text-base sm:text-lg font-semibold text-gray-900 dark:text-white">
                   Fog-Level Image Enhancement
                 </h3>
               </div>
             </div>
 
-            <p className="relative z-10 mt-4 text-sm text-gray-400 dark:text-gray-500 italic leading-relaxed flex-1 flex items-center justify-center">
+            <p className="relative z-10 mt-3 sm:mt-4 text-xs sm:text-sm text-gray-400 dark:text-gray-500 italic leading-relaxed flex-1 flex items-center justify-center">
               (To be added)
             </p>
 
@@ -409,7 +414,7 @@ export default function Scope() {
               y: -8,
               scale: 1.01,
             }}
-            className="group relative rounded-3xl border border-gray-200/60 dark:border-gray-800 bg-white/80 dark:bg-orange-900/40 backdrop-blur-sm p-6 text-left overflow-hidden h-full min-h-[280px] flex flex-col"
+            className="group relative rounded-3xl border border-gray-200/60 dark:border-gray-800 bg-white/80 dark:bg-orange-900/40 backdrop-blur-sm p-5 sm:p-6 text-left overflow-hidden h-full min-h-[280px] flex flex-col"
           >
             <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300">
               <div className="absolute -inset-px bg-gradient-to-br from-blue-500/10 via-indigo-500/10 to-transparent" />
@@ -420,13 +425,13 @@ export default function Scope() {
                 <p className="text-xs text-blue-700 dark:text-blue-300 font-medium">
                   Component 03
                 </p>
-                <h3 className="mt-2 text-lg font-semibold text-gray-900 dark:text-white">
+                <h3 className="mt-2 text-base sm:text-lg font-semibold text-gray-900 dark:text-white">
                   Defect Detection & Localization
                 </h3>
               </div>
             </div>
 
-            <p className="relative z-10 mt-4 text-sm text-gray-400 dark:text-gray-500 italic leading-relaxed flex-1 flex items-center justify-center">
+            <p className="relative z-10 mt-3 sm:mt-4 text-xs sm:text-sm text-gray-400 dark:text-gray-500 italic leading-relaxed flex-1 flex items-center justify-center">
               (To be added)
             </p>
 
@@ -440,7 +445,7 @@ export default function Scope() {
               y: -8,
               scale: 1.01,
             }}
-            className="group relative rounded-3xl border border-gray-200/60 dark:border-gray-800 bg-white/80 dark:bg-purple-900/40 backdrop-blur-sm p-6 text-left overflow-hidden h-full min-h-[280px] flex flex-col"
+            className="group relative rounded-3xl border border-gray-200/60 dark:border-gray-800 bg-white/80 dark:bg-purple-900/40 backdrop-blur-sm p-5 sm:p-6 text-left overflow-hidden h-full min-h-[280px] flex flex-col"
           >
             <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300">
               <div className="absolute -inset-px bg-gradient-to-br from-blue-500/10 via-indigo-500/10 to-transparent" />
@@ -451,13 +456,13 @@ export default function Scope() {
                 <p className="text-xs text-blue-700 dark:text-blue-300 font-medium">
                   Component 04
                 </p>
-                <h3 className="mt-2 text-lg font-semibold text-gray-900 dark:text-white">
+                <h3 className="mt-2 text-base sm:text-lg font-semibold text-gray-900 dark:text-white">
                   Predictive Quality Analytics
                 </h3>
               </div>
             </div>
 
-            <p className="relative z-10 mt-4 text-sm text-gray-400 dark:text-gray-500 italic leading-relaxed flex-1 flex items-center justify-center">
+            <p className="relative z-10 mt-3 sm:mt-4 text-xs sm:text-sm text-gray-400 dark:text-gray-500 italic leading-relaxed flex-1 flex items-center justify-center">
               (To be added)
             </p>
 
@@ -467,80 +472,580 @@ export default function Scope() {
       </motion.div>
 
       {/* Divider */}
-      <div className="mt-20 flex justify-center">
+      <div className="mt-16 sm:mt-20 flex justify-center">
         <div className="h-px w-full max-w-xl bg-gradient-to-r from-transparent via-gray-300 to-transparent dark:via-gray-700" />
       </div>
 
-      {/* ================= METHODOLOGY SECTION ================= */}
+      {/* ================= METHODOLOGY SECTION - OVERALL ================= */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="mt-20 relative"
+        className="mt-16 sm:mt-17 relative"
       >
         {/* Header */}
-        <div className="max-w-6xl mx-auto text-center mb-14">
+        <div className="max-w-6xl mx-auto text-center mb-10 sm:mb-14">
           <div className="flex items-center justify-center gap-2 mb-4 text-sm text-indigo-600 dark:text-indigo-400">
             <span className="font-medium">Our Approach</span>
           </div>
 
-          <div className="text-4xl font-semibold text-gray-900 dark:text-white">
+          <div className="text-3xl sm:text-4xl font-semibold text-gray-900 dark:text-white">
             Research Methodology
           </div>
+        </div>
 
-          <p className="mt-4 px-30 text-gray-600 dark:text-gray-400 leading-relaxed">
-            This section presents the overall implementation methodology of the
-            proposed FabricVision system, which is designed as a multi-stage
-            real-time fabric inspection pipeline. The system integrates
-            edge-level intelligent frame acquisition, anomaly pre-screening,
-            fog-level adaptive image enhancement, deep learning-based defect
-            detection, and predictive analytics to support comprehensive fabric
-            quality monitoring. The processing workflow begins at the edge
-            layer, where frames are selectively captured and pre-screened before
-            being transmitted to the fog layer for enhancement and defect
-            analysis. Subsequently, advanced machine learning models are used to
-            detect and localize defects, while higher-level analytics modules
-            provide insights for quality control and decision-making. This
-            structured pipeline ensures efficient data processing, reduces
-            redundancy, and improves the overall reliability and scalability of
-            the inspection system.
+        {/* Side-by-side layout: Image | Text */}
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            {/* Left Side: Image */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="group relative"
+            >
+              <div className="relative rounded-2xl overflow-hidden bg-gray-100 dark:bg-gray-800 shadow-lg">
+                <Image
+                  src={OverallDiagram}
+                  alt="Overall Architecture Diagram"
+                  className="w-full h-auto rounded-2xl"
+                  style={{ borderRadius: "1rem" }}
+                />
+              </div>
+
+              {/* Caption */}
+              <div className="p-3 sm:p-4 text-center">
+                <p className="text-xs text-gray-500 dark:text-gray-400">
+                  Figure 2: Overall System architecture Diagram
+                </p>
+              </div>
+
+              {/* Hover effect */}
+              <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300 rounded-2xl">
+                <div className="absolute -inset-px bg-gradient-to-br from-indigo-500/5 via-blue-500/5 to-transparent rounded-2xl" />
+              </div>
+            </motion.div>
+
+            {/* Right Side: Paragraph */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="space-y-3 sm:space-y-4"
+            >
+              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
+                This section presents the overall implementation methodology of
+                the proposed{" "}
+                <strong className="font-semibold text-indigo-600 dark:text-indigo-400">
+                  FabricVision
+                </strong>{" "}
+                system, which is designed as a multi-stage real-time fabric
+                inspection pipeline. The system integrates edge-level
+                intelligent frame acquisition, anomaly pre-screening, fog-level
+                adaptive image enhancement, deep learning-based defect
+                detection, and predictive analytics to support comprehensive
+                fabric quality monitoring.
+              </p>
+
+              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
+                The processing workflow begins at the edge layer, where frames
+                are selectively captured and pre-screened before being
+                transmitted to the fog layer for enhancement and defect
+                analysis. Subsequently, advanced machine learning models are
+                used to detect and localize defects, while higher-level
+                analytics modules provide insights for quality control and
+                decision-making.
+              </p>
+
+              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
+                This structured pipeline ensures efficient data processing,
+                reduces redundancy, and improves the overall reliability and
+                scalability of the inspection system.
+              </p>
+
+              {/* Optional: Key highlights as badges */}
+              <div className="flex flex-wrap gap-2 pt-2">
+                <span className="inline-flex items-center rounded-full bg-indigo-100 dark:bg-indigo-900/40 px-2.5 sm:px-3 py-1 text-xs text-indigo-700 dark:text-indigo-300">
+                  Frame Capturing
+                </span>
+                <span className="inline-flex items-center rounded-full bg-indigo-100 dark:bg-indigo-900/40 px-2.5 sm:px-3 py-1 text-xs text-indigo-700 dark:text-indigo-300">
+                  Fog Computing
+                </span>
+                <span className="inline-flex items-center rounded-full bg-indigo-100 dark:bg-indigo-900/40 px-2.5 sm:px-3 py-1 text-xs text-indigo-700 dark:text-indigo-300">
+                  Real-time Detection
+                </span>
+                <span className="inline-flex items-center rounded-full bg-indigo-100 dark:bg-indigo-900/40 px-2.5 sm:px-3 py-1 text-xs text-indigo-700 dark:text-indigo-300">
+                  Predictive Analytics
+                </span>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* ================= METHODOLOGY SECTION - COMPONENT 1 ================= */}
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="mt-20 sm:mt-24 relative"
+      >
+        {/* Header */}
+        <div className="max-w-6xl mx-auto text-center mb-10 sm:mb-14">
+          <div className="flex items-center justify-center gap-2 mb-4 text-sm text-indigo-600 dark:text-indigo-400">
+            <span className="font-medium">Component 01</span>
+          </div>
+
+          <div className="text-2xl sm:text-4xl font-semibold text-gray-900 dark:text-white px-2">
+            Edge-Level Fabric Capture & Pre-Screening
+          </div>
+
+          <p className="mt-3 sm:mt-4 max-w-3xl mx-auto text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed px-2">
+            This component represents the first stage of the FabricVision
+            pipeline, where fabric frames are intelligently acquired,
+            pre-screened for irregularities, and validated for visual usability
+            before being forwarded to the fog computing layer.
           </p>
         </div>
 
-        {/* System Architecture */}
-        <div className="max-w-4xl mx-auto sm:-mt-10">
-          <motion.div
-            initial={{ opacity: 0, y: 50, scale: 0.1 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="group relative"
-          >
-            <div className="relative rounded-2xl overflow-hidden bg-gray-100 dark:bg-gray-800">
-              <Image
-                src={OverallDiagram}
-                alt="Overall Architecture Diagram"
-                className="w-full h-auto rounded-2xl"
-                style={{ borderRadius: "1rem" }}
-              />
-            </div>
+        {/* Side-by-side layout: Text | Image */}
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            {/* Left Side: Text + Glass Cards */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="space-y-4 sm:space-y-5 order-2 lg:order-1"
+            >
+              {/* Novelty Cards */}
+              <div className="space-y-3 sm:space-y-4 pt-2">
+                {/* Card 1 */}
+                <div className="rounded-2xl border border-white/20 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur-xl shadow-lg shadow-indigo-500/5 p-4 sm:p-5">
+                  <h4 className="text-base sm:text-lg font-semibold text-indigo-700 dark:text-indigo-400 mb-1 sm:mb-2">
+                    Novelty 1: Encoder-Driven Frame Acquisition
+                  </h4>
+                  <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                    Frames are captured at fixed spatial intervals using encoder
+                    pulse signals, while ROI-based fabric presence verification
+                    prevents the acquisition of empty or irrelevant frames.
+                  </p>
+                </div>
 
-            {/* Caption */}
-            <div className="p-4 text-center sm:-mt-8">
-              <p className="text-xs text-gray-500 dark:text-gray-400">
-                {" "}
-                {/* Changed text color */}
-                Figure 2: System architecture of the edge-level fabric capture
-                and pre-screening pipeline.
+                {/* Card 2 */}
+                <div className="rounded-2xl border border-white/20 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur-xl shadow-lg shadow-indigo-500/5 p-4 sm:p-5">
+                  <h4 className="text-base sm:text-lg font-semibold text-indigo-700 dark:text-indigo-400 mb-1 sm:mb-2">
+                    Novelty 2: Anomaly Pre-Screening
+                  </h4>
+                  <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                    A lightweight autoencoder computes the Frame Irregularity
+                    Score (FIS) and generates visual irregularity maps to
+                    identify normal, warning, and anomalous frames in real time.
+                  </p>
+                </div>
+
+                {/* Card 3 */}
+                <div className="rounded-2xl border border-white/20 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur-xl shadow-lg shadow-indigo-500/5 p-4 sm:p-5">
+                  <h4 className="text-base sm:text-lg font-semibold text-indigo-700 dark:text-indigo-400 mb-1 sm:mb-2">
+                    Novelty 3: Frame-Level Quality Analytics
+                  </h4>
+                  <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                    Captured frames are evaluated using sharpness, exposure, and
+                    contrast metrics to compute a Frame Quality Score (FQS),
+                    ensuring that only visually valid frames are forwarded to
+                    the next layer.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Right Side: Image */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="group relative order-1 lg:order-2"
+            >
+              <div className="relative rounded-2xl overflow-hidden border border-white/20 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur-xl shadow-xl shadow-indigo-500/10">
+                <Image
+                  src={ComponentOneDiagram}
+                  alt="Component 1 Architecture Diagram"
+                  className="w-full h-auto rounded-2xl"
+                  style={{ borderRadius: "1rem" }}
+                />
+              </div>
+
+              {/* Caption */}
+              <div className="p-3 sm:p-4 text-center">
+                <p className="text-xs text-gray-500 dark:text-gray-400">
+                  Figure 3: Component 1 architecture diagram.
+                </p>
+              </div>
+
+              {/* Hover glow */}
+              <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300 rounded-2xl">
+                <div className="absolute -inset-px rounded-2xl bg-gradient-to-br from-indigo-500/10 via-blue-500/10 to-transparent" />
+              </div>
+
+              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed mt-4">
+                The implemented edge-level pipeline combines three tightly
+                integrated novelties: encoder-driven frame acquisition with
+                fabric presence verification, autoencoder-based anomaly
+                pre-screening, and frame-level quality analytics. Together,
+                these stages ensure that only meaningful and visually usable
+                frames are propagated for downstream enhancement and defect
+                analysis.
               </p>
-            </div>
+            </motion.div>
+          </div>
+        </div>
+      </motion.div>
 
-            {/* Hover effect */}
-            <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300 rounded-2xl">
-              <div className="absolute -inset-px bg-gradient-to-br from-indigo-500/5 via-blue-500/5 to-transparent rounded-2xl" />
-            </div>
-          </motion.div>
+      {/* ================= HARDWARE SHOWCASE ================= */}
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="mt-16"
+      >
+        {/* Title */}
+        <div className="text-center mb-10">
+          <h4 className="text-xl font-semibold text-gray-900 dark:text-white">
+            Hardware Implementation
+          </h4>
+          <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
+            Edge device setup used for real-time fabric capture and
+            pre-screening
+          </p>
+        </div>
+
+        {/* Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 max-w-6xl mx-auto">
+          {/* Item */}
+          {[
+            { title: "Raspberry Pi 4 Model B", img: piImage },
+            { title: "Camera Module 3", img: cameraImage },
+            { title: "Enclosure Box", img: enclosureImage },
+            { title: "Cooling Fan Setup", img: fanImage },
+            { title: "Wooden Mount Structure", img: setupImage },
+            { title: "Fabric Capture Setup", img: mountImage },
+            { title: "Pipeline Execution", img: pipelineImage },
+            { title: "Sample Captured Frame", img: frameImage },
+          ].map((item, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.05 }}
+              whileHover={{ scale: 1.05 }}
+              className="group relative rounded-2xl border border-white/20 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur-xl shadow-md overflow-hidden"
+            >
+              {/* Image */}
+              <div className="relative h-36 overflow-hidden">
+                <Image
+                  src={item.img}
+                  alt={item.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300" />
+              </div>
+
+              {/* Label */}
+              <div className="p-3 text-center">
+                <p className="text-xs font-medium text-gray-700 dark:text-gray-300">
+                  {item.title}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
+
+      {/* Divider */}
+      <div className="mt-10 sm:mt-10 flex justify-center">
+        <div className="h-px w-full max-w-xl bg-gradient-to-r from-transparent via-gray-300 to-transparent dark:via-gray-700" />
+      </div>
+
+      {/* ================= METHODOLOGY SECTION - COMPONENT 2 ================= */}
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="mt-20 sm:mt-14 relative"
+      >
+        {/* Header */}
+        <div className="max-w-6xl mx-auto text-center mb-10 sm:mb-14">
+          <div className="flex items-center justify-center gap-2 mb-4 text-sm text-indigo-600 dark:text-indigo-400">
+            <span className="font-medium">Component 02</span>
+          </div>
+
+          <div className="text-2xl sm:text-4xl font-semibold text-gray-900 dark:text-white px-2">
+            # Component 2 Title
+          </div>
+
+          <p className="mt-3 sm:mt-4 max-w-3xl mx-auto text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed px-2">
+            # Comp 2 description goes here.
+          </p>
+        </div>
+
+        {/* Side-by-side layout: Image | Text */}
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            {/* Left Side: Image */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="group relative order-1"
+            >
+              <div className="relative rounded-2xl overflow-hidden border border-white/20 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur-xl shadow-xl shadow-indigo-500/10">
+                <Image
+                  src={ComponentOneDiagram}
+                  alt="Component 2 Architecture Diagram"
+                  className="w-full h-auto rounded-2xl"
+                  style={{ borderRadius: "1rem" }}
+                />
+              </div>
+
+              {/* Caption */}
+              <div className="p-3 sm:p-4 text-center">
+                <p className="text-xs text-gray-500 dark:text-gray-400">
+                  Figure 4: Component 2 architecture diagram.
+                </p>
+              </div>
+
+              {/* Hover glow */}
+              <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300 rounded-2xl">
+                <div className="absolute -inset-px rounded-2xl bg-gradient-to-br from-indigo-500/10 via-blue-500/10 to-transparent" />
+              </div>
+            </motion.div>
+
+            {/* Right Side: Text + Glass Cards */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="space-y-4 sm:space-y-5 order-2"
+            >
+              {/* Novelty Cards */}
+              <div className="space-y-3 sm:space-y-4 pt-2">
+                {/* Card 1 */}
+                <div className="rounded-2xl border border-white/20 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur-xl shadow-lg shadow-indigo-500/5 p-4 sm:p-5">
+                  <h4 className="text-base sm:text-lg font-semibold text-indigo-700 dark:text-indigo-400 mb-1 sm:mb-2">
+                    Novelty 1:
+                  </h4>
+                  <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                    # Description of novelty 1 goes here.
+                  </p>
+                </div>
+
+                {/* Card 2 */}
+                <div className="rounded-2xl border border-white/20 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur-xl shadow-lg shadow-indigo-500/5 p-4 sm:p-5">
+                  <h4 className="text-base sm:text-lg font-semibold text-indigo-700 dark:text-indigo-400 mb-1 sm:mb-2">
+                    Novelty 2:
+                  </h4>
+                  <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                    # Description of novelty 2 goes here.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* ================= METHODOLOGY SECTION - COMPONENT 3 ================= */}
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="mt-20 sm:mt-14 relative"
+      >
+        {/* Header */}
+        <div className="max-w-6xl mx-auto text-center mb-10 sm:mb-14">
+          <div className="flex items-center justify-center gap-2 mb-4 text-sm text-indigo-600 dark:text-indigo-400">
+            <span className="font-medium">Component 03</span>
+          </div>
+
+          <div className="text-2xl sm:text-4xl font-semibold text-gray-900 dark:text-white px-2">
+            # Component 3 Title
+          </div>
+
+          <p className="mt-3 sm:mt-4 max-w-3xl mx-auto text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed px-2">
+            # Comp 3 description goes here.
+          </p>
+        </div>
+
+        {/* Side-by-side layout: Text | Image */}
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            {/* Left Side: Text + Glass Cards */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="space-y-4 sm:space-y-5 order-2 lg:order-1"
+            >
+              {/* Novelty Cards */}
+              <div className="space-y-3 sm:space-y-4 pt-2">
+                {/* Card 1 */}
+                <div className="rounded-2xl border border-white/20 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur-xl shadow-lg shadow-indigo-500/5 p-4 sm:p-5">
+                  <h4 className="text-base sm:text-lg font-semibold text-indigo-700 dark:text-indigo-400 mb-1 sm:mb-2">
+                    Novelty 1:
+                  </h4>
+                  <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                    # Description of novelty 1 goes here.
+                  </p>
+                </div>
+
+                {/* Card 2 */}
+                <div className="rounded-2xl border border-white/20 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur-xl shadow-lg shadow-indigo-500/5 p-4 sm:p-5">
+                  <h4 className="text-base sm:text-lg font-semibold text-indigo-700 dark:text-indigo-400 mb-1 sm:mb-2">
+                    Novelty 2:
+                  </h4>
+                  <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                    # Description of novelty 1 goes here.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Right Side: Image */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="group relative order-1 lg:order-2"
+            >
+              <div className="relative rounded-2xl overflow-hidden border border-white/20 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur-xl shadow-xl shadow-indigo-500/10">
+                <Image
+                  src={ComponentOneDiagram}
+                  alt="Component 2 Architecture Diagram"
+                  className="w-full h-auto rounded-2xl"
+                  style={{ borderRadius: "1rem" }}
+                />
+              </div>
+
+              {/* Caption */}
+              <div className="p-3 sm:p-4 text-center">
+                <p className="text-xs text-gray-500 dark:text-gray-400">
+                  Figure 5: Component 3 architecture diagram.
+                </p>
+              </div>
+
+              {/* Hover glow */}
+              <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300 rounded-2xl">
+                <div className="absolute -inset-px rounded-2xl bg-gradient-to-br from-indigo-500/10 via-blue-500/10 to-transparent" />
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* ================= METHODOLOGY SECTION - COMPONENT 4 ================= */}
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="mt-20 sm:mt-14 relative"
+      >
+        {/* Header */}
+        <div className="max-w-6xl mx-auto text-center mb-10 sm:mb-14">
+          <div className="flex items-center justify-center gap-2 mb-4 text-sm text-indigo-600 dark:text-indigo-400">
+            <span className="font-medium">Component 04</span>
+          </div>
+
+          <div className="text-2xl sm:text-4xl font-semibold text-gray-900 dark:text-white px-2">
+            # Component 4 Title
+          </div>
+
+          <p className="mt-3 sm:mt-4 max-w-3xl mx-auto text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed px-2">
+            # Comp 4 description goes here.
+          </p>
+        </div>
+
+        {/* Side-by-side layout: Image | Text */}
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            {/* Left Side: Image */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="group relative order-1"
+            >
+              <div className="relative rounded-2xl overflow-hidden border border-white/20 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur-xl shadow-xl shadow-indigo-500/10">
+                <Image
+                  src={ComponentOneDiagram}
+                  alt="Component 4 Architecture Diagram"
+                  className="w-full h-auto rounded-2xl"
+                  style={{ borderRadius: "1rem" }}
+                />
+              </div>
+
+              {/* Caption */}
+              <div className="p-3 sm:p-4 text-center">
+                <p className="text-xs text-gray-500 dark:text-gray-400">
+                  Figure 6: Component 4 architecture diagram.
+                </p>
+              </div>
+
+              {/* Hover glow */}
+              <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300 rounded-2xl">
+                <div className="absolute -inset-px rounded-2xl bg-gradient-to-br from-indigo-500/10 via-blue-500/10 to-transparent" />
+              </div>
+            </motion.div>
+
+            {/* Right Side: Text + Glass Cards */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="space-y-4 sm:space-y-5 order-2"
+            >
+              {/* Novelty Cards */}
+              <div className="space-y-3 sm:space-y-4 pt-2">
+                {/* Card 1 */}
+                <div className="rounded-2xl border border-white/20 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur-xl shadow-lg shadow-indigo-500/5 p-4 sm:p-5">
+                  <h4 className="text-base sm:text-lg font-semibold text-indigo-700 dark:text-indigo-400 mb-1 sm:mb-2">
+                    Novelty 1:
+                  </h4>
+                  <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                    # Description of novelty 1 goes here.
+                  </p>
+                </div>
+
+                {/* Card 2 */}
+                <div className="rounded-2xl border border-white/20 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur-xl shadow-lg shadow-indigo-500/5 p-4 sm:p-5">
+                  <h4 className="text-base sm:text-lg font-semibold text-indigo-700 dark:text-indigo-400 mb-1 sm:mb-2">
+                    Novelty 2:
+                  </h4>
+                  <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                    # Description of novelty 2 goes here.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </motion.div>
     </section>
