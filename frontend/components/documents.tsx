@@ -84,7 +84,7 @@ const projectThumbnails: ProjectThumbnail[] = [
   {
     id: 6,
     title: "Interactive Social Portfolio",
-    category: "Interactive Web Product",
+    category: "Interactive Web Presentations",
     description:
       "Dynamic portfolio website with advanced animations, 3D elements, and engaging user interactions for personal branding.",
     image: Project6,
@@ -94,13 +94,13 @@ const projectThumbnails: ProjectThumbnail[] = [
   },
 ];
 
-export default function Resources() {
-  const { ref } = useSectionInView("Resources", 0.5);
+export default function Documents() {
+  const { ref } = useSectionInView("Documents", 0.5);
 
   return (
     <motion.main
       ref={ref}
-      id="resources"
+      id="documents"
       className="max-w-7xl mx-auto px-4 sm:px-6 pt-10 pb-10 scroll-mt-15"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}

@@ -8,7 +8,6 @@ import clsx from "clsx";
 import { useActiveSectionContext } from "@/context/active-section-context";
 import {
   Home,
-  User,
   Briefcase,
   Mail,
   FileText,
@@ -42,7 +41,7 @@ export default function Navbar() {
             bg-transparent bg-opacity-80
             shadow-lg shadow-black/[0.03]
             backdrop-blur-[0.5rem]
-            sm:top-6 sm:h-[3.25rem] sm:w-[43.5rem] sm:rounded-full
+            sm:top-6 sm:h-[3.25rem] sm:w-[52.5rem] sm:rounded-full
             dark:bg-transparent dark:border-gray-400 dark:bg-opacity-75"
         initial={{ y: -100, x: "-50%", opacity: 0 }}
         animate={{ y: 0, x: "-50%", opacity: 1 }}

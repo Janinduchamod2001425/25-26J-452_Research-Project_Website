@@ -17,8 +17,19 @@ export default function ThemeContextProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [theme, setTheme] = useState<Theme>("light");
+  const [theme, setTheme] = useState<Theme>(() => {
+    if (typeof window === "undefined") return "light";
+
+    const stored = localStorage.getItem("theme") as Theme | null;
+    return stored ?? "light";
+  });
+
   const [isTransitioning, setIsTransitioning] = useState(false);
+
+  // 🔥 Sync HTML class with theme
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", theme === "dark");
+  }, [theme]);
 
   const toggleTheme = () => {
     setIsTransitioning(true);
@@ -26,34 +37,22 @@ export default function ThemeContextProvider({
     setTimeout(() => {
       setTheme((prev) => {
         const next = prev === "light" ? "dark" : "light";
-        document.documentElement.classList.toggle("dark", next === "dark");
         localStorage.setItem("theme", next);
         return next;
       });
-    }, 180); // 👈 sync with overlay mid-animation
+    }, 180);
   };
 
-  // 🔑 stop transition after animation duration
+  // animation cleanup
   useEffect(() => {
-    if (isTransitioning) {
-      const timeout = setTimeout(() => {
-        setIsTransitioning(false);
-      }, 700); // must match overlay animation
+    if (!isTransitioning) return;
 
-      return () => clearTimeout(timeout);
-    }
+    const timeout = setTimeout(() => {
+      setIsTransitioning(false);
+    }, 700);
+
+    return () => clearTimeout(timeout);
   }, [isTransitioning]);
-
-  useEffect(() => {
-    const stored = localStorage.getItem("theme") as Theme | null;
-
-    if (stored) {
-      setTheme(stored);
-      if (stored === "dark") {
-        document.documentElement.classList.add("dark");
-      }
-    }
-  }, []);
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme, isTransitioning }}>

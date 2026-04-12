@@ -5,7 +5,7 @@ import { motion, Variants } from "framer-motion";
 import { useSectionInView } from "@/lib/hook";
 import SectionHeading from "./section-heading";
 import Image from "next/image";
-import { AlertTriangle, BookOpen, Microscope, Search } from "lucide-react";
+import { AlertTriangle, BookOpen, Microscope, Search, Cpu } from "lucide-react";
 
 import OverallDiagram from "@/app/images/diagrams/Overall System Diagram.png";
 import ComponentOneDiagram from "@/app/images/diagrams/Component 1 System Architecture Diagram.png";
@@ -18,6 +18,22 @@ import mountImage from "@/app/images/hardware/connected.png";
 import setupImage from "@/app/images/hardware/finalproduct.png";
 import pipelineImage from "@/app/images/hardware/pipelineprocess.jpeg";
 import frameImage from "@/app/images/hardware/captured frame.jpeg";
+
+import RaspberrypiLogo from "@/app/images/tools/Raspberry Pi.png";
+import MongoLogo from "@/app/images/tools/MongoDB.png";
+import PythonLogo from "@/app/images/tools/Python.png";
+import TensorflowLogo from "@/app/images/tools/TensorFlow.png";
+import GitLogo from "@/app/images/tools/GitHub.png";
+import OpencvLogo from "@/app/images/tools/OpenCV.png";
+import NumpyLogo from "@/app/images/tools/NumPy.png";
+import NextjsLogo from "@/app/images/tools/NextWhite.png";
+import TailwindcssLogo from "@/app/images/tools/Tailwind CSS.png";
+import FigmaLogo from "@/app/images/tools/Figma.png";
+import WebstormLogo from "@/app/images/tools/WebStorm.png";
+import TrelloLogo from "@/app/images/tools/Trello.png";
+import VSCodeLogo from "@/app/images/tools/VS Code.png";
+import VercelLogo from "@/app/images/tools/Vercel_white.png";
+import PostmanLogo from "@/app/images/tools/Postman.png";
 
 const fadeUp: Variants = {
   hidden: {
@@ -38,13 +54,31 @@ const fadeUp: Variants = {
   },
 };
 
-export default function Scope() {
-  const { ref } = useSectionInView("Scope", 0.5);
+const tools = [
+  { name: "Raspberry Pi", logo: RaspberrypiLogo },
+  { name: "OpenCV", logo: OpencvLogo },
+  { name: "Python", logo: PythonLogo },
+  { name: "Tensorflow", logo: TensorflowLogo },
+  { name: "Numpy", logo: NumpyLogo },
+  { name: "Next.JS", logo: NextjsLogo },
+  { name: "MongoDB", logo: MongoLogo },
+  { name: "TailwindCSS", logo: TailwindcssLogo },
+  { name: "GitHub", logo: GitLogo },
+  { name: "Figma", logo: FigmaLogo },
+  { name: "WebStorm", logo: WebstormLogo },
+  { name: "VSCode", logo: VSCodeLogo },
+  { name: "Postman", logo: PostmanLogo },
+  { name: "Trello", logo: TrelloLogo },
+  { name: "Vercel", logo: VercelLogo },
+];
+
+export default function Domain() {
+  const { ref } = useSectionInView("Domain", 0.5);
 
   return (
     <section
       ref={ref}
-      id="scope"
+      id="domain"
       className="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-18 scroll-mt-28"
     >
       {/* ================= HEADER ================= */}
@@ -316,7 +350,7 @@ export default function Scope() {
         <div className="flex gap-2 text-blue-600 dark:text-blue-100 mb-2">
           <Microscope className="w-6 sm:w-8 h-6 sm:h-8 flex-shrink-0" />
           <h2 className="text-2xl sm:text-3xl font-semibold">
-            Proposed Solutions
+            Research Objectives
           </h2>
         </div>
 
@@ -1047,6 +1081,84 @@ export default function Scope() {
             </motion.div>
           </div>
         </div>
+      </motion.div>
+
+      {/* Divider */}
+      <div className="mt-16 sm:mt-20 flex justify-center">
+        <div className="h-px w-full max-w-xl bg-gradient-to-r from-transparent via-gray-300 to-transparent dark:via-gray-700" />
+      </div>
+
+      {/* ================= TOOLS & TECHNOLOGIES ================= */}
+      <motion.div
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{
+          once: true,
+          amount: 0.2,
+          margin: "-30px",
+        }}
+        className="mt-20 sm:mt-24"
+      >
+        <div className="text-center mb-10 sm:mb-12">
+          <div className="flex items-center justify-center gap-2 text-blue-600 dark:text-blue-400">
+            <Cpu className="w-5 h-5 sm:w-8 sm:h-8" />
+            <h3 className="text-xl sm:text-3xl font-semibold">
+              Tools & Technologies
+            </h3>
+          </div>
+
+          <p className="mt-4 text-sm sm:text-base text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed px-2">
+            The FabricVision research project was supported by a range of modern
+            tools and technologies across software development, machine
+            learning, UI design, backend implementation, and deployment-related
+            workflows. The following technologies were used during different
+            phases of the research and system development process.
+          </p>
+        </div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={{
+            once: true,
+            amount: 0.1,
+            margin: "-30px",
+          }}
+          className="mt-10 grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-6"
+        >
+          {tools.map((tool, i) => (
+            <motion.div
+              key={tool.name}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.4,
+                delay: i * 0.03,
+              }}
+              whileHover={{
+                y: -6,
+                scale: 1.05,
+              }}
+              className="group flex flex-col items-center justify-center rounded-3xl border border-gray-200/60 dark:border-gray-800 bg-white/70 dark:bg-gray-900/60 backdrop-blur-sm p-5"
+            >
+              <div className="relative h-14 w-14 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
+                <Image
+                  src={tool.logo}
+                  alt={tool.name}
+                  fill
+                  className="object-contain"
+                  sizes="(max-width: 768px) 56px, 56px"
+                />
+              </div>
+
+              <p className="mt-3 text-sm font-medium text-gray-800 dark:text-gray-200 text-center">
+                {tool.name}
+              </p>
+            </motion.div>
+          ))}
+        </motion.div>
       </motion.div>
     </section>
   );

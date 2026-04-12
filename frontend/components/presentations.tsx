@@ -35,7 +35,7 @@ import { BsChat } from "react-icons/bs";
 
 type WorkItem = {
   title: string;
-  type: "Enterprise Solution" | "Product Development" | "Client Project";
+  type: "Enterprise Solution" | "Presentations Development" | "Client Project";
   description: string;
   highlights: string[];
   stack: string[];
@@ -58,7 +58,7 @@ const professionalWork: WorkItem[] = [
 
   {
     title: "SaaS Products & Platforms",
-    type: "Product Development",
+    type: "Presentations Development",
     description:
       "Scalable software-as-a-service products built for specific market needs, from MVP to production-ready platforms with subscription management and user analytics.",
     highlights: [
@@ -148,13 +148,13 @@ const tools: ToolItem[] = [
 
 const highlights = [
   {
-    label: "Enterprise Resources Delivered", // Changed from "Industry + Academic Blend"
+    label: "Enterprise Documents Delivered", // Changed from "Industry + Academic Blend"
     value: 4, // Updated to a realistic number
     type: "number" as const,
     suffix: "+",
   },
   {
-    label: "Active Clients", // Changed from "University + Client Resources"
+    label: "Active Clients", // Changed from "University + Client Documents"
     value: 5,
     type: "number" as const,
     suffix: "+",
@@ -166,7 +166,7 @@ const highlights = [
     suffix: "",
   },
   {
-    label: "Client Retention", // Changed from "Research & Experimentation"
+    label: "Client Retention", // Changed from "Home & Experimentation"
     value: "95%",
     type: "text" as const,
   },
@@ -255,8 +255,8 @@ const useIsMobile = () => {
 
 /* -------------------------- COMPONENT -------------------------- */
 
-export default function Product() {
-  const { ref } = useSectionInView("Product", 0.5);
+export default function Presentations() {
+  const { ref } = useSectionInView("Presentations", 0.5);
 
   // Add a ref for the main container
   const sectionRef = React.useRef<HTMLElement>(null);
@@ -264,7 +264,7 @@ export default function Product() {
   return (
     <motion.section
       ref={ref}
-      id="product"
+      id="presentations"
       className="scroll-mt-28 max-w-7xl mx-auto px-4 sm:px-6 py-10"
       initial="hidden"
       whileInView="show"
@@ -508,179 +508,6 @@ export default function Product() {
         <div className="h-px w-full max-w-2xl bg-gradient-to-r from-transparent via-gray-300 to-transparent dark:via-gray-700" />
       </div>
 
-      {/* ACADEMIC SECTION */}
-      <motion.div
-        variants={fadeUp}
-        initial="hidden"
-        whileInView="show"
-        viewport={{
-          once: true,
-          amount: 0.2,
-          margin: "-30px",
-        }}
-      >
-        <div className="flex items-center justify-center gap-2 text-blue-600 dark:text-blue-400">
-          <BriefcaseBusiness className="w-5 sm:w-8 h-5 sm:h-8" />
-          <h3 className="sm:text-3xl text-xl font-semibold">
-            Professional Projects & Solutions{" "}
-          </h3>
-        </div>
-
-        <p className="mt-4 text-center text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-          Enterprise-grade solutions, SaaS products, and custom client
-          applications — built with scalability, performance, and production
-          readiness in mind.
-        </p>
-
-        <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
-          {professionalWork.map((item, i) => (
-            <motion.div
-              key={i}
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="show"
-              viewport={{
-                once: true,
-                amount: 0.2,
-                margin: "-20px",
-              }}
-              transition={{
-                delay: i * 0.1,
-                type: "spring",
-                stiffness: 180,
-                damping: 18,
-              }}
-              whileHover={{
-                y: -8,
-                scale: 1.01,
-              }}
-              className="group relative rounded-3xl border border-gray-200/60 dark:border-gray-800 bg-white/80 dark:bg-gray-900/60 backdrop-blur-sm p-6 text-left overflow-hidden"
-            >
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300">
-                <div className="absolute -inset-px bg-gradient-to-br from-blue-500/10 via-indigo-500/10 to-transparent" />
-              </div>
-
-              <div className="relative z-10 flex items-start justify-between gap-4">
-                <div>
-                  <p className="text-xs text-blue-700 dark:text-blue-300 font-medium">
-                    {item.type}
-                  </p>
-                  <h4 className="mt-2 text-xl font-semibold text-gray-900 dark:text-white">
-                    {item.title}
-                  </h4>
-                </div>
-
-                <div className="shrink-0 rounded-xl bg-blue-500/10 text-blue-700 dark:text-blue-300 p-2">
-                  {item.type === "Enterprise Solution" ? (
-                    <BriefcaseBusiness className="w-5 h-5" />
-                  ) : item.type === "Product Development" ? (
-                    <Rocket className="w-5 h-5" />
-                  ) : (
-                    <Code2 className="w-5 h-5" />
-                  )}
-                </div>
-              </div>
-
-              <p className="relative z-10 mt-4 text-sm font-medium text-gray-600 dark:text-gray-400 leading-relaxed">
-                {item.description}
-              </p>
-
-              <ul className="relative z-10 mt-4 space-y-2">
-                {item.highlights.map((h, hi) => (
-                  <li
-                    key={hi}
-                    className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed flex gap-2"
-                  >
-                    <span className="mt-2 h-1.5 w-1.5 rounded-full bg-blue-600 dark:bg-blue-400 flex-shrink-0" />
-                    <span>{h}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <div className="relative z-10 mt-5 flex flex-wrap gap-2">
-                {item.stack.map((s) => (
-                  <Badge key={s}>{s}</Badge>
-                ))}
-              </div>
-
-              <div className="absolute bottom-0 left-1/2 h-0.5 w-0 bg-gradient-to-r from-transparent via-blue-500 to-transparent transition-all duration-300 group-hover:w-24 -translate-x-1/2" />
-            </motion.div>
-          ))}
-        </div>
-      </motion.div>
-
-      {/* STARTUP / CLIENT WORK */}
-      <motion.div
-        variants={fadeUp}
-        initial="hidden"
-        whileInView="show"
-        viewport={{
-          once: true,
-          amount: 0.2,
-          margin: "-30px",
-        }}
-        className="mt-20"
-      >
-        <div className="flex items-center justify-center gap-2 text-blue-600 dark:text-blue-400">
-          <Rocket className="w-5 sm:w-8 h-5 sm:h-8" />
-          <h3 className="sm:text-3xl text-xl font-semibold">
-            Startup & Client Work
-          </h3>
-        </div>
-
-        <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
-          {startupAndClientWork.map((w, i) => (
-            <motion.div
-              key={i}
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="show"
-              viewport={{
-                once: true,
-                amount: 0.2,
-                margin: "-20px",
-              }}
-              transition={{
-                delay: i * 0.1,
-                type: "spring",
-                stiffness: 180,
-                damping: 18,
-              }}
-              whileHover={{
-                y: -8,
-                scale: 1.01,
-              }}
-              className="group rounded-3xl border border-gray-200/60 dark:border-gray-800 bg-white/80 dark:bg-gray-900/60 backdrop-blur-sm p-6 text-left"
-            >
-              <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
-                {w.title}
-              </h4>
-              <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-                {w.description}
-              </p>
-
-              <ul className="mt-4 space-y-2">
-                {w.points.map((p, pi) => (
-                  <li
-                    key={pi}
-                    className="flex gap-2 text-sm text-gray-700 dark:text-gray-300"
-                  >
-                    <CheckCircle2 className="w-4 h-4 mt-0.5 text-blue-600 dark:text-blue-400 flex-shrink-0" />
-                    <span>{p}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <div className="mt-5 flex flex-wrap gap-2">
-                {w.tags.map((t) => (
-                  <Tag key={t}>{t}</Tag>
-                ))}
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </motion.div>
-
       {/* TOOLS & TECHNOLOGIES */}
       <motion.div
         variants={fadeUp}
@@ -759,47 +586,6 @@ export default function Product() {
             </motion.div>
           ))}
         </motion.div>
-      </motion.div>
-
-      {/* CTA */}
-      <motion.div
-        variants={fadeUp}
-        initial="hidden"
-        whileInView="show"
-        viewport={{
-          once: true,
-          amount: 0.3,
-          margin: "-30px",
-        }}
-        className="mt-20 rounded-2xl border border-gray-200/60 dark:border-gray-800 bg-gradient-to-br from-blue-500/10 via-indigo-500/10 to-transparent dark:from-blue-500/5 dark:via-indigo-500/20 dark:to-transparent p-8 sm:p-10 text-center backdrop-blur-sm"
-      >
-        <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">
-          Let&#39;s build something meaningful together
-        </h3>
-        <p className="mt-3 text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-          Whether it&#39;s a business solution, digital brand presence, or an
-          academic collaboration — we&#39;re ready.
-        </p>
-
-        <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Link
-            href="#contact"
-            className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 px-8 py-3 text-white font-medium transition-all hover:shadow-lg hover:shadow-blue-500/30"
-          >
-            <BriefcaseBusiness className="w-5 h-5" />
-            Start a Projects
-            <ArrowRight className="w-5 h-5 opacity-80 group-hover:translate-x-1 transition" />
-          </Link>
-
-          <Link
-            href="#contact"
-            className="inline-flex items-center justify-center gap-2 rounded-full bg-white/70 dark:bg-gray-900/70 border border-gray-300/50 dark:border-gray-700/50 px-7 py-3 text-gray-900 dark:text-gray-100 font-medium transition-all hover:bg-white dark:hover:bg-gray-900"
-          >
-            <BsChat className="w-5 h-5 text-blue-700" />
-            <span className="sm:hidden">Work With Us</span>
-            <span className="hidden sm:inline">Start a Conversation</span>
-          </Link>
-        </div>
       </motion.div>
     </motion.section>
   );

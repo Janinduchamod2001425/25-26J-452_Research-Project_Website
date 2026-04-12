@@ -1,20 +1,22 @@
 "use client";
 
-import Research from "@/components/research";
-import Scope from "@/components/scope";
-import Resources from "@/components/resources";
+import Domain from "@/components/domain";
+import Documents from "@/components/documents";
 import About from "@/components/about";
-import Product from "@/components/product";
+import Presentations from "@/components/presentations";
 import Contact from "@/components/contact";
+import HomePage from "@/components/home";
+import Milestones from "@/components/milestones";
 
 export default function Home() {
   return (
     <main className="flex flex-col items-center px-4">
-      <Research />
-      <Scope />
-      <Resources />
+      <HomePage />
+      <Domain />
+      <Milestones />
+      <Documents />
       <About />
-      <Product />
+      <Presentations />
       <Contact />
     </main>
   );

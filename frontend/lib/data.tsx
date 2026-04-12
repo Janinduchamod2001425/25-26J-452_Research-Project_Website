@@ -1,30 +1,43 @@
-import { BookOpen, Users, FolderOpen, Cog, Target, Mail } from "lucide-react";
+import {
+  Home,
+  Users,
+  FolderOpen,
+  Compass,
+  Calendar,
+  Presentation,
+  Mail,
+} from "lucide-react";
 
 export const links = [
   {
-    name: "Research",
-    hash: "#research",
-    icon: BookOpen,
+    name: "Home",
+    hash: "#home",
+    icon: Home,
   },
   {
-    name: "Scope",
-    hash: "#scope",
-    icon: Target,
+    name: "Domain",
+    hash: "#domain",
+    icon: Compass,
   },
   {
-    name: "Resources",
-    hash: "#resources",
+    name: "Milestones",
+    hash: "#milestones",
+    icon: Calendar,
+  },
+  {
+    name: "Documents",
+    hash: "#documents",
     icon: FolderOpen,
+  },
+  {
+    name: "Presentations",
+    hash: "#presentations",
+    icon: Presentation,
   },
   {
     name: "About",
     hash: "#about",
     icon: Users,
-  },
-  {
-    name: "Product",
-    hash: "#product",
-    icon: Cog,
   },
   {
     name: "Contact",

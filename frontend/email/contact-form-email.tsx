@@ -63,7 +63,7 @@ export default function ContactFormEmail({
 
               {/* Content Area */}
               <Section className="px-6 py-6">
-                {/* Research */}
+                {/* Home */}
                 <Text className="text-gray-700 text-sm leading-relaxed mb-6">
                   You've received a new message through the contact form.
                 </Text>

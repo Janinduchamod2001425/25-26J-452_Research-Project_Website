@@ -7,13 +7,13 @@ import { motion } from "framer-motion";
 import { useSectionInView } from "@/lib/hook";
 import { LottieSeparator } from "@/components/seperater";
 
-export default function Research() {
-  const { ref } = useSectionInView("Research", 0.5);
+export default function HomePage() {
+  const { ref } = useSectionInView("Home", 0.5);
 
   return (
     <section
       ref={ref}
-      id="research"
+      id="home"
       className="mb-15 max-w-[50rem] text-center sm:mb-0 scroll-mt-[100rem]"
     >
       {/*Logo Image with Animation*/}

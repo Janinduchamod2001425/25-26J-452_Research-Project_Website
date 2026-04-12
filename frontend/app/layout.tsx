@@ -12,7 +12,7 @@ import ToastProvider from "@/components/toast-provider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "25-26J-452 - FabricVision Research",
+  title: "25-26J-452 - FabricVision Home",
   description: "AI-Driven Fabric Defect Detection and Monitoring System",
 };
 
@@ -44,15 +44,11 @@ export default function RootLayout({
           <ActiveSectionContextProvider>
             <Navbar />
 
-            {/* Theme Transition */}
-            <ThemeTransition />
-
             {children}
 
             <ToastProvider />
 
             <Footer />
-            <ThemeSwitch />
           </ActiveSectionContextProvider>
         </ThemeContextProvider>
       </body>
