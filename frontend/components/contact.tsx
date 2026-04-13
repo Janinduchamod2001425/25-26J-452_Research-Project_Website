@@ -10,19 +10,12 @@ import {
   Phone,
   MapPin,
   Clock,
-  BriefcaseBusiness,
   GraduationCap,
   Send,
   Loader2,
 } from "lucide-react";
 
-import {
-  BsFacebook,
-  BsGithub,
-  BsInstagram,
-  BsLinkedin,
-  BsWhatsapp,
-} from "react-icons/bs";
+import { BsGithub, BsLinkedin, BsWhatsapp } from "react-icons/bs";
 import { sendEmail } from "@/actions/sendEmail";
 
 /* ---------------- ANIMATIONS ---------------- */
@@ -47,8 +40,8 @@ const fadeUp: Variants = {
 export default function Contact() {
   const { ref } = useSectionInView("Contact", 0.5);
   const [contactType, setContactType] = useState<
-    "Business" | "Project" | "General"
-  >("Business");
+    "Research" | "Technical" | "General"
+  >("Research");
   const [isSending, setIsSending] = useState(false);
 
   const handleSubmit = async (formData: FormData) => {
@@ -90,7 +83,7 @@ export default function Contact() {
       whileInView="show"
       viewport={{ once: true, amount: 0.25 }}
       variants={container}
-      className="scroll-mt-28 max-w-7xl mx-auto px-4 sm:px-6 py-24 relative"
+      className="scroll-mt-20 max-w-7xl mx-auto px-4 sm:px-6 py-8 relative"
     >
       {/* ---------------- HERO ---------------- */}
       <motion.div variants={fadeUp} className="text-center max-w-3xl mx-auto">
@@ -102,9 +95,10 @@ export default function Contact() {
         <SectionHeading>Contact Us</SectionHeading>
 
         <p className="mt-4 text-gray-600 dark:text-gray-400 leading-relaxed">
-          Whether you&#39;re planning a business solution, launching a product,
-          or need technical consultation — we&#39;re ready to help bring your
-          ideas to life.
+          If you are interested in our FabricVision research, collaboration
+          opportunities, or would like to learn more about the system, feel free
+          to contact our team. We welcome academic discussions, industry
+          collaborations, and technical inquiries related to our work.
         </p>
       </motion.div>
 
@@ -114,31 +108,31 @@ export default function Contact() {
         className="mt-10 flex flex-wrap justify-center gap-3"
       >
         <button
-          onClick={() => setContactType("Business")}
+          onClick={() => setContactType("Research")}
           className={`px-5 py-2 rounded-full text-sm font-medium transition
             ${
-              contactType === "Business"
+              contactType === "Research"
                 ? "bg-blue-600 text-white"
                 : "bg-blue-500/10 text-blue-600 dark:text-blue-400"
             } ${isSending ? "opacity-50 cursor-not-allowed" : ""}`}
           disabled={isSending}
         >
-          <BriefcaseBusiness className="inline w-4 h-4 mr-1" />
-          Business Project
+          <GraduationCap className="inline w-4 h-4 mr-1" />
+          Research Collaboration
         </button>
 
         <button
-          onClick={() => setContactType("Project")}
+          onClick={() => setContactType("Technical")}
           className={`px-5 py-2 rounded-full text-sm font-medium transition
             ${
-              contactType === "Project"
+              contactType === "Technical"
                 ? "bg-indigo-600 text-white"
                 : "bg-indigo-500/10 text-indigo-600 dark:text-indigo-400"
             } ${isSending ? "opacity-50 cursor-not-allowed" : ""}`}
           disabled={isSending}
         >
           <GraduationCap className="inline w-4 h-4 mr-1" />
-          Custom Web App
+          Technical Inquiry
         </button>
 
         <button
@@ -167,9 +161,9 @@ export default function Contact() {
         {/*WHATSAPP LINK*/}
         <a
           className={`bg-white p-4 text-gray-700 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:text-green-400 hover:scale-[1.15]
-              active:scale-105 transition cursor-grab border border-black/10 dark:text-white/60 dark:bg-white/10 relative
-              ${isSending ? "pointer-events-none opacity-50" : ""}`}
-          href="https://wa.me/94702999173?text=Hi%20DevPlux%20team,%20I'm%20interested%20in%20discussing%20a%20project%20opportunity.%20Would%20you%20be%20available%20for%20a%20chat?"
+      active:scale-105 transition cursor-grab border border-black/10 dark:text-white/60 dark:bg-white/10 relative
+      ${isSending ? "pointer-events-none opacity-50" : ""}`}
+          href="https://wa.me/94785721771?text=Hi%2C%20I%20came%20across%20your%20FabricVision%20research%20project%20website%20and%20I%27m%20interested%20in%20learning%20more%20or%20discussing%20potential%20collaboration.%20Could%20we%20connect%3F"
           target="_blank"
           rel="noopener noreferrer"
           tabIndex={isSending ? -1 : 0}
@@ -177,25 +171,12 @@ export default function Contact() {
           <BsWhatsapp className="hover:text-green-400 transition duration-300 ease-in" />
         </a>
 
-        {/*FACEBOOK LINK*/}
-        <a
-          className={`bg-white p-4 text-gray-700 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:text-blue-600 hover:scale-[1.15]
-                    active:scale-105 transition cursor-grab border border-black/10 dark:text-white/60 dark:bg-white/10 relative
-                    ${isSending ? "pointer-events-none opacity-50" : ""}`}
-          href="https://facebook.com/people/DevPlux/61586762697997/"
-          target="_blank"
-          rel="noopener noreferrer"
-          tabIndex={isSending ? -1 : 0}
-        >
-          <BsFacebook className="hover:text-blue-600 transition duration-300 ease-in" />
-        </a>
-
         {/*GITHUB LINK*/}
         <a
           className={`bg-white p-4 text-gray-700 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:text-purple-500 hover:scale-[1.15]
                     active:scale-105 transition cursor-grab border border-black/10 dark:text-white/60 dark:bg-white/10 relative
                     ${isSending ? "pointer-events-none opacity-50" : ""}`}
-          href="https://github.com/DevPlux"
+          href="https://github.com/Janinduchamod2001425/25-26J-452_Research-Project_Website.git"
           target="_blank"
           rel="noopener noreferrer"
           tabIndex={isSending ? -1 : 0}
@@ -221,25 +202,6 @@ export default function Contact() {
             <span className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-gray-800 rotate-45"></span>
           </span>
         </a>
-
-        {/*INSTAGRAM LINK*/}
-        <a
-          className={`bg-white p-4 text-gray-700 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:text-pink-600 hover:scale-[1.15]
-              active:scale-105 transition cursor-not-allowed border border-black/10 dark:text-white/60 dark:bg-white/10 relative
-              ${isSending ? "pointer-events-none opacity-50" : ""} group`}
-          href="#"
-          onClick={(e) => e.preventDefault()}
-          aria-disabled="true"
-          tabIndex={isSending ? -1 : -1}
-        >
-          <BsInstagram className="hover:text-pink-600 transition duration-300 ease-in" />
-
-          {/* Custom Tooltip */}
-          <span className="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none">
-            Instagram currently unavailable
-            <span className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-gray-800 rotate-45"></span>
-          </span>
-        </a>
       </motion.div>
 
       {/* ---------------- CONTACT INFO TEXT ---------------- */}
@@ -254,13 +216,13 @@ export default function Contact() {
         <p className="text-gray-700 -mt-6 dark:text-white/80">
           You can contact us directly at{" "}
           <a
-            href="mailto:devplux.info@gmail.com"
+            href="mailto:janiduchamod25@gmail.com"
             className={`underline font-semibold italic dark:text-blue-200 text-blue-800 ${
               isSending ? "pointer-events-none opacity-50" : ""
             }`}
             tabIndex={isSending ? -1 : 0}
           >
-            devplux.info@gmail.com
+            janiduchamod25@gmail.com
           </a>{" "}
           or through this form.
         </p>
@@ -277,17 +239,17 @@ export default function Contact() {
             {
               icon: Mail,
               label: "Email",
-              value: "devplux.info@gmail.com",
+              value: "janiduchamod25@gmail.com",
             },
             {
               icon: Phone,
               label: "Phone / WhatsApp",
-              value: "+94 70 299 9173",
+              value: "+94 78 572 1771",
             },
             {
               icon: MapPin,
               label: "Location",
-              value: "Sri Lanka (Remote Friendly)",
+              value: "Sri Lanka",
             },
             {
               icon: Clock,
@@ -366,10 +328,10 @@ export default function Contact() {
               required
               rows={4}
               placeholder={
-                contactType === "Project"
-                  ? "Tell us about your product idea or project requirements..."
-                  : contactType === "Business"
-                    ? "Tell us about your business needs or challenges..."
+                contactType === "Technical"
+                  ? "Ask about system implementation or models..."
+                  : contactType === "Research"
+                    ? "Tell us about your research or collaboration idea..."
                     : "Write your message..."
               }
               className="mt-2 w-full rounded-xl border border-gray-300/60 dark:border-gray-700 bg-transparent px-4 py-2.5 text-sm outline-none focus:border-blue-500 resize-none disabled:opacity-50 disabled:cursor-not-allowed"
