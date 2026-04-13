@@ -12,7 +12,7 @@ import ToastProvider from "@/components/toast-provider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "25-26J-452 - FabricVision Home",
+  title: "25-26J-452 - FabricVision",
   description: "AI-Driven Fabric Defect Detection and Monitoring System",
 };
 
