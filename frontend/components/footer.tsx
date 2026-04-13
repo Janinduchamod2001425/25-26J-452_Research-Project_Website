@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Mail, ArrowUpRight, Users } from "lucide-react";
 import { motion } from "framer-motion";
+import { BsGithub } from "react-icons/bs";
 
 export default function Footer() {
   return (
@@ -22,11 +23,12 @@ export default function Footer() {
           {/* BRAND */}
           <div>
             <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
-              DevPlux
+              FabricVision
             </h4>
             <p className="mt-3 leading-relaxed">
-              Crafting modern software solutions for businesses, startups, and
-              digital products.
+              An AI-driven fabric defect detection and quality monitoring system
+              designed to improve inspection accuracy and efficiency in the
+              apparel manufacturing industry.
             </p>
           </div>
 
@@ -37,9 +39,9 @@ export default function Footer() {
             </h5>
             <ul className="space-y-2">
               {[
-                { name: "Services", href: "#services" },
-                { name: "Experience", href: "#experience" },
-                { name: "Projects", href: "#projects" },
+                { name: "Research Overview", href: "#home" },
+                { name: "Scope", href: "#domain" },
+                { name: "Milestones", href: "#milestones" },
                 { name: "Contact", href: "#contact" },
               ].map((item) => (
                 <li key={item.name}>
@@ -62,33 +64,28 @@ export default function Footer() {
             </h5>
 
             <div className="flex items-center gap-4">
+              {/* Email */}
               <a
-                href="mailto:devplux.info@gmail.com"
+                href="mailto:it22573896@my.sliit.lk"
                 rel="noopener noreferrer"
                 className="hover:text-blue-600 dark:hover:text-blue-400 transition"
               >
                 <Mail className="w-5 h-5" />
               </a>
+
+              {/* GitHub (Project Repo) */}
               <a
-                href="https://github.com/DevPlux"
+                href="https://github.com/Janinduchamod2001425/25-26J-452_Research-Project_Website.git"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-blue-600 dark:hover:text-blue-400 transition"
               >
-                <Users className="w-5 h-5" />
-              </a>
-              <a
-                href="https://facebook.com/people/DevPlux/61586762697997/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-blue-600 dark:hover:text-blue-400 transition"
-              >
-                <Users className="w-5 h-5" />
+                <BsGithub className="w-5 h-5" />
               </a>
             </div>
 
             <p className="mt-4 text-xs">
-              Sri Lanka • Open for Remote & Collaborations
+              Sri Lanka Institute of Information Technology (SLIIT)
             </p>
           </div>
         </div>
@@ -96,13 +93,14 @@ export default function Footer() {
         {/* Bottom line */}
         <div className="mt-12 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
           <p>
-            © {new Date().getFullYear()} • DevPlux IT Solutions •{" "}
+            © {new Date().getFullYear()} • FabricVision Research Project •{" "}
             <span className="text-red-600">S</span>
             <span className="text-yellow-300">ri</span>
             <span className="text-green-400">Lan</span>
-            <span className="text-orange-300">ka</span>{" "}
+            <span className="text-orange-300">ka</span>
           </p>
-          <p>Delivering smart IT solutions from Sri Lanka to the world</p>
+
+          <p>AI-powered fabric inspection research for smarter manufacturing</p>
         </div>
       </div>
     </footer>
