@@ -1,174 +1,97 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion, Variants, useInView } from "framer-motion";
-import { useRef } from "react";
 import Image, { StaticImageData } from "next/image";
 import { useSectionInView } from "@/lib/hook";
 import SectionHeading from "@/components/section-heading";
-import Link from "next/link";
 import {
-  BriefcaseBusiness,
-  Code2,
-  Cpu,
-  Rocket,
-  CheckCircle2,
-  ArrowRight,
+  Presentation,
+  Eye,
+  Download,
+  Calendar,
+  Users,
+  Award,
+  GraduationCap,
 } from "lucide-react";
 
-import ReactLogo from "@/app/images/tools/React.png";
-import NextDarkLogo from "@/app/images/tools/Next.js.png";
-import NodeLogo from "@/app/images/tools/Node Js.png";
-import MongoLogo from "@/app/images/tools/MongoDB.png";
-import PythonLogo from "@/app/images/tools/Python.png";
-import GitLogo from "@/app/images/tools/GitHub.png";
-import FigmaLogo from "@/app/images/tools/Figma.png";
-import FlutterLogo from "@/app/images/tools/Flutter.png";
-import MySQLLogo from "@/app/images/tools/MySQL Logo.png";
-import DockerLogo from "@/app/images/tools/Docker.png";
-import PHPLogo from "@/app/images/tools/PHP.png";
-import PringBootLogo from "@/app/images/tools/Spring.png";
-import KotlinLogo from "@/app/images/tools/Kotlin.png";
-import DotnetLogo from "@/app/images/tools/NET core.png";
-import FirebaseLogo from "@/app/images/tools/Firebase.png";
-import { BsChat } from "react-icons/bs";
+// Import presentation thumbnails (add your actual images)
+import ProposalPresThumb from "@/app/images/presentation_thumbnails/proposal.png";
+import Progress1Thumb from "@/app/images/presentation_thumbnails/pp1.png";
+import Progress2Thumb from "@/app/images/presentation_thumbnails/pp2.png";
+import FinalPresThumb from "@/app/images/presentation_thumbnails/pp2.png";
 
-type WorkItem = {
+type PresentationDoc = {
+  id: number;
   title: string;
-  type: "Enterprise Solution" | "Presentations Development" | "Client Project";
+  event: string;
+  date: string;
   description: string;
-  highlights: string[];
-  stack: string[];
+  thumbnail: StaticImageData;
+  fileUrl: string;
+  fileSize: string;
+  duration?: string;
+  attendees?: string;
+  feedback?: string;
 };
 
-const professionalWork: WorkItem[] = [
+// Research Presentations Data
+const presentations: PresentationDoc[] = [
   {
-    title: "Enterprise Business Solutions",
-    type: "Enterprise Solution",
+    id: 1,
+    title: "Proposal Presentation",
+    event: "Research Proposal Defense",
+    date: "October 2024",
     description:
-      "Full-scale business management systems and internal tools designed to streamline operations, automate workflows, and improve decision-making for growing companies.",
-    highlights: [
-      "Custom CRM, ERP, and inventory management systems.",
-      "Real-time analytics dashboards with actionable insights.",
-      "Role-based access control and multi-tenant architecture.",
-      "Integration with existing business tools and APIs.",
-    ],
-    stack: ["React", "Node.js", "MongoDB", ".NET", "PostgreSQL", "REST APIs"],
+      "Initial research proposal presentation covering problem statement, methodology, expected outcomes, and preliminary literature review.",
+    thumbnail: ProposalPresThumb,
+    fileUrl: "/presentations/25-26J-452 - Progress Presentation 1.pdf",
+    fileSize: "4.2 MB",
+    duration: "25 minutes",
+    attendees: "30+",
+    feedback: "Approved with minor revisions",
   },
-
   {
-    title: "SaaS Products & Platforms",
-    type: "Presentations Development",
+    id: 2,
+    title: "Progress Presentation I",
+    event: "Mid-term Evaluation",
+    date: "December 2024",
     description:
-      "Scalable software-as-a-service products built for specific market needs, from MVP to production-ready platforms with subscription management and user analytics.",
-    highlights: [
-      "Subscription billing and user management integration.",
-      "Multi-tenant database architecture.",
-      "Analytics dashboards and usage tracking.",
-      "Continuous deployment and feature rollouts.",
-    ],
-    stack: [
-      "Next.js",
-      "Firebase",
-      "Stripe",
-      "Tailwind",
-      "TypeScript",
-      "Vercel",
-    ],
+      "First progress presentation demonstrating 50% project completion including system architecture, initial implementation, and preliminary results.",
+    thumbnail: Progress1Thumb,
+    fileUrl: "/presentations/25-26J-452 - Progress Presentation 1.pdf",
+    fileSize: "1355 KB",
+    duration: "30 minutes",
+    attendees: "25+",
+    feedback: "Good progress, on track",
   },
   {
-    title: "Client Web Applications",
-    type: "Client Project",
+    id: 3,
+    title: "Progress Presentation II",
+    event: "Final Evaluation Preview",
+    date: "March 2025",
     description:
-      "Custom web applications delivered for clients across various industries — from e-commerce platforms to service booking systems and business portals.",
-    highlights: [
-      "Requirements gathering and solution architecture.",
-      "Responsive, performant frontend with modern UI/UX.",
-      "Secure authentication and data protection.",
-      "Post-launch support and maintenance.",
-    ],
-    stack: ["React/Next.js", "Node.js", "MySQL", "Docker", "AWS", "Git"],
+      "Second progress presentation showcasing system readiness, integration testing, validation results, and final refinements.",
+    thumbnail: Progress2Thumb,
+    fileUrl: "/presentations/25-26J-452 - Progress Presentation 2.pdf",
+    fileSize: "933 KB",
+    duration: "30 minutes",
+    attendees: "28+",
+    feedback: "Receive good feedback for IOT build",
   },
-];
-
-type ClientWorkItem = {
-  title: string;
-  description: string;
-  points: string[];
-  tags: string[];
-};
-
-const startupAndClientWork: ClientWorkItem[] = [
   {
-    title: "Startup / Client Websites & Dashboards",
+    id: 4,
+    title: "Final Presentation",
+    event: "Final Defense & Viva",
+    date: "May 2025",
     description:
-      "Modern responsive websites, admin dashboards, and business systems tailored for small and mid-size teams.",
-    points: [
-      "Clean UI/UX and mobile-first layouts.",
-      "Fast delivery with scalable code structure.",
-      "Deployment-ready with best practices.",
-    ],
-    tags: ["Web Apps", "Dashboards", "UI/UX", "Deployment"],
-  },
-  {
-    title: "Social Media & Brand Presence Support",
-    description:
-      "Helping brands stay consistent online through profile optimization, posting support, and engagement planning.",
-    points: [
-      "Brand consistency (colors, tone, design templates).",
-      "Content scheduling and engagement guidance.",
-      "Platform profile setup and optimization.",
-    ],
-    tags: ["Branding", "Pages", "Content", "Social Media"],
-  },
-];
-
-type ToolItem = {
-  name: string;
-  logo: StaticImageData;
-};
-
-const tools: ToolItem[] = [
-  { name: "React", logo: ReactLogo },
-  { name: "Next.js", logo: NextDarkLogo },
-  { name: "Node.js", logo: NodeLogo },
-  { name: "MongoDB", logo: MongoLogo },
-  { name: "Python", logo: PythonLogo },
-  { name: "Flutter", logo: FlutterLogo },
-  { name: "Git", logo: GitLogo },
-  { name: "MySQL", logo: MySQLLogo },
-  { name: "Figma", logo: FigmaLogo },
-  { name: "Docker", logo: DockerLogo },
-  { name: "PHP", logo: PHPLogo },
-  { name: "Spring Boot", logo: PringBootLogo },
-  { name: "Kotlin", logo: KotlinLogo },
-  { name: ".NET", logo: DotnetLogo },
-  { name: "Firebase", logo: FirebaseLogo },
-];
-
-const highlights = [
-  {
-    label: "Enterprise Documents Delivered", // Changed from "Industry + Academic Blend"
-    value: 4, // Updated to a realistic number
-    type: "number" as const,
-    suffix: "+",
-  },
-  {
-    label: "Active Clients", // Changed from "University + Client Documents"
-    value: 5,
-    type: "number" as const,
-    suffix: "+",
-  },
-  {
-    label: "Products Launched", // Changed from "Agile Team Workflow"
-    value: 5,
-    type: "number" as const,
-    suffix: "",
-  },
-  {
-    label: "Client Retention", // Changed from "Home & Experimentation"
-    value: "95%",
-    type: "text" as const,
+      "Comprehensive final presentation covering complete research findings, system demonstration, evaluation results, and conclusions.",
+    thumbnail: FinalPresThumb,
+    fileUrl: "/presentations/final-presentation.pdf",
+    fileSize: "8.5 MB",
+    duration: "45 minutes",
+    attendees: "35+",
+    feedback: "Outstanding achievement",
   },
 ];
 
@@ -220,23 +143,27 @@ const softFade: Variants = {
 
 /* -------------------------- UI BITS -------------------------- */
 
-function Badge({ children }: { children: React.ReactNode }) {
+function Tag({
+  children,
+  variant = "orange",
+}: {
+  children: React.ReactNode;
+  variant?: "orange" | "blue";
+}) {
+  const variants = {
+    orange: "bg-orange-500/10 text-orange-700 dark:text-orange-300",
+    blue: "bg-blue-500/10 text-blue-700 dark:text-blue-300",
+  };
   return (
-    <span className="inline-flex items-center rounded-full border border-gray-500/60 dark:border-indigo-300/60 bg-blue-100 dark:bg-blue-500/40 px-3 py-1 text-xs text-gray-700 dark:text-gray-200">
+    <span
+      className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-medium ${variants[variant]}`}
+    >
       {children}
     </span>
   );
 }
 
-function Tag({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="inline-flex items-center rounded-full bg-blue-500/10 text-blue-700 dark:text-blue-300 px-3 py-1 text-xs font-medium">
-      {children}
-    </span>
-  );
-}
-
-// Add this helper function at the top
+// Custom hook for mobile detection
 const useIsMobile = () => {
   const [isMobile, setIsMobile] = useState(false);
 
@@ -258,8 +185,20 @@ const useIsMobile = () => {
 export default function Presentations() {
   const { ref } = useSectionInView("Presentations", 0.5);
 
-  // Add a ref for the main container
-  const sectionRef = React.useRef<HTMLElement>(null);
+  // Handle document download
+  const handleDownload = (pres: PresentationDoc) => {
+    const link = document.createElement("a");
+    link.href = pres.fileUrl;
+    link.download = `${pres.title.toLowerCase().replace(/\s+/g, "-")}.pdf`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  // Handle document view
+  const handleView = (pres: PresentationDoc) => {
+    window.open(pres.fileUrl, "_blank");
+  };
 
   return (
     <motion.section
@@ -270,15 +209,15 @@ export default function Presentations() {
       whileInView="show"
       viewport={{
         once: true,
-        amount: 0.15, // Reduced from 0.25 for earlier trigger
-        margin: "-50px", // Adds margin to trigger earlier
+        amount: 0.15,
+        margin: "-50px",
       }}
       variants={container}
     >
-      {/* Decorative blobs (desktop only) */}
+      {/* Decorative blobs with orange theme */}
       <div className="hidden sm:block pointer-events-none absolute left-1/2 -translate-x-1/2 -z-10">
-        <div className="absolute -top-40 -left-[55rem] h-[32rem] w-[32rem] rounded-full bg-blue-500/20 dark:bg-blue-500/30 blur-3xl" />
-        <div className="absolute -top-20 -right-[46rem] h-[22rem] w-[22rem] rounded-full bg-indigo-500/20 dark:bg-indigo-500/40 blur-3xl" />
+        <div className="absolute -top-40 -left-[55rem] h-[32rem] w-[32rem] rounded-full bg-orange-500/20 dark:bg-orange-500/30 blur-3xl" />
+        <div className="absolute -top-20 -right-[46rem] h-[22rem] w-[22rem] rounded-full bg-amber-500/20 dark:bg-amber-500/40 blur-3xl" />
       </div>
 
       {/* HERO */}
@@ -289,226 +228,32 @@ export default function Presentations() {
         viewport={{ once: true, amount: 0.2, margin: "-30px" }}
         className="text-center max-w-3xl mx-auto"
       >
-        <div className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400">
-          <Rocket className="w-5 h-5" />
-          <span className="text-sm font-medium">Experience & Work</span>
+        <div className="flex items-center justify-center gap-2 mb-4">
+          <div className="p-2 rounded-xl bg-blue-100 dark:bg-blue-900/30">
+            <Presentation className="w-5 h-5 text-orange-600 dark:text-orange-400" />
+          </div>
+          <span className="text-sm font-medium text-orange-600 dark:text-orange-400 tracking-wide">
+            Research Presentations
+          </span>
         </div>
 
-        <SectionHeading>Experience</SectionHeading>
+        <SectionHeading>Presentation Documents</SectionHeading>
 
         <p className="mt-4 text-gray-600 dark:text-gray-400 leading-relaxed">
-          Professional software development with enterprise solutions, SaaS
-          products, and client-focused deliverables — built for real business
-          outcomes.
+          Complete collection of research presentation slides delivered during
+          the FabricVision project timeline, from proposal to final defense.
         </p>
 
         {/* mini tags */}
         <div className="mt-6 flex flex-wrap justify-center gap-2">
-          <Tag>Enterprise</Tag>
-          <Tag>SaaS Products</Tag>
-          <Tag>Client Work</Tag>
-          <Tag>Startup Solutions</Tag>
+          <Tag variant="orange">Proposal Defense</Tag>
+          <Tag variant="orange">Progress Evaluation</Tag>
+          <Tag variant="orange">Final Viva</Tag>
+          <Tag variant="orange">Research Findings</Tag>
         </div>
       </motion.div>
 
-      {/* HIGHLIGHTS */}
-      <motion.div
-        variants={softFade}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.3, margin: "-30px" }}
-        className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-5"
-      >
-        {highlights.map((h, i) => {
-          const ref = useRef(null);
-          const isInView = useInView(ref, {
-            once: true,
-            amount: 0.3,
-            margin: "-20px",
-          });
-          const [displayValue, setDisplayValue] = useState("");
-          const [count, setCount] = useState(0);
-          const [isAnimating, setIsAnimating] = useState(false);
-          const isMobile = useIsMobile();
-
-          // Reset on mount to prevent stale animations
-          useEffect(() => {
-            setDisplayValue("");
-            setCount(0);
-            setIsAnimating(false);
-          }, []);
-
-          // Typewriter effect for text
-          useEffect(() => {
-            if (!isInView || h.type !== "text") return;
-
-            setIsAnimating(true);
-            const textValue = String(h.value);
-            setDisplayValue(""); // Start empty
-
-            let i = 0;
-            const typingSpeed = isMobile ? 80 : 50; // Slower on mobile for reliability
-
-            const typingInterval = setInterval(() => {
-              if (i <= textValue.length) {
-                setDisplayValue(textValue.substring(0, i));
-                i++;
-              } else {
-                clearInterval(typingInterval);
-                setTimeout(() => setIsAnimating(false), 300); // Small delay after completion
-              }
-            }, typingSpeed);
-
-            return () => {
-              clearInterval(typingInterval);
-              setIsAnimating(false);
-            };
-          }, [isInView, h.type, h.value, isMobile]);
-
-          // Count-up effect for numbers
-          useEffect(() => {
-            if (!isInView || h.type !== "number") return;
-
-            setIsAnimating(true);
-            const numValue = Number(h.value);
-            setCount(0); // Start from 0
-
-            const duration = isMobile ? 2000 : 1500; // Longer on mobile
-            const steps = duration / 16; // ~60fps
-            const increment = numValue / steps;
-
-            let current = 0;
-            let step = 0;
-
-            const countInterval = setInterval(() => {
-              step++;
-              current += increment;
-
-              if (step >= steps || current >= numValue) {
-                setCount(numValue);
-                clearInterval(countInterval);
-                setTimeout(() => setIsAnimating(false), 300); // Small delay after completion
-              } else {
-                setCount(Math.floor(current));
-              }
-            }, 16);
-
-            return () => {
-              clearInterval(countInterval);
-              setIsAnimating(false);
-            };
-          }, [isInView, h.type, h.value, isMobile]);
-
-          // Calculate if cursor should be shown
-          const shouldShowCursor =
-            isInView &&
-            isAnimating &&
-            h.type === "text" &&
-            displayValue.length < String(h.value).length;
-
-          return (
-            <motion.div
-              ref={ref}
-              key={i}
-              initial={{ opacity: 0, y: 24, scale: 0.96 }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-                scale: 1,
-              }}
-              viewport={{
-                once: true,
-                amount: 0.3,
-                margin: "-20px",
-              }}
-              transition={{
-                delay: i * 0.1,
-                duration: 0.6,
-                type: "spring",
-                stiffness: 120,
-                damping: 16,
-              }}
-              whileHover={{
-                y: -6,
-                scale: 1.03,
-                transition: { duration: 0.25 },
-              }}
-              className="
-                group relative overflow-hidden
-                rounded-2xl border border-gray-200/60 dark:border-gray-800
-                bg-white/70 dark:bg-gray-900/70
-                backdrop-blur-md
-                sm:p-6 p-5 text-left
-                transition-all
-                min-h-[100px] sm:min-h-[100px]
-              "
-            >
-              {/* subtle glow on hover */}
-              <div
-                className="
-                pointer-events-none absolute inset-0 opacity-0
-                group-hover:opacity-100 transition duration-300
-              "
-              >
-                <div className="absolute -inset-px bg-gradient-to-br from-blue-500/10 via-indigo-500/10 to-transparent" />
-              </div>
-
-              {/* label */}
-              <p className="relative z-10 text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400 mb-4">
-                {h.label}
-              </p>
-
-              {/* animated value */}
-              <div className="relative z-10">
-                {h.type === "number" ? (
-                  <div className="flex items-end">
-                    <span className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white tabular-nums">
-                      {count}
-                    </span>
-                    {h.suffix && (
-                      <span className="text-lg sm:text-2xl text-blue-600 dark:text-blue-400 ml-1 font-bold">
-                        {h.suffix}
-                      </span>
-                    )}
-                  </div>
-                ) : (
-                  <div className="relative">
-                    <span className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white uppercase tracking-wide">
-                      {displayValue}
-                    </span>
-                    {/* Blinking cursor for typewriter effect */}
-                    {shouldShowCursor && (
-                      <span className="absolute -right-1 top-0 w-[2px] h-7 bg-blue-500 dark:bg-blue-400 animate-pulse" />
-                    )}
-                  </div>
-                )}
-              </div>
-
-              {/* Loading skeleton for mobile (hidden after load) */}
-              {isMobile && isAnimating && (
-                <div className="absolute inset-0 bg-white/50 dark:bg-gray-900/50 rounded-2xl animate-pulse" />
-              )}
-
-              {/* bottom accent */}
-              <div
-                className="
-            absolute bottom-0 left-1/2 h-0.5 w-0
-            bg-gradient-to-r from-transparent via-blue-500 to-transparent
-            transition-all duration-300
-            group-hover:w-16 -translate-x-1/2
-          "
-              />
-            </motion.div>
-          );
-        })}
-      </motion.div>
-
-      {/* DIVIDER */}
-      <div className="my-16 flex items-center justify-center">
-        <div className="h-px w-full max-w-2xl bg-gradient-to-r from-transparent via-gray-300 to-transparent dark:via-gray-700" />
-      </div>
-
-      {/* TOOLS & TECHNOLOGIES */}
+      {/* PRESENTATIONS GRID */}
       <motion.div
         variants={fadeUp}
         initial="hidden"
@@ -518,74 +263,112 @@ export default function Presentations() {
           amount: 0.2,
           margin: "-30px",
         }}
-        className="mt-20"
+        className="mt-10"
       >
-        <div className="flex items-center justify-center gap-2 text-blue-600 dark:text-blue-400">
-          <Cpu className="w-5 h-5 sm:w-8 sm:h-8" />
-          <h3 className="text-xl sm:text-3xl font-semibold">
-            Tools & Technologies
-          </h3>
-        </div>
-
-        <p className="mt-3 text-center text-gray-600 dark:text-gray-400 max-w-xl mx-auto">
-          Technologies and tools we actively use across industry projects,
-          academic work, and client solutions.
-        </p>
-
-        <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{
-            once: true,
-            amount: 0.1, // Very small amount for grid items
-            margin: "-30px",
-          }}
-          className="mt-10 grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-6"
-        >
-          {tools.map((tool, i) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {presentations.map((pres, i) => (
             <motion.div
-              key={tool.name}
+              key={pres.id}
               variants={softFade}
-              whileHover={{
-                y: -6,
-                scale: 1.05,
-              }}
-              transition={{
-                duration: 0.25,
-                delay: i * 0.03, // Stagger the hover effects
-              }}
-              className="
-          group flex flex-col items-center justify-center
-          rounded-3xl border border-gray-200/60 dark:border-gray-800
-          bg-white/70 dark:bg-gray-900/60
-          backdrop-blur-sm p-5
-        "
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ delay: i * 0.1 }}
+              whileHover={{ y: -8 }}
+              className="group relative bg-white dark:bg-gray-800/50 rounded-3xl overflow-hidden border border-orange-200/50 dark:border-orange-800/30 hover:border-orange-300 dark:hover:border-orange-700 transition-all duration-300"
             >
-              {/* Logo */}
-              <div
-                className="
-            relative h-14 w-14 flex items-center justify-center
-            transition-transform duration-300
-            group-hover:scale-110
-          "
-              >
+              {/* Thumbnail Section */}
+              <div className="relative h-48 bg-gradient-to-br from-orange-50 to-amber-50 dark:from-orange-950/30 dark:to-amber-950/30 overflow-hidden">
                 <Image
-                  src={tool.logo}
-                  alt={tool.name}
+                  src={pres.thumbnail}
+                  alt={pres.title}
                   fill
-                  className="object-contain"
-                  sizes="(max-width: 768px) 56px, 56px"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
+
+                {/* Overlay gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+
+                {/* Date Badge */}
+                <div className="absolute top-3 left-3">
+                  <span className="inline-flex items-center gap-1 rounded-lg bg-orange-600/90 backdrop-blur-sm px-2 py-1 text-xs font-medium text-white">
+                    <Calendar className="w-3 h-3" />
+                    {pres.date}
+                  </span>
+                </div>
+
+                {/* Duration Badge */}
+                <div className="absolute bottom-3 left-3">
+                  <span className="inline-flex items-center gap-1 rounded-lg bg-black/60 backdrop-blur-sm px-2 py-1 text-xs font-medium text-white">
+                    <Presentation className="w-3 h-3" />
+                    {pres.duration}
+                  </span>
+                </div>
+
+                {/* File Size Badge */}
+                <div className="absolute bottom-3 right-3">
+                  <span className="inline-flex rounded-lg bg-black/60 backdrop-blur-sm px-2 py-1 text-xs text-white">
+                    {pres.fileSize}
+                  </span>
+                </div>
               </div>
 
-              {/* Name */}
-              <p className="mt-3 text-sm font-medium text-gray-800 dark:text-gray-200 text-center">
-                {tool.name}
-              </p>
+              {/* Content Section */}
+              <div className="p-4">
+                {/* Title & Event */}
+                <div className="mb-2">
+                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1">
+                    {pres.title}
+                  </h3>
+                  <p className="text-xs text-orange-600 dark:text-orange-400 font-medium">
+                    {pres.event}
+                  </p>
+                </div>
+
+                {/* Description */}
+                <p className="text-xs text-gray-600 dark:text-gray-400 mb-3 leading-relaxed line-clamp-3">
+                  {pres.description}
+                </p>
+
+                {/* Feedback */}
+                <div className="flex flex-wrap gap-2 mb-4 pt-2 border-t border-gray-100 dark:border-gray-700">
+                  <div className="flex items-center gap-1.5">
+                    <Award className="w-3 h-3 text-orange-500" />
+                    <span className="text-xs text-orange-600 dark:text-orange-400 font-medium line-clamp-1">
+                      {pres.feedback}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Action Buttons */}
+                <div className="flex gap-2 justify-end">
+                  <motion.button
+                    onClick={() => handleView(pres)}
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-orange-50 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 hover:bg-orange-100 dark:hover:bg-orange-900/50 transition-all duration-300 border border-orange-200 dark:border-orange-800"
+                    aria-label="View presentation"
+                  >
+                    <Eye className="w-3.5 h-3.5" />
+                  </motion.button>
+
+                  <motion.button
+                    onClick={() => handleDownload(pres)}
+                    whileHover={{ scale: 1.1, rotate: -5 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300 border border-gray-200 dark:border-gray-700"
+                    aria-label="Download presentation"
+                  >
+                    <Download className="w-3.5 h-3.5" />
+                  </motion.button>
+                </div>
+              </div>
+
+              {/* Hover Effect */}
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-orange-500/5 to-amber-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </motion.div>
     </motion.section>
   );
