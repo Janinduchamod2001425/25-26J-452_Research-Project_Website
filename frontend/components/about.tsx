@@ -89,7 +89,7 @@ export default function About() {
       className="scroll-mt-20 max-w-7xl mx-auto px-4 sm:px-6 py-24"
     >
       {/* HEADER */}
-      <div className="text-center mb-20">
+      <div className="text-center mb-10">
         <div className="flex items-center justify-center gap-2 text-blue-600 dark:text-blue-400">
           <Users className="w-5 h-5" />
           <span className="text-sm font-medium">Research Team</span>
@@ -104,7 +104,7 @@ export default function About() {
       </div>
 
       {/* ================= SUPERVISORS ================= */}
-      <div className="mb-20">
+      <div className="mb-10">
         <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-8 text-center">
           Supervisors
         </h2>
