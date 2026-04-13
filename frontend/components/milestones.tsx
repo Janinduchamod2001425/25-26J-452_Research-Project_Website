@@ -1,286 +1,261 @@
 "use client";
 
 import React from "react";
-import { motion, Variants } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useSectionInView } from "@/lib/hook";
-import Image, { StaticImageData } from "next/image";
-import { Users, Code, Palette, Cpu, Database } from "lucide-react";
 import SectionHeading from "@/components/section-heading";
+import { Calendar } from "lucide-react";
 
-import JaninduProfile from "@/app/images/team_profiles/Janindu.jpg";
-import ChanukaProfile from "@/app/images/team_profiles/Chanuka.jpeg";
-import LakinduProfile from "@/app/images/team_profiles/Lakindu.png";
-import HarshaProfile from "@/app/images/team_profiles/Harsha.jpeg";
-import SajithProfile from "@/app/images/team_profiles/Sajith.png";
+/* ================= DATA ================= */
 
-type SocialLinks = {
-  github?: string;
-  linkedin?: string;
-  facebook?: string;
-};
-
-type TeamMember = {
-  name: string;
-  role: string;
-  description: string;
-  icon: React.ElementType;
-  image: StaticImageData;
-  links: SocialLinks;
-};
-
-/* ---------------- ANIMATION VARIANTS ---------------- */
-
-const containerVariants: Variants = {
-  hidden: {},
-  show: {
-    transition: {
-      staggerChildren: 0.15,
-    },
-  },
-};
-
-const cardVariants: Variants = {
-  hidden: {
-    opacity: 0,
-    y: 60,
-    scale: 0.94,
-  },
-  show: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: {
-      type: "spring",
-      stiffness: 120,
-      damping: 18,
-    },
-  },
-};
-
-/* ---------------- TEAM DATA ---------------- */
-
-const teamMembers: TeamMember[] = [
+const milestones = [
   {
-    name: "Janindu Chamod",
-    role: "Full-Stack Engineer, UI/UX Designer, Project Manager",
-    description:
-      "Leads full-stack development, system architecture, UI/UX design, and project coordination to deliver scalable and user-focused solutions.",
-    image: JaninduProfile,
-    icon: Code,
-    links: {
-      github: "https://github.com/Janinduchamod2001425",
-      linkedin: "https://www.linkedin.com/in/janinduchamod/",
-    },
+    date: "June 2025",
+    title: "Topic Assessment Form",
+    desc: "Initial validation of research feasibility and academic relevance.",
+    marks: 5,
   },
   {
-    name: "Lakindu Udara",
-    role: "Frontend Developer, QA Engineer, Marketing Manager",
-    description:
-      "Contributes to frontend development, quality assurance, and digital marketing to ensure usability, reliability, and strong product visibility.",
-    image: LakinduProfile,
-    icon: Cpu,
-    links: {
-      github: "https://github.com/Lakindu02",
-      linkedin: "https://www.linkedin.com/in/lakindu-vithanage/",
-    },
+    date: "July 2025",
+    title: "Project Charter",
+    desc: "Defines project scope, objectives, and overall planning.",
+    marks: 5,
   },
   {
-    name: "Chanuka Lakshan",
-    role: "Full Stack Developer, Backend Specialist",
-    description:
-      "Specializes in backend development and full-stack solutions, focusing on system performance, APIs, and scalable application architecture.",
-    image: ChanukaProfile,
-    icon: Database,
-    links: {
-      github: "https://github.com/ChanukaIT22560544",
-      linkedin: "https://www.linkedin.com/in/chanuka-lakshan-67286b301/",
-    },
+    date: "August 2025",
+    title: "Proposal Report",
+    desc: "Initial research proposal submission for review.",
+    marks: 10,
   },
   {
-    name: "Harsha Chathuranga",
-    role: "QA Engineer, Content Writer",
-    description:
-      "Ensures software quality through testing and contributes clear, engaging content to support product communication and documentation.",
-    image: HarshaProfile,
-    icon: Palette,
-    links: {
-      github: "https://github.com/kariyawasam064",
-      linkedin: "https://www.linkedin.com/in/harsha-chathuranga-29254530a",
-    },
+    date: "September 2025",
+    title: "Proposal Presentation",
+    desc: "Presentation of research idea and methodology.",
+    marks: 10,
   },
   {
-    name: "Sajith Dahanayake",
-    role: "Full Stack Developer, Social Media Manager",
-    description:
-      "Develops full-stack application features while managing social media presence to strengthen product reach and brand engagement.",
-    image: SajithProfile,
-    icon: Users,
-    links: {
-      github: "https://github.com/SajithDahanayake",
-      linkedin: "https://www.linkedin.com/in/sajith-dahanayake",
-    },
+    date: "December 2025",
+    title: "Progress Presentation I",
+    desc: "Evaluation of 50% project completion.",
+    marks: 15,
+  },
+  {
+    date: "December 2026",
+    title: "Checklist I",
+    desc: "Research documentation and paper submission.",
+    marks: 10,
+  },
+  {
+    date: "March 2026",
+    title: "Progress Presentation II",
+    desc: "Evaluation of 90% project completion.",
+    marks: 18,
+  },
+  {
+    date: "March 2026",
+    title: "Checklist II",
+    desc: "UI/UX demonstration and Deployment of the project.",
+    marks: 10,
+  },
+  {
+    date: "April 2026",
+    title: "Final Thesis Submission",
+    desc: "Submission of complete research thesis.",
+    marks: 20,
+  },
+  {
+    date: "April 2026",
+    title: "Final Presentation & Viva",
+    desc: "Final evaluation including viva examination.",
+    marks: 20,
+  },
+  {
+    date: "May 2026",
+    title: "Website & Logbook Submission",
+    desc: "Final project website and documentation.",
+    marks: 7,
+  },
+  {
+    date: "May 2026",
+    title: "Research Paper Submission",
+    desc: "Research paper submission to a conference or journal.",
+    marks: 7,
   },
 ];
 
-/* ---------------- COMPONENT ---------------- */
+/* ================= COMPONENT ================= */
 
 export default function Milestones() {
   const { ref } = useSectionInView("Milestones", 0.5);
+  const containerRef = React.useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  });
+
+  const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
-    <motion.section
+    <section
       ref={ref}
       id="milestones"
-      className="scroll-mt-10 max-w-7xl mx-auto px-4 sm:px-6 py-24"
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{
-        type: "spring",
-        stiffness: 120,
-        damping: 20,
-      }}
+      className="scroll-mt-20 max-w-5xl mx-auto px-4 sm:px-6 py-24"
     >
-      {/* ---------- HEADER ---------- */}
-      <div className="max-w-3xl mx-auto text-center mb-20">
-        <div className="flex items-center justify-center gap-2 mb-4 text-blue-600 dark:text-blue-400">
-          <Users className="w-5 h-5" />
-          <span className="text-sm font-medium">Who We Are</span>
+      {/* HEADER with enhanced animation */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="text-center mb-20"
+      >
+        <div className="flex items-center justify-center gap-2 mb-4">
+          <div className="p-2 rounded-xl bg-blue-100 dark:bg-blue-900/30">
+            <Calendar className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+          </div>
+          <span className="text-sm font-medium text-blue-600 dark:text-blue-400 tracking-wide">
+            Project Timeline
+          </span>
         </div>
 
-        <SectionHeading>Our Team & Company</SectionHeading>
+        <SectionHeading>Research Milestones</SectionHeading>
 
-        <p className="mt-5 text-gray-600 dark:text-gray-400 leading-relaxed">
-          DevPlux is a multidisciplinary team combining engineering, design,
-          research, and innovation to build meaningful digital products for
-          businesses and academia.
+        <p className="mt-4 text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed">
+          A structured timeline highlighting key assessments, deliverables, and
+          evaluation milestones of the FabricVision research project.
         </p>
-      </div>
+      </motion.div>
 
-      {/* ---------- TEAM GRID ---------- */}
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true }}
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-8"
-      >
-        {teamMembers.map((member, i) => {
-          const Icon = member.icon;
+      {/* TIMELINE */}
+      <div ref={containerRef} className="relative">
+        {/* Vertical Line with gradient and animated fill */}
+        <div className="absolute left-[30px] top-0 bottom-0 w-[3px] bg-gradient-to-b from-gray-200 via-gray-300 to-gray-200 dark:from-gray-700 dark:via-gray-600 dark:to-gray-700 rounded-full"></div>
 
-          // for 5 cards: row1(3) row2(2 centered)
-          const startClass = i === 3 ? "lg:col-start-2" : "";
+        {/* Animated progress line */}
+        <motion.div
+          className="absolute left-[30px] top-0 w-[3px] bg-gradient-to-b from-blue-500 via-blue-600 to-purple-500 rounded-full"
+          style={{ height: lineHeight }}
+        ></motion.div>
 
-          return (
+        <div className="space-y-16">
+          {milestones.map((item, index) => (
             <motion.div
-              key={i}
-              variants={cardVariants}
-              whileHover={{
-                y: -10,
-                scale: 1.02,
-                transition: { duration: 0.25 },
-              }}
-              className={`
-              group relative rounded-3xl border border-gray-200/60 dark:border-gray-800
-              bg-white dark:bg-gray-900 p-6 overflow-hidden
-              lg:col-span-2
-              ${startClass}
-            `}
+              key={index}
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: index * 0.08 }}
+              className="relative group"
             >
-              {/* Glow */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300">
-                <div className="absolute -inset-px bg-gradient-to-br from-blue-500/10 via-indigo-500/10 to-transparent" />
-              </div>
-
-              {/* Avatar */}
-              <div className="relative z-10 mb-4 flex items-start gap-4">
-                <div
-                  className="
-                    relative
-                    w-[110px] h-[110px]
-                    rounded-2xl overflow-hidden
-                    border border-gray-200 dark:border-gray-700
-                  "
-                >
-                  <Image
-                    src={member.image}
-                    alt={member.name}
-                    fill
-                    sizes="110px"
-                    className="
-                      object-cover
-                      transition-transform duration-300
-                      group-hover:scale-105
-                    "
-                    priority={i === 0}
-                  />
-                </div>
-
-                <div className="min-w-0 flex-1">
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white break-words">
-                    {member.name}
-                  </h3>
-                  <div className="flex flex-col gap-1 mt-1">
-                    {member.role.split(",").map((role, index) => (
-                      <span
-                        key={index}
-                        className="
-                          text-sm text-indigo-800 dark:text-blue-300
-                            rounded-md
-                          whitespace-nowrap
-                        "
-                      >
-                        {role.trim()}
-                      </span>
-                    ))}
+              {/* Main Card Container */}
+              <div className="relative pl-[70px]">
+                {/* Dot with pulse animation */}
+                <div className="absolute left-[18px] top-0">
+                  <div className="relative">
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      whileInView={{ scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.08, type: "spring" }}
+                      className="w-7 h-7 bg-blue-500 rounded-full border-4 border-white dark:border-gray-900 shadow-lg z-10 relative"
+                    ></motion.div>
+                    <motion.div
+                      initial={{ scale: 1 }}
+                      animate={{ scale: [1, 1.5, 1] }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        delay: index * 0.1,
+                      }}
+                      className="absolute inset-0 w-7 h-7 bg-blue-400 rounded-full opacity-40"
+                    ></motion.div>
                   </div>
                 </div>
+
+                {/* Card */}
+                <motion.div
+                  whileHover={{ x: 8 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  className="bg-white dark:bg-gray-800/50 backdrop-blur-sm rounded-3xl p-6 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700"
+                >
+                  {/* Top Row: Date and Category */}
+                  <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
+                    {/* Date */}
+                    <div className="flex items-center gap-2">
+                      <div className="w-8 h-8 rounded-lg bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center">
+                        <Calendar className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+                      </div>
+                      <span className="text-base font-semibold text-gray-700 dark:text-gray-300">
+                        {item.date}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Title - Bigger and bolder */}
+                  <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-3 leading-tight tracking-tight">
+                    {item.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-base text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+                    {item.desc}
+                  </p>
+
+                  {/* Marks Section with enhanced design */}
+                  <div className="flex items-center justify-between flex-wrap gap-3 pt-2 border-t border-gray-100 dark:border-gray-700">
+                    <div className="flex items-center gap-2">
+                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                        Marks Allocated:
+                      </span>
+                      <span className="text-sm font-bold text-blue-600 dark:text-blue-400">
+                        {item.marks}
+                      </span>
+                    </div>
+
+                    {/* Progress Bar with label */}
+                    <div className="flex items-center gap-3">
+                      <div className="h-2 w-32 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                        <motion.div
+                          initial={{ width: 0 }}
+                          whileInView={{ width: `${item.marks * 5}%` }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 1, delay: index * 0.1 }}
+                          className="h-full bg-gradient-to-r from-blue-500 to-purple-500 rounded-full relative"
+                        >
+                          <div className="absolute inset-0 bg-gradient-to-r from-transparent to-white/20 animate-shimmer"></div>
+                        </motion.div>
+                      </div>
+                      <span className="text-xs text-gray-500 dark:text-gray-400">
+                        {item.marks * 5}%
+                      </span>
+                    </div>
+                  </div>
+                </motion.div>
               </div>
-
-              <p className="relative z-10 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-                {member.description}
-              </p>
-
-              <div className="relative z-10 mt-5 flex gap-4">
-                {member.links.github && (
-                  <a
-                    href={member.links.github}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="text-gray-500 hover:text-gray-900 dark:hover:text-white transition"
-                  >
-                    <Users className="w-5 h-5" />
-                  </a>
-                )}
-
-                {member.links.linkedin && (
-                  <a
-                    href={member.links.linkedin}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="text-gray-500 hover:text-blue-600 transition"
-                  >
-                    <Users className="w-5 h-5" />
-                  </a>
-                )}
-
-                {member.links.facebook && (
-                  <a
-                    href={member.links.facebook}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="text-gray-500 hover:text-sky-500 transition"
-                  >
-                    <Users className="w-5 h-5" />
-                  </a>
-                )}
-              </div>
-
-              <div className="absolute bottom-0 left-1/2 h-0.5 w-0 bg-gradient-to-r from-transparent via-blue-500 to-transparent transition-all duration-300 group-hover:w-24 -translate-x-1/2" />
             </motion.div>
-          );
-        })}
-      </motion.div>
-    </motion.section>
+          ))}
+        </div>
+      </div>
+
+      {/* Divider */}
+      <div className="mt-16 sm:mb-[-20px] flex justify-center">
+        <div className="h-px w-full max-w-xl bg-gradient-to-r from-transparent via-gray-300 to-transparent dark:via-gray-700" />
+      </div>
+
+      {/* Add shimmer animation to global CSS or here */}
+      <style jsx>{`
+        @keyframes shimmer {
+          0% {
+            transform: translateX(-100%);
+          }
+          100% {
+            transform: translateX(100%);
+          }
+        }
+        .animate-shimmer {
+          animation: shimmer 2s infinite;
+        }
+      `}</style>
+    </section>
   );
 }
