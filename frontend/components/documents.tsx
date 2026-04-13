@@ -2,255 +2,306 @@
 
 import { motion } from "framer-motion";
 import { useSectionInView } from "@/lib/hook";
-import { BriefcaseBusiness, ExternalLink, Users, Eye } from "lucide-react";
+import {
+  FileText,
+  Download,
+  Eye,
+  Presentation,
+  BookOpen,
+  FileJson,
+  GraduationCap,
+  Cloud,
+  Calendar,
+} from "lucide-react";
 import React from "react";
 import SectionHeading from "@/components/section-heading";
 import Image, { StaticImageData } from "next/image";
 
-import Project1 from "@/app/images/projects/project1.png";
-import Project2 from "@/app/images/projects/project2.png";
-import Project3 from "@/app/images/projects/project3.png";
-import Project4 from "@/app/images/projects/project4.png";
-import Project5 from "@/app/images/projects/project5.png";
-import Project6 from "@/app/images/projects/project6.png";
+// Document_thumbnails
+import TafDoc from "@/app/images/document_thumbnails/taf.png";
+import ProposalDoc from "@/app/images/document_thumbnails/proposal.png";
+import Checklist1Doc from "@/app/images/document_thumbnails/checklist1.png";
+import Checklist2Doc from "@/app/images/document_thumbnails/checklist2.png";
+import ResearchPaperDoc from "@/app/images/document_thumbnails/researchpaper.png";
+import FinalreportDoc from "@/app/images/document_thumbnails/thesis.png";
 
-type ProjectThumbnail = {
+type Document = {
   id: number;
   title: string;
-  category: string;
+  type: string;
   description: string;
-  image: StaticImageData;
-  tech: string[];
-  liveUrl?: string;
-  githubUrl?: string;
+  thumbnail: StaticImageData;
+  fileUrl: string;
+  fileSize: string;
+  isGoogleDrive?: boolean;
+  actualFileName?: string;
+  icon?: React.ReactNode;
 };
 
-const projectThumbnails: ProjectThumbnail[] = [
+// Research document_thumbnails
+const documents: Document[] = [
   {
     id: 1,
-    title: "Sri Lanka Travel Platform",
-    category: "Tourism Web Platform",
+    title: "Topic Assessment Form",
+    type: "PDF Document",
     description:
-      "Comprehensive travel booking platform featuring destination guides, reservations, tour packages for Sri Lankan tourism.",
-    image: Project1,
-    tech: ["Next.js", "Node.js", "MongoDB", "Express"],
-    liveUrl: "https://sri-lanka-travel-web-2l7a.bolt.host",
-    githubUrl: "",
+      "Complete research proposal including methodology, literature review, and project timeline.",
+    thumbnail: TafDoc,
+    fileUrl: "/documents/TAF_25-26J-452.pdf",
+    fileSize: "940 KB",
+    actualFileName: "TAF_25-26J-452.pdf",
+    icon: <FileText className="w-5 h-5" />,
   },
   {
     id: 2,
-    title: "Real Estate Management System",
-    category: "Mobile Application",
+    title: "Project Proposal Reports",
+    type: "Google Drive Folder",
     description:
-      "Mobile application for property listings, virtual tours, agent-client communication, and rental management with real-time notifications.",
-    image: Project2,
-    tech: ["React Native", "Firebase", "Expo"],
-    liveUrl: "",
-    githubUrl: "",
+      "Complete project proposal reports from all 4 team members with individual research contributions.",
+    thumbnail: ProposalDoc,
+    fileUrl: "https://drive.google.com/drive/folders/YOUR_FOLDER_ID", // Replace with actual Google Drive folder link
+    fileSize: "Multiple Files",
+    isGoogleDrive: true,
+    icon: <Cloud className="w-5 h-5" />,
   },
   {
     id: 3,
-    title: "Startup Website Design",
-    category: "UI/UX Design",
+    title: "Checklist I",
+    type: "PDF Document",
     description:
-      "Modern website design for a tech startup with responsive layouts, interactive components, and brand-consistent visual identity.",
-    image: Project3,
-    tech: ["Figma", "Prototyping", "Figma AI"],
-    liveUrl: "",
-    githubUrl: "",
+      "Comprehensive thesis document with research findings, analysis, and conclusions.",
+    thumbnail: Checklist1Doc,
+    fileUrl: "/documents/25-26J-452 - Checklist 1 - Design Report.pdf",
+    fileSize: "2.6 MB",
+    actualFileName: "25-26J-452 - Checklist 1 - Design Report.pdf",
+    icon: <FileText className="w-5 h-5" />,
   },
   {
     id: 4,
-    title: "Healthcare Management System",
-    category: "Web Application",
+    title: "Checklist II",
+    type: "PDF Document",
     description:
-      "Full-featured healthcare platform for patient management, appointment scheduling, medical records, and analytics dashboard.",
-    image: Project4,
-    tech: ["React", "Node.js", "SQL Server", "Chart.js"],
-    liveUrl: "",
-    githubUrl: "",
+      "Comprehensive thesis document with research findings, analysis, and conclusions.",
+    thumbnail: Checklist2Doc,
+    fileUrl: "/documents/25-26J-452 Checklist 2.pdf",
+    fileSize: "355 KB",
+    actualFileName: "25-26J-452 Checklist 2.pdf",
+    icon: <FileText className="w-5 h-5" />,
   },
   {
     id: 5,
-    title: "EV Charging Network Platform",
-    category: "Cross Platform App",
+    title: "Research Paper",
+    type: "PDF Document",
     description:
-      "Integrated platform for electric vehicle charging station management with mobile app, real-time monitoring, and payment processing.",
-    image: Project5,
-    tech: ["React", ".NET", "MongoDB", "Kotlin"],
-    liveUrl: "",
-    githubUrl: "",
+      "Published research paper in international conference proceedings.",
+    thumbnail: ResearchPaperDoc,
+    fileUrl:
+      "/documents/IEEE Research Paper - 25-26J-452 - AI-Driven Fabric Defect Detection and Monitoring System for the Apparel Industry in Sri Lanka.pdf",
+    fileSize: "557 KB",
+    actualFileName:
+      "IEEE Research Paper - 25-26J-452 - AI-Driven Fabric Defect Detection and Monitoring System for the Apparel Industry in Sri Lanka.pdf",
+    icon: <FileText className="w-5 h-5" />,
   },
   {
     id: 6,
-    title: "Interactive Social Portfolio",
-    category: "Interactive Web Presentations",
+    title: "Final Reports",
+    type: "Google Drive Folder",
     description:
-      "Dynamic portfolio website with advanced animations, 3D elements, and engaging user interactions for personal branding.",
-    image: Project6,
-    tech: ["React", "GSAP", "Framer Motion", "Three.js"],
-    liveUrl: "https://puuung.vercel.app/",
-    githubUrl: "",
+      "Final thesis reports and presentations from all 4 team members with complete research outcomes.",
+    thumbnail: FinalreportDoc,
+    fileUrl: "https://drive.google.com/drive/folders/YOUR_FOLDER_ID", // Replace with actual Google Drive folder link
+    fileSize: "Multiple Files",
+    isGoogleDrive: true,
+    icon: <Cloud className="w-5 h-5" />,
   },
 ];
 
 export default function Documents() {
   const { ref } = useSectionInView("Documents", 0.5);
 
+  // Handle document download with actual file name
+  const handleDownload = (doc: Document) => {
+    if (doc.isGoogleDrive) return; // No download for Google Drive links
+
+    const link = document.createElement("a");
+    link.href = doc.fileUrl;
+    // Use actual file name instead of title
+    const fileName =
+      doc.actualFileName ||
+      `${doc.title.toLowerCase().replace(/\s+/g, "-")}.pdf`;
+    link.download = fileName;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  // Handle document view (opens in new tab)
+  const handleView = (doc: Document) => {
+    window.open(doc.fileUrl, "_blank");
+  };
+
   return (
     <motion.main
       ref={ref}
       id="documents"
-      className="max-w-7xl mx-auto px-4 sm:px-6 pt-10 pb-10 scroll-mt-15"
+      className="max-w-7xl mx-auto px-4 sm:px-6 pt-10 pb-10 scroll-mt-25"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
     >
-      {/* ================= PROJECT THUMBNAILS SECTION ================= */}
+      {/* ================= RESEARCH DOCUMENTS SECTION ================= */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.2 }}
-        className="-mt-6 relative"
+        className="mb-24"
       >
-        {/* Heading for Thumbnails */}
-        <div className="max-w-2xl mb-14 mx-auto text-center">
-          <div className="flex items-center justify-center gap-2 mb-4 text-sm text-indigo-600 dark:text-indigo-400">
-            <BriefcaseBusiness className="w-4 h-4" />
-            <span className="font-medium">Project Portfolio</span>
+        {/* Heading for Documents */}
+        <div className="max-w-3xl mb-14 mx-auto text-center">
+          <div className="flex items-center justify-center gap-2 mb-4">
+            <div className="p-2 rounded-xl bg-blue-100 dark:bg-blue-900/30">
+              <GraduationCap className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
+            </div>
+            <span className="text-sm font-medium text-indigo-600 dark:text-indigo-400 tracking-wide">
+              Research Repository
+            </span>
           </div>
 
-          <SectionHeading>Project Showcase</SectionHeading>
+          <SectionHeading>Project Documents</SectionHeading>
 
-          <p className="mt-3 text-gray-600 dark:text-gray-400">
-            Explore our featured projects spanning Web Development, Mobile Apps,
-            Enterprise Solutions, and UI/UX Design.
-          </p>
+          <div className="mt-4 space-y-3">
+            <p className="text-gray-600 dark:text-gray-400">
+              Welcome to the comprehensive research documentation hub for the
+              FabricVision project. Here you&#39;ll find all official documents,
+              research outputs, and presentation materials that form the
+              complete academic record of our work.
+            </p>
+
+            <div className="flex flex-wrap justify-center gap-3 pt-2">
+              <span className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300">
+                <FileText className="w-3 h-3" />
+                Assessment Forms
+              </span>
+              <span className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300">
+                <Cloud className="w-3 h-3" />
+                Google Drive
+              </span>
+              <span className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300">
+                <FileJson className="w-3 h-3" />
+                Research Papers
+              </span>
+              <span className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300">
+                <Presentation className="w-3 h-3" />
+                Presentations
+              </span>
+            </div>
+
+            <p className="text-sm text-gray-500 dark:text-gray-500 pt-2 px-18">
+              Individual documents can be viewed and downloaded. <br /> Team
+              reports are available via Google Drive for collaborative access.
+            </p>
+          </div>
         </div>
 
-        {/* Thumbnails Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projectThumbnails.map((project, i) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 50, scale: 0.94 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{
-                duration: 0.6,
-                delay: i * 0.08,
-                type: "spring",
-                stiffness: 120,
-                damping: 18,
-              }}
-              whileHover={{
-                y: -8,
-                scale: 1.02,
-                transition: { duration: 0.25 },
-              }}
-              className="group relative rounded-3xl border border-gray-200/70 dark:border-gray-800 bg-white dark:bg-gray-900 overflow-hidden"
-            >
-              {/* Image Container */}
-              <div className="relative h-48 sm:h-56 overflow-hidden">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-110"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                />
+        {/* Documents Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {documents.map((doc, i) => {
+            return (
+              <motion.div
+                key={doc.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                whileHover={{ y: -8 }}
+                className={`group relative bg-white dark:bg-gray-800/50 rounded-3xl overflow-hidden border border-gray-200/50 dark:border-gray-700 hover:border-indigo-300 dark:hover:border-indigo-700 transition-all duration-300 ${
+                  documents.length === 6 && i === 4 ? "lg:col-start-2" : ""
+                } ${documents.length === 6 && i === 5 ? "lg:col-start-3" : ""}`}
+              >
+                {/* Document Thumbnail */}
+                <div className="relative h-48 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 overflow-hidden">
+                  <Image
+                    src={doc.thumbnail}
+                    alt={doc.title}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
 
-                {/* Image overlay gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-                {/* Category badge */}
-                <div className="absolute top-4 left-4">
-                  <span className="inline-flex items-center rounded-full bg-white/90 dark:bg-gray-900/90 px-3 py-1.5 text-xs font-medium text-gray-800 dark:text-gray-200 backdrop-blur-sm">
-                    {project.category}
-                  </span>
-                </div>
-
-                {/* Action buttons on hover */}
-                <div className="absolute bottom-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  {project.liveUrl && (
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-2 rounded-full bg-white/90 dark:bg-gray-900/90 text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors backdrop-blur-sm"
-                      aria-label={`View ${project.title} live demo`}
-                    >
-                      <Eye className="w-4 h-4" />
-                    </a>
-                  )}
-                  {project.githubUrl && (
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-2 rounded-full bg-white/90 dark:bg-gray-900/90 text-gray-800 dark:text-gray-200 hover:text-purple-600 dark:hover:text-purple-400 transition-colors backdrop-blur-sm"
-                      aria-label={`View ${project.title} source code`}
-                    >
-                      <Users className="w-4 h-4" />
-                    </a>
-                  )}
-                </div>
-              </div>
-
-              {/* Content */}
-              <div className="p-6">
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-                      {project.title}
-                    </h3>
-                    <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-                      {project.description}
-                    </p>
+                  {/* Document Type Badge */}
+                  <div className="absolute top-3 left-3">
+                    <span className="inline-flex items-center gap-1 rounded-lg bg-black/40 backdrop-blur-sm px-2 py-2 text-xs font-medium text-white">
+                      {doc.icon}
+                    </span>
                   </div>
 
-                  {/* External link icon */}
-                  {project.liveUrl && (
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-shrink-0 p-2 rounded-lg bg-blue-500/10 text-blue-600 dark:text-blue-400 hover:bg-blue-500/20 transition-colors"
-                      aria-label={`Open ${project.title}`}
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                    </a>
-                  )}
-                </div>
-
-                {/* Tech stack badges */}
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {project.tech.map((tech, index) => (
-                    <span
-                      key={index}
-                      className="inline-flex items-center rounded-full border border-gray-600/50 dark:border-gray-300/50 bg-gray-50 dark:bg-gray-800/50 px-2.5 py-1 text-xs font-medium text-gray-700 dark:text-gray-300"
-                    >
-                      {tech}
+                  {/* File Size Badge */}
+                  <div className="absolute bottom-3 right-3">
+                    <span className="inline-flex rounded-lg bg-black/50 backdrop-blur-sm px-2 py-1 text-xs text-white">
+                      {doc.fileSize}
                     </span>
-                  ))}
+                  </div>
                 </div>
-              </div>
 
-              {/* Hover effects */}
-              <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300">
-                <div className="absolute -inset-px bg-gradient-to-br from-blue-500/5 via-indigo-500/5 to-transparent" />
-              </div>
+                {/* Document Content */}
+                <div className="p-5">
+                  <h3 className="font-semibold text-gray-900 dark:text-white mb-2 line-clamp-1">
+                    {doc.title}
+                  </h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-4 line-clamp-2">
+                    {doc.description}
+                  </p>
 
-              {/* Bottom accent line */}
-              <div className="absolute bottom-0 left-1/2 h-0.5 w-0 bg-gradient-to-r from-transparent via-blue-500 to-transparent transition-all duration-300 group-hover:w-24 -translate-x-1/2" />
-            </motion.div>
-          ))}
+                  {/* Action Buttons */}
+                  <div className="flex gap-3 justify-between">
+                    <motion.button
+                      onClick={() => handleView(doc)}
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-all duration-300 border dark:border-gray-700"
+                      aria-label="View document"
+                    >
+                      <Eye className="w-4 h-4" />
+                    </motion.button>
+
+                    {!doc.isGoogleDrive ? (
+                      <motion.button
+                        onClick={() => handleDownload(doc)}
+                        whileHover={{ scale: 1.1, rotate: -5 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300 border dark:border-gray-700"
+                        aria-label="Download document"
+                      >
+                        <Download className="w-4 h-4" />
+                      </motion.button>
+                    ) : (
+                      <motion.div
+                        whileHover={{ scale: 1.1 }}
+                        className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 border dark:border-gray-700"
+                        aria-label="Google Drive link"
+                      >
+                        <Cloud className="w-4 h-4" />
+                      </motion.div>
+                    )}
+                  </div>
+                </div>
+
+                {/* Hover Effect */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-indigo-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+              </motion.div>
+            );
+          })}
         </div>
       </motion.div>
 
       {/* Decorative blobs (desktop only) */}
-      <div className="hidden sm:block pointer-events-none absolute left-1/2 -translate-x-1/2 -z-10">
+      <div className="hidden sm:block pointer-events-none fixed inset-0 -z-10">
         <div className="absolute top-20 -right-[46rem] h-[22rem] w-[22rem] rounded-full bg-indigo-500/20 dark:bg-indigo-500/40 blur-3xl" />
+        <div className="absolute bottom-20 -left-[46rem] h-[22rem] w-[22rem] rounded-full bg-purple-500/20 dark:bg-purple-500/40 blur-3xl" />
+      </div>
+
+      {/* Divider */}
+      <div className="mt-16 flex justify-center">
+        <div className="h-px w-full max-w-xl bg-gradient-to-r from-transparent via-gray-300 to-transparent dark:via-gray-700" />
       </div>
     </motion.main>
   );
