@@ -15,8 +15,8 @@ export default function Home() {
       <Domain />
       <Milestones />
       <Documents />
-      <About />
       <Presentations />
+      <About />
       <Contact />
     </main>
   );
