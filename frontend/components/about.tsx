@@ -1,286 +1,240 @@
 "use client";
 
 import React from "react";
-import { motion, Variants } from "framer-motion";
+import { motion } from "framer-motion";
 import { useSectionInView } from "@/lib/hook";
-import Image, { StaticImageData } from "next/image";
-import { Users, Code, Palette, Cpu, Database } from "lucide-react";
 import SectionHeading from "@/components/section-heading";
+import Image from "next/image";
+import { Users } from "lucide-react";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 
-import JaninduProfile from "@/app/images/team_profiles/Janindu.jpg";
-import ChanukaProfile from "@/app/images/team_profiles/Chanuka.jpeg";
-import LakinduProfile from "@/app/images/team_profiles/Lakindu.png";
-import HarshaProfile from "@/app/images/team_profiles/Harsha.jpeg";
-import SajithProfile from "@/app/images/team_profiles/Sajith.png";
+import JennyMadam from "@/app/images/team_profiles/jenny madam.jpeg";
+import AparnaMadam from "@/app/images/team_profiles/AparnaMadam.jpg";
+import Janindu from "@/app/images/team_profiles/Janindu.jpg";
+import Sachintha from "@/app/images/team_profiles/sachintha.jpg";
+import Duvindu from "@/app/images/team_profiles/duvindu.jpg";
+import Thisara from "@/app/images/team_profiles/Thisara.jpg";
 
-type SocialLinks = {
-  github?: string;
-  linkedin?: string;
-  facebook?: string;
-};
+/* ================= DATA ================= */
 
-type TeamMember = {
-  name: string;
-  role: string;
-  description: string;
-  icon: React.ElementType;
-  image: StaticImageData;
-  links: SocialLinks;
-};
-
-/* ---------------- ANIMATION VARIANTS ---------------- */
-
-const containerVariants: Variants = {
-  hidden: {},
-  show: {
-    transition: {
-      staggerChildren: 0.15,
-    },
-  },
-};
-
-const cardVariants: Variants = {
-  hidden: {
-    opacity: 0,
-    y: 60,
-    scale: 0.94,
-  },
-  show: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: {
-      type: "spring",
-      stiffness: 120,
-      damping: 18,
-    },
-  },
-};
-
-/* ---------------- TEAM DATA ---------------- */
-
-const teamMembers: TeamMember[] = [
+const supervisors = [
   {
-    name: "Janindu Chamod",
-    role: "Full-Stack Engineer, UI/UX Designer, Project Manager",
-    description:
-      "Leads full-stack development, system architecture, UI/UX design, and project coordination to deliver scalable and user-focused solutions.",
-    image: JaninduProfile,
-    icon: Code,
-    links: {
-      github: "https://github.com/Janinduchamod2001425",
-      linkedin: "https://www.linkedin.com/in/janinduchamod/",
-    },
+    name: "Ms. Jenny Krishara",
+    role: "Supervisor",
+    title: "Senior Lecturer",
+    dept: "Department of Information Technology",
+    uni: "Sri Lanka Institute of Information Technology",
+    email: "jenny.k@sliit.lk",
+    image: JennyMadam,
   },
   {
-    name: "Lakindu Udara",
-    role: "Frontend Developer, QA Engineer, Marketing Manager",
-    description:
-      "Contributes to frontend development, quality assurance, and digital marketing to ensure usability, reliability, and strong product visibility.",
-    image: LakinduProfile,
-    icon: Cpu,
-    links: {
-      github: "https://github.com/Lakindu02",
-      linkedin: "https://www.linkedin.com/in/lakindu-vithanage/",
-    },
-  },
-  {
-    name: "Chanuka Lakshan",
-    role: "Full Stack Developer, Backend Specialist",
-    description:
-      "Specializes in backend development and full-stack solutions, focusing on system performance, APIs, and scalable application architecture.",
-    image: ChanukaProfile,
-    icon: Database,
-    links: {
-      github: "https://github.com/ChanukaIT22560544",
-      linkedin: "https://www.linkedin.com/in/chanuka-lakshan-67286b301/",
-    },
-  },
-  {
-    name: "Harsha Chathuranga",
-    role: "QA Engineer, Content Writer",
-    description:
-      "Ensures software quality through testing and contributes clear, engaging content to support product communication and documentation.",
-    image: HarshaProfile,
-    icon: Palette,
-    links: {
-      github: "https://github.com/kariyawasam064",
-      linkedin: "https://www.linkedin.com/in/harsha-chathuranga-29254530a",
-    },
-  },
-  {
-    name: "Sajith Dahanayake",
-    role: "Full Stack Developer, Social Media Manager",
-    description:
-      "Develops full-stack application features while managing social media presence to strengthen product reach and brand engagement.",
-    image: SajithProfile,
-    icon: Users,
-    links: {
-      github: "https://github.com/SajithDahanayake",
-      linkedin: "https://www.linkedin.com/in/sajith-dahanayake",
-    },
+    name: "Ms. Aparna Jayawardena",
+    role: "Co-Supervisor",
+    title: "Assistant Lecturer",
+    dept: "Department of Software Engineering",
+    uni: "Sri Lanka Institute of Information Technology",
+    email: "aparna.j@sliit.lk",
+    image: AparnaMadam,
   },
 ];
 
-/* ---------------- COMPONENT ---------------- */
+const members = [
+  {
+    name: "Nagahawaththa J. C. D",
+    role: "Team Leader",
+    dept: "Software Engineering",
+    email: "it22573896@my.sliit.lk",
+    image: Janindu,
+    github: "https://github.com/Janinduchamod2001425",
+    linkedin: "https://www.linkedin.com/in/janinduchamod/",
+  },
+  {
+    name: "Kamburugamuwa K.S.D",
+    role: "Team Member",
+    dept: "Software Engineering",
+    email: "it22574572@my.sliit.lk",
+    image: Sachintha,
+    github: "https://github.com/Sachintha-Dinuranga",
+    linkedin: "https://www.linkedin.com/in/sachintha-dinuranga",
+  },
+  {
+    name: "Jayasinghe J.A.D.T.S",
+    role: "Team Member",
+    dept: "Software Engineering",
+    email: "it22028464@my.sliit.lk",
+    image: Thisara,
+    github: "https://github.com/ThisaraJayas",
+    linkedin: "",
+  },
+  {
+    name: "Kavinda S.G.D",
+    role: "Team Member",
+    dept: "Software Engineering",
+    email: "it22603654@my.sliit.lk",
+    image: Duvindu,
+    github: "https://github.com/duvidu",
+    linkedin: "https://www.linkedin.com/in/duvidu-kavinda-514a50286/",
+  },
+];
+
+/* ================= COMPONENT ================= */
 
 export default function About() {
   const { ref } = useSectionInView("About", 0.5);
 
   return (
-    <motion.section
+    <section
       ref={ref}
       id="about"
-      className="scroll-mt-10 max-w-7xl mx-auto px-4 sm:px-6 py-24"
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{
-        type: "spring",
-        stiffness: 120,
-        damping: 20,
-      }}
+      className="scroll-mt-20 max-w-7xl mx-auto px-4 sm:px-6 py-24"
     >
-      {/* ---------- HEADER ---------- */}
-      <div className="max-w-3xl mx-auto text-center mb-20">
-        <div className="flex items-center justify-center gap-2 mb-4 text-blue-600 dark:text-blue-400">
+      {/* HEADER */}
+      <div className="text-center mb-20">
+        <div className="flex items-center justify-center gap-2 text-blue-600 dark:text-blue-400">
           <Users className="w-5 h-5" />
-          <span className="text-sm font-medium">Who We Are</span>
+          <span className="text-sm font-medium">Research Team</span>
         </div>
 
-        <SectionHeading>Our Team & Company</SectionHeading>
+        <SectionHeading>Our Team</SectionHeading>
 
-        <p className="mt-5 text-gray-600 dark:text-gray-400 leading-relaxed">
-          DevPlux is a multidisciplinary team combining engineering, design,
-          research, and innovation to build meaningful digital products for
-          businesses and academia.
+        <p className="mt-4 text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          The FabricVision project is developed by a dedicated research team
+          under the guidance of experienced academic supervisors from SLIIT.
         </p>
       </div>
 
-      {/* ---------- TEAM GRID ---------- */}
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true }}
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-8"
-      >
-        {teamMembers.map((member, i) => {
-          const Icon = member.icon;
+      {/* ================= SUPERVISORS ================= */}
+      <div className="mb-20">
+        <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-8 text-center">
+          Supervisors
+        </h2>
 
-          // for 5 cards: row1(3) row2(2 centered)
-          const startClass = i === 3 ? "lg:col-start-2" : "";
-
-          return (
+        <div className="grid md:grid-cols-2 gap-8">
+          {supervisors.map((sup, i) => (
             <motion.div
               key={i}
-              variants={cardVariants}
-              whileHover={{
-                y: -10,
-                scale: 1.02,
-                transition: { duration: 0.25 },
-              }}
-              className={`
-              group relative rounded-3xl border border-gray-200/60 dark:border-gray-800
-              bg-white dark:bg-gray-900 p-6 overflow-hidden
-              lg:col-span-2
-              ${startClass}
-            `}
+              whileHover={{ y: -6 }}
+              transition={{ duration: 0.2 }}
+              className="rounded-3xl border border-gray-200 dark:border-gray-800 bg-white/80 dark:bg-gray-900/70 backdrop-blur-sm p-6 flex gap-6 items-center shadow-sm hover:shadow-lg transition"
+            >
+              <div className="relative w-[130px] h-[130px] rounded-2xl overflow-hidden">
+                <Image
+                  src={sup.image}
+                  alt={sup.name}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+
+              <div>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                  {sup.name}
+                </h3>
+
+                <p className="text-sm text-blue-600">{sup.role}</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  {sup.title}
+                </p>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  {sup.dept}
+                </p>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  {sup.uni}
+                </p>
+                <p className="text-xs text-gray-500 mt-1">{sup.email}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+
+      {/* ================= STUDENTS ================= */}
+      <div>
+        <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-8 text-center">
+          Research Team Members
+        </h2>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {members.map((member, i) => (
+            <div
+              key={i}
+              className="group relative rounded-3xl border border-gray-200/60 dark:border-gray-800 bg-white/70 dark:bg-gray-900/60 backdrop-blur-xl p-6 text-center overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2"
             >
               {/* Glow */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300">
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300 pointer-events-none">
                 <div className="absolute -inset-px bg-gradient-to-br from-blue-500/10 via-indigo-500/10 to-transparent" />
               </div>
 
-              {/* Avatar */}
-              <div className="relative z-10 mb-4 flex items-start gap-4">
-                <div
-                  className="
-                    relative
-                    w-[110px] h-[110px]
-                    rounded-2xl overflow-hidden
-                    border border-gray-200 dark:border-gray-700
-                  "
-                >
-                  <Image
-                    src={member.image}
-                    alt={member.name}
-                    fill
-                    sizes="110px"
-                    className="
-                      object-cover
-                      transition-transform duration-300
-                      group-hover:scale-105
-                    "
-                    priority={i === 0}
-                  />
-                </div>
-
-                <div className="min-w-0 flex-1">
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white break-words">
-                    {member.name}
-                  </h3>
-                  <div className="flex flex-col gap-1 mt-1">
-                    {member.role.split(",").map((role, index) => (
-                      <span
-                        key={index}
-                        className="
-                          text-sm text-indigo-800 dark:text-blue-300
-                            rounded-md
-                          whitespace-nowrap
-                        "
-                      >
-                        {role.trim()}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+              {/* IMAGE */}
+              <div className="relative w-[130px] h-[130px] mx-auto rounded-2xl overflow-hidden mb-4 border border-gray-200 dark:border-gray-700">
+                <Image
+                  src={member.image}
+                  alt={member.name}
+                  fill
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                />
               </div>
 
-              <p className="relative z-10 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-                {member.description}
+              <h3 className="text-md font-semibold text-gray-900 dark:text-white">
+                {member.name}
+              </h3>
+
+              <p className="text-sm text-blue-600 mt-1">{member.role}</p>
+
+              <p className="text-xs text-gray-600 dark:text-gray-400 mt-2">
+                {member.dept}
               </p>
 
-              <div className="relative z-10 mt-5 flex gap-4">
-                {member.links.github && (
+              <p className="text-xs text-gray-500 mt-1">{member.email}</p>
+
+              {/* SOCIAL ICONS */}
+              <div className="flex justify-center gap-3 mt-4">
+                {member.github && member.github !== "" ? (
                   <a
-                    href={member.links.github}
+                    href={member.github}
                     target="_blank"
-                    rel="noreferrer"
-                    className="text-gray-500 hover:text-gray-900 dark:hover:text-white transition"
+                    rel="noopener noreferrer"
+                    className="w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 hover:scale-110 cursor-pointer z-10 relative"
+                    aria-label="GitHub Profile"
+                    onClick={(e) => e.stopPropagation()}
                   >
-                    <Users className="w-5 h-5" />
+                    <FaGithub className="w-4 h-4" />
                   </a>
+                ) : (
+                  <div className="w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800 opacity-50 cursor-not-allowed">
+                    <FaGithub className="w-4 h-4" />
+                  </div>
                 )}
 
-                {member.links.linkedin && (
+                {member.linkedin && member.linkedin !== "" ? (
                   <a
-                    href={member.links.linkedin}
+                    href={member.linkedin}
                     target="_blank"
-                    rel="noreferrer"
-                    className="text-gray-500 hover:text-blue-600 transition"
+                    rel="noopener noreferrer"
+                    className="w-9 h-9 flex items-center justify-center rounded-full bg-blue-100 dark:bg-blue-900/40 hover:bg-blue-200 dark:hover:bg-blue-800 transition-all duration-200 hover:scale-110 cursor-pointer z-10 relative"
+                    aria-label="LinkedIn Profile"
+                    onClick={(e) => e.stopPropagation()}
                   >
-                    <Users className="w-5 h-5" />
+                    <FaLinkedin className="w-4 h-4 text-blue-600 dark:text-blue-300" />
                   </a>
-                )}
-
-                {member.links.facebook && (
-                  <a
-                    href={member.links.facebook}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="text-gray-500 hover:text-sky-500 transition"
-                  >
-                    <Users className="w-5 h-5" />
-                  </a>
+                ) : (
+                  <div className="w-9 h-9 flex items-center justify-center rounded-full bg-blue-100 dark:bg-blue-900/40 opacity-50 cursor-not-allowed">
+                    <FaLinkedin className="w-4 h-4 text-blue-600 dark:text-blue-300" />
+                  </div>
                 )}
               </div>
 
-              <div className="absolute bottom-0 left-1/2 h-0.5 w-0 bg-gradient-to-r from-transparent via-blue-500 to-transparent transition-all duration-300 group-hover:w-24 -translate-x-1/2" />
-            </motion.div>
-          );
-        })}
-      </motion.div>
-    </motion.section>
+              {/* Bottom line */}
+              <div className="absolute bottom-0 left-1/2 h-0.5 w-0 bg-gradient-to-r from-transparent via-blue-500 to-transparent transition-all duration-300 group-hover:w-20 -translate-x-1/2" />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Divider */}
+      <div className="mt-20 flex justify-center">
+        <div className="h-px w-full max-w-xl bg-gradient-to-r from-transparent via-gray-300 to-transparent dark:via-gray-700" />
+      </div>
+    </section>
   );
 }
