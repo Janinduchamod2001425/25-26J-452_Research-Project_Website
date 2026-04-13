@@ -44,11 +44,15 @@ export default function RootLayout({
           <ActiveSectionContextProvider>
             <Navbar />
 
+            {/* Theme Transition */}
+            <ThemeTransition />
+
             {children}
 
             <ToastProvider />
 
             <Footer />
+            <ThemeSwitch />
           </ActiveSectionContextProvider>
         </ThemeContextProvider>
       </body>
