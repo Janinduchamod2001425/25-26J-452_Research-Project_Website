@@ -44,20 +44,22 @@ export default function ContactFormEmail({
                   <path d="M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z" />
                 </svg>
                 <Heading className="text-4xl font-bold text-white m-0 mb-1">
-                  DevPlux
+                  FabricVision
                 </Heading>
+
                 <Text className="text-blue-100 text-sm font-medium m-0">
-                  Modern IT Solutions
+                  AI-Based Fabric Inspection & Quality Monitoring System
                 </Text>
               </Section>
 
               {/* Notification Header */}
               <Section className="px-6 py-5 border-b border-gray-100">
                 <Heading className="text-lg font-semibold text-gray-900 m-0 text-left">
-                  New Contact Form Submission
+                  New Research Inquiry
                 </Heading>
+
                 <Text className="text-gray-600 text-sm mt-1 text-left">
-                  From DevPlux Official Website
+                  Submitted via FabricVision Research Website
                 </Text>
               </Section>
 
@@ -65,7 +67,9 @@ export default function ContactFormEmail({
               <Section className="px-6 py-6">
                 {/* Home */}
                 <Text className="text-gray-700 text-sm leading-relaxed mb-6">
-                  You've received a new message through the contact form.
+                  You have received a new message related to the FabricVision
+                  research project. This may include inquiries regarding
+                  collaboration, technical discussions, or general feedback.
                 </Text>
 
                 {/* Sender Info Card */}
@@ -104,19 +108,23 @@ export default function ContactFormEmail({
                 {/* Divider */}
                 <Hr className="border-gray-100 my-6" />
 
-                {/* CTA Section */}
+                {/* CTA */}
                 <Section className="text-center">
                   <Text className="text-gray-600 text-sm mb-4">
-                    Ready to respond to this inquiry?
+                    You may respond directly to this inquiry for further
+                    discussion or collaboration.
                   </Text>
-                  <div className="text-center">
-                    <Link
-                      href={`mailto:${senderEmail}${senderName ? `?subject=Re: Message from ${senderName}` : ""}`}
-                      className="inline-block bg-blue-600 text-white px-6 py-3 rounded-xl text-sm font-semibold shadow-md"
-                    >
-                      Reply to {senderName || "Sender"}
-                    </Link>
-                  </div>
+
+                  <Link
+                    href={`mailto:${senderEmail}${
+                      senderName
+                        ? `?subject=Re: Inquiry from ${senderName}`
+                        : ""
+                    }`}
+                    className="inline-block bg-blue-600 text-white px-6 py-3 rounded-xl text-sm font-semibold shadow-md"
+                  >
+                    Reply to {senderName || "Sender"}
+                  </Link>
                 </Section>
               </Section>
 
@@ -124,14 +132,14 @@ export default function ContactFormEmail({
               <Section className="bg-gray-50 px-6 py-4 border-t border-gray-100">
                 <div className="text-center">
                   <Text className="text-gray-500 text-xs mb-3">
-                    This message was sent from the contact form on DevPlux.com
+                    This message was submitted through the FabricVision research
+                    project website.
                   </Text>
 
                   <Text className="text-gray-400 text-xs mt-3">
-                    © {new Date().getFullYear()} DevPlux Technologies. All
-                    rights reserved.
+                    © {new Date().getFullYear()} FabricVision Research Project
                     <br />
-                    Building modern digital solutions for tomorrow's challenges.
+                    Sri Lanka Institute of Information Technology (SLIIT)
                   </Text>
                 </div>
               </Section>
