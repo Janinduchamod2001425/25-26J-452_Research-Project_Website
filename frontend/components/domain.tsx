@@ -9,6 +9,7 @@ import { AlertTriangle, BookOpen, Microscope, Search, Cpu } from "lucide-react";
 
 import OverallDiagram from "@/app/images/diagrams/Overall System Diagram.png";
 import ComponentOneDiagram from "@/app/images/diagrams/Component 1 System Architecture Diagram.png";
+import ComponentTwoDiagram from "@/app/images/diagrams/component 2 system diagram.png";
 
 import piImage from "@/app/images/hardware/pi4modelB.webp";
 import cameraImage from "@/app/images/hardware/camera module 3.jpg";
@@ -429,13 +430,23 @@ export default function Domain() {
                   Component 02
                 </p>
                 <h3 className="mt-2 text-base sm:text-lg font-semibold text-gray-900 dark:text-white">
-                  Fog-Level Image Enhancement
+                  Edge-Level Image Enhancement
                 </h3>
               </div>
             </div>
 
             <p className="relative z-10 mt-3 sm:mt-4 text-xs sm:text-sm text-gray-400 dark:text-gray-500 italic leading-relaxed flex-1 flex items-center justify-center">
-              (To be added)
+              Implements a real-time edge-level processing module that enhances
+              fabric image quality through pattern-aware analysis and adaptive
+              enhancement techniques. Lightweight deep learning models classify
+              fabrics as patterned or non-patterned and further identify pattern
+              types such as stripe, check, floral, and geometric. <br />
+              <br />
+              Based on this contextual understanding and computed quality
+              metrics, dynamic adjustments are applied to brightness, contrast,
+              and sharpness to improve visual consistency. This component
+              ensures high-quality, enhanced inputs for more accurate and
+              reliable defect detection.
             </p>
 
             <div className="absolute bottom-0 left-1/2 h-0.5 w-0 bg-gradient-to-r from-transparent via-blue-500 to-transparent transition-all duration-300 group-hover:w-24 -translate-x-1/2" />
@@ -825,11 +836,16 @@ export default function Domain() {
           </div>
 
           <div className="text-2xl sm:text-4xl font-semibold text-gray-900 dark:text-white px-2">
-            # Component 2 Title
+            Edge-Level Image Enhancement
           </div>
 
           <p className="mt-3 sm:mt-4 max-w-3xl mx-auto text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed px-2">
-            # Comp 2 description goes here.
+            This component represents the second stage of the FabricVision
+            pipeline, where captured fabric frames are analyzed and enhanced at
+            the edge level to improve visual quality before defect detection. It
+            performs pattern-aware processing and adaptive enhancement to ensure
+            consistent and reliable image inputs under varying industrial
+            conditions.
           </p>
         </div>
 
@@ -846,7 +862,7 @@ export default function Domain() {
             >
               <div className="relative rounded-2xl overflow-hidden border border-white/20 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur-xl shadow-xl shadow-indigo-500/10">
                 <Image
-                  src={ComponentOneDiagram}
+                  src={ComponentTwoDiagram}
                   alt="Component 2 Architecture Diagram"
                   className="w-full h-auto rounded-2xl"
                   style={{ borderRadius: "1rem" }}
@@ -879,20 +895,28 @@ export default function Domain() {
                 {/* Card 1 */}
                 <div className="rounded-2xl border border-white/20 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur-xl shadow-lg shadow-indigo-500/5 p-4 sm:p-5">
                   <h4 className="text-base sm:text-lg font-semibold text-indigo-700 dark:text-indigo-400 mb-1 sm:mb-2">
-                    Novelty 1:
+                    Novelty 1: Fabric Pattern-Aware Classification
                   </h4>
                   <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-                    # Description of novelty 1 goes here.
+                    Lightweight deep learning models are used to classify
+                    fabrics as patterned or non-patterned and further identify
+                    pattern types such as stripe, check, floral, and geometric.
+                    This contextual understanding enables the system to adapt
+                    its processing strategy based on fabric characteristics.
                   </p>
                 </div>
 
                 {/* Card 2 */}
                 <div className="rounded-2xl border border-white/20 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur-xl shadow-lg shadow-indigo-500/5 p-4 sm:p-5">
                   <h4 className="text-base sm:text-lg font-semibold text-indigo-700 dark:text-indigo-400 mb-1 sm:mb-2">
-                    Novelty 2:
+                    Novelty 2: Adaptive Image Enhancement
                   </h4>
                   <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-                    # Description of novelty 2 goes here.
+                    An adaptive enhancement mechanism dynamically adjusts image
+                    properties such as brightness, contrast, sharpness, and
+                    noise levels using techniques like CLAHE, gamma correction,
+                    and edge-preserving filtering. This ensures improved visual
+                    clarity while preserving important fabric texture details.
                   </p>
                 </div>
               </div>
