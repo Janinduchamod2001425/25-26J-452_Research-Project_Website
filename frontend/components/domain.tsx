@@ -390,7 +390,7 @@ export default function Domain() {
               </div>
             </div>
 
-            <p className="relative z-10 mt-3 sm:mt-4 text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed flex-1">
+            <p className="relative z-10 mt-3 sm:mt-4 text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed flex-1">
               Introduces an edge-level, encoder-driven frame acquisition
               mechanism that captures frames only at meaningful spatial
               intervals while verifying fabric presence to eliminate redundant
@@ -435,7 +435,7 @@ export default function Domain() {
               </div>
             </div>
 
-            <p className="relative z-10 mt-3 sm:mt-4 text-xs sm:text-sm text-gray-400 dark:text-gray-500 italic leading-relaxed flex-1 flex items-center justify-center">
+            <p className="relative z-10 mt-3 sm:mt-4 text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed flex-1">
               Implements a real-time edge-level processing module that enhances
               fabric image quality through pattern-aware analysis and adaptive
               enhancement techniques. Lightweight deep learning models classify
@@ -724,6 +724,10 @@ export default function Domain() {
                   className="w-full h-auto rounded-2xl"
                   style={{ borderRadius: "1rem" }}
                 />
+                {/* Hover glow */}
+                <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300 rounded-2xl">
+                  <div className="absolute -inset-px rounded-2xl bg-gradient-to-br from-indigo-500/10 via-blue-500/10 to-transparent" />
+                </div>
               </div>
 
               {/* Caption */}
@@ -731,11 +735,6 @@ export default function Domain() {
                 <p className="text-xs text-gray-500 dark:text-gray-400">
                   Figure 3: Component 1 architecture diagram.
                 </p>
-              </div>
-
-              {/* Hover glow */}
-              <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300 rounded-2xl">
-                <div className="absolute -inset-px rounded-2xl bg-gradient-to-br from-indigo-500/10 via-blue-500/10 to-transparent" />
               </div>
 
               <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed mt-4">
