@@ -131,7 +131,9 @@ export default function About() {
                   {sup.name}
                 </h3>
 
-                <p className="text-sm text-blue-600">{sup.role}</p>
+                <p className="text-sm text-blue-600 dark:text-blue-400">
+                  ({sup.role})
+                </p>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
                   {sup.title}
                 </p>
