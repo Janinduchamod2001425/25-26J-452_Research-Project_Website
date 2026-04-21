@@ -64,7 +64,7 @@ const members = [
     email: "it22028464@my.sliit.lk",
     image: Thisara,
     github: "https://github.com/ThisaraJayas",
-    linkedin: "",
+    linkedin: "https://www.linkedin.com/in/thisarajayasinghe",
   },
   {
     name: "Kavinda S.G.D",

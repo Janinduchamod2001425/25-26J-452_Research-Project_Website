@@ -10,6 +10,7 @@ import { AlertTriangle, BookOpen, Microscope, Search, Cpu } from "lucide-react";
 import OverallDiagram from "@/app/images/diagrams/Overall System Diagram.png";
 import ComponentOneDiagram from "@/app/images/diagrams/Component 1 System Architecture Diagram.png";
 import ComponentTwoDiagram from "@/app/images/diagrams/component 2 system diagram.png";
+import ComponentThreeDiagram from "@/app/images/diagrams/component3SystemDiagram.png";
 
 import piImage from "@/app/images/hardware/pi4modelB.webp";
 import cameraImage from "@/app/images/hardware/camera module 3.jpg";
@@ -19,6 +20,15 @@ import mountImage from "@/app/images/hardware/connected.png";
 import setupImage from "@/app/images/hardware/finalproduct.png";
 import pipelineImage from "@/app/images/hardware/pipelineprocess.jpeg";
 import frameImage from "@/app/images/hardware/captured frame.jpeg";
+
+import esp32Image from "@/app/images/hardware/esp32.jpg";
+import rotaryEncoderImage from "@/app/images/hardware/pulse.webp";
+import steperMotorImage from "@/app/images/hardware/nema.jpg";
+import TB6600Image from "@/app/images/hardware/TB6600.jpg";
+import rollerDriveImage from "@/app/images/hardware/messuringWheel.jpg";
+import relayImage from "@/app/images/hardware/relay.jpg";
+import setupImagePro from "@/app/images/hardware/setup.jpeg";
+import powerAdapterImage from "@/app/images/hardware/poweradapter.webp";
 
 import RaspberrypiLogo from "@/app/images/tools/Raspberry Pi.png";
 import MongoLogo from "@/app/images/tools/MongoDB.png";
@@ -476,8 +486,12 @@ export default function Domain() {
               </div>
             </div>
 
-            <p className="relative z-10 mt-3 sm:mt-4 text-xs sm:text-sm text-gray-400 dark:text-gray-500 italic leading-relaxed flex-1 flex items-center justify-center">
-              (To be added)
+            <p className="relative z-10 mt-3 sm:mt-4 text-xs sm:text-sm text-gray-400 dark:text-gray-500 leading-relaxed flex-1 flex items-center justify-center">
+              Implements a real-time AI-driven defect detection module that accurately identifies fabric defects such as holes, stains, cuts, and line irregularities using a YOLO-based deep learning model. The system processes enhanced fabric frames and outputs defect classifications along with bounding box coordinates and confidence scores, ensuring high-speed and reliable detection during continuous fabric movement.
+              <br /><br />
+              To enable precise localization, the system integrates an IoT-based rotary encoder mechanism that tracks fabric displacement in real time. Encoder pulse signals are synchronized with captured frames, allowing detected defects to be mapped to exact physical positions along the fabric roll, eliminating the need for manual searching.
+              <br /><br />
+          In addition, the component provides real-time alerts, feedback and automatically pauses fabric movement when defects are detected, allowing immediate inspection and improving quality control.
             </p>
 
             <div className="absolute bottom-0 left-1/2 h-0.5 w-0 bg-gradient-to-r from-transparent via-blue-500 to-transparent transition-all duration-300 group-hover:w-24 -translate-x-1/2" />
@@ -925,93 +939,187 @@ export default function Domain() {
       </motion.div>
 
       {/* ================= METHODOLOGY SECTION - COMPONENT 3 ================= */}
+         <motion.div
+  initial={{ opacity: 0, y: 40 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.6 }}
+  className="mt-20 sm:mt-24 relative"
+>
+  {/* Header */}
+  <div className="max-w-6xl mx-auto text-center mb-10 sm:mb-14">
+    <div className="flex items-center justify-center gap-2 mb-4 text-sm text-indigo-600 dark:text-indigo-400">
+      <span className="font-medium">Component 03</span>
+    </div>
+
+    <div className="text-2xl sm:text-4xl font-semibold text-gray-900 dark:text-white px-2">
+      Real-Time Defect Detection & Localization
+    </div>
+
+    <p className="mt-3 sm:mt-4 max-w-3xl mx-auto text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed px-2">
+      This component represents the core stage of the FabricVision
+      pipeline, where enhanced fabric frames are analyzed in real time
+      to detect defects and accurately map them to their physical
+      positions along the moving fabric roll.
+    </p>
+  </div>
+
+  {/* Side-by-side layout: Text | Image */}
+  <div className="max-w-6xl mx-auto">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+      
+      {/* Left Side: Text + Glass Cards */}
+      <motion.div
+        initial={{ opacity: 0, x: -30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.1 }}
+        className="space-y-4 sm:space-y-5 order-2 lg:order-1"
+      >
+        {/* Novelty Cards */}
+        <div className="space-y-3 sm:space-y-4 pt-2">
+          
+          {/* Card 1 */}
+          <div className="rounded-2xl border border-white/20 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur-xl shadow-lg shadow-indigo-500/5 p-4 sm:p-5">
+            <h4 className="text-base sm:text-lg font-semibold text-indigo-700 dark:text-indigo-400 mb-1 sm:mb-2">
+              Novelty 1: Real-Time YOLO-Based Detection
+            </h4>
+            <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+              A YOLO-based deep learning model detects fabric defects such as
+              holes, stains, cuts, and line irregularities from enhanced
+              frames, producing bounding boxes, labels, and confidence scores
+              with high-speed real-time inference.
+            </p>
+          </div>
+
+          {/* Card 2 */}
+          <div className="rounded-2xl border border-white/20 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur-xl shadow-lg shadow-indigo-500/5 p-4 sm:p-5">
+            <h4 className="text-base sm:text-lg font-semibold text-indigo-700 dark:text-indigo-400 mb-1 sm:mb-2">
+              Novelty 2: Encoder-Based Localization
+            </h4>
+            <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+              Rotary encoder pulse signals are synchronized with captured
+              frames to convert detected defects into exact physical positions
+              along the fabric roll, enabling precise tracking without manual
+              searching.
+            </p>
+          </div>
+
+          {/* Card 3 */}
+          <div className="rounded-2xl border border-white/20 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur-xl shadow-lg shadow-indigo-500/5 p-4 sm:p-5">
+            <h4 className="text-base sm:text-lg font-semibold text-indigo-700 dark:text-indigo-400 mb-1 sm:mb-2">
+              Novelty 3: Real-Time Feedback & Control
+            </h4>
+            <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+              The system provides instant alerts and automatically pauses fabric
+              movement when defects are detected, allowing immediate inspection
+              and improving overall quality control.
+            </p>
+          </div>
+
+        </div>
+      </motion.div>
+
+      {/* Right Side: Image */}
+      <motion.div
+        initial={{ opacity: 0, x: 30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className="group relative order-1 lg:order-2"
+      >
+        <div className="relative rounded-2xl overflow-hidden border border-white/20 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur-xl shadow-xl shadow-indigo-500/10">
+          <Image
+            src={ComponentThreeDiagram}
+            alt="Component 3 Architecture Diagram"
+            className="w-full h-auto rounded-2xl"
+            style={{ borderRadius: "1rem" }}
+          />
+          
+          {/* Hover glow */}
+          <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300 rounded-2xl">
+            <div className="absolute -inset-px rounded-2xl bg-gradient-to-br from-indigo-500/10 via-blue-500/10 to-transparent" />
+          </div>
+        </div>
+
+        {/* Caption */}
+        <div className="p-3 sm:p-4 text-center">
+          <p className="text-xs text-gray-500 dark:text-gray-400">
+            Figure 5: Component 3 architecture diagram.
+          </p>
+        </div>
+
+        {/* Description under image */}
+        <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed mt-4">
+          The implemented inspection pipeline combines real-time YOLO-based
+          defect detection, encoder-synchronized localization, and automated
+          machine control. Together, these stages enable accurate defect
+          identification, precise position mapping, and immediate operator
+          response during continuous fabric inspection.
+        </p>
+      </motion.div>
+    </div>
+  </div>
+</motion.div>
+
+      {/* ================= HARDWARE SHOWCASE - COMPONENT 3 ================= */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="mt-20 sm:mt-14 relative"
+        className="mt-16"
       >
-        {/* Header */}
-        <div className="max-w-6xl mx-auto text-center mb-10 sm:mb-14">
-          <div className="flex items-center justify-center gap-2 mb-4 text-sm text-indigo-600 dark:text-indigo-400">
-            <span className="font-medium">Component 03</span>
-          </div>
-
-          <div className="text-2xl sm:text-4xl font-semibold text-gray-900 dark:text-white px-2">
-            # Component 3 Title
-          </div>
-
-          <p className="mt-3 sm:mt-4 max-w-3xl mx-auto text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed px-2">
-            # Comp 3 description goes here.
+        {/* Title */}
+        <div className="text-center mb-10">
+          <h4 className="text-xl font-semibold text-gray-900 dark:text-white">
+            Hardware Implementation
+          </h4>
+          <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
+            IoT-based tracking and motor control setup used for defect
+            localization
           </p>
         </div>
 
-        {/* Side-by-side layout: Text | Image */}
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-            {/* Left Side: Text + Glass Cards */}
+        {/* Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 max-w-6xl mx-auto">
+          {[
+            { title: "ESP32-S3 Dev Board", img: esp32Image },
+            { title: "Rotary Encoder Module", img: rotaryEncoderImage },
+            { title: "Measuring Wheel Setup", img: rollerDriveImage },
+            { title: "NEMA 23 Stepper Motor", img: steperMotorImage },
+            { title: "TB6600 Driver", img: TB6600Image },
+            { title: "Relay Module", img: relayImage },
+            { title: "Power Adapters", img: powerAdapterImage },
+            { title: "Fabric Movement Setup", img: setupImagePro },
+            
+          ].map((item, i) => (
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              key={i}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="space-y-4 sm:space-y-5 order-2 lg:order-1"
+              transition={{ duration: 0.5, delay: i * 0.05 }}
+              whileHover={{ scale: 1.05 }}
+              className="group relative rounded-2xl border border-white/20 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur-xl shadow-md overflow-hidden"
             >
-              {/* Novelty Cards */}
-              <div className="space-y-3 sm:space-y-4 pt-2">
-                {/* Card 1 */}
-                <div className="rounded-2xl border border-white/20 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur-xl shadow-lg shadow-indigo-500/5 p-4 sm:p-5">
-                  <h4 className="text-base sm:text-lg font-semibold text-indigo-700 dark:text-indigo-400 mb-1 sm:mb-2">
-                    Novelty 1:
-                  </h4>
-                  <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-                    # Description of novelty 1 goes here.
-                  </p>
-                </div>
-
-                {/* Card 2 */}
-                <div className="rounded-2xl border border-white/20 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur-xl shadow-lg shadow-indigo-500/5 p-4 sm:p-5">
-                  <h4 className="text-base sm:text-lg font-semibold text-indigo-700 dark:text-indigo-400 mb-1 sm:mb-2">
-                    Novelty 2:
-                  </h4>
-                  <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-                    # Description of novelty 1 goes here.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Right Side: Image */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="group relative order-1 lg:order-2"
-            >
-              <div className="relative rounded-2xl overflow-hidden border border-white/20 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur-xl shadow-xl shadow-indigo-500/10">
+              <div className="relative h-36 overflow-hidden">
                 <Image
-                  src={ComponentOneDiagram}
-                  alt="Component 2 Architecture Diagram"
-                  className="w-full h-auto rounded-2xl"
-                  style={{ borderRadius: "1rem" }}
+                  src={item.img}
+                  alt={item.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
+
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300" />
               </div>
 
-              {/* Caption */}
-              <div className="p-3 sm:p-4 text-center">
-                <p className="text-xs text-gray-500 dark:text-gray-400">
-                  Figure 5: Component 3 architecture diagram.
+              <div className="p-3 text-center">
+                <p className="text-xs font-medium text-gray-700 dark:text-gray-300">
+                  {item.title}
                 </p>
               </div>
-
-              {/* Hover glow */}
-              <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300 rounded-2xl">
-                <div className="absolute -inset-px rounded-2xl bg-gradient-to-br from-indigo-500/10 via-blue-500/10 to-transparent" />
-              </div>
             </motion.div>
-          </div>
+          ))}
         </div>
       </motion.div>
 
