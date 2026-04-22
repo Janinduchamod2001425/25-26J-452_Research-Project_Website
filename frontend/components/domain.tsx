@@ -11,6 +11,7 @@ import OverallDiagram from "@/app/images/diagrams/Overall System Diagram.png";
 import ComponentOneDiagram from "@/app/images/diagrams/Component 1 System Architecture Diagram.png";
 import ComponentTwoDiagram from "@/app/images/diagrams/component 2 system diagram.png";
 import ComponentThreeDiagram from "@/app/images/diagrams/component3SystemDiagram.png";
+import ComponentFourDiagram from "@/app/images/diagrams/component4SystemDiagram.png";
 
 import piImage from "@/app/images/hardware/pi4modelB.webp";
 import cameraImage from "@/app/images/hardware/camera module 3.jpg";
@@ -1174,7 +1175,7 @@ export default function Domain() {
             >
               <div className="relative rounded-2xl overflow-hidden border border-white/20 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur-xl shadow-xl shadow-indigo-500/10">
                 <Image
-                  src={ComponentOneDiagram}
+                  src={ComponentFourDiagram}
                   alt="Component 4 Architecture Diagram"
                   className="w-full h-auto rounded-2xl"
                   style={{ borderRadius: "1rem" }}
