@@ -496,9 +496,24 @@ export default function Domain() {
               </div>
             </div>
 
-            <p className="relative z-10 mt-3 sm:mt-4 text-xs sm:text-sm text-gray-400 dark:text-gray-500 italic leading-relaxed flex-1 flex items-center justify-center">
-              (To be added)
-            </p>
+            <p className="relative z-10 mt-3 sm:mt-4 text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed flex-1">
+    Introduces an intelligent predictive analytics module that transforms
+    fabric inspection from a reactive process into a proactive
+    decision-support system by forecasting future defect occurrences based
+    on historical defect sequences.
+    <br />
+    <br />
+    A sequence-based Long Short-Term Memory (LSTM) model analyzes spatial
+    defect patterns to predict upcoming defect positions along the fabric
+    roll, enabling early identification of high-risk regions before defects
+    actually occur.
+    <br />
+    <br />
+    Additionally, structured machine learning models generate Roll Risk
+    Scores (RRS) and Supplier Risk Scores (SRS), while integrated root cause
+    analysis and explainable AI techniques provide transparent insights and
+    actionable recommendations for improving production quality.
+  </p>
 
             <div className="absolute bottom-0 left-1/2 h-0.5 w-0 bg-gradient-to-r from-transparent via-blue-500 to-transparent transition-all duration-300 group-hover:w-24 -translate-x-1/2" />
           </motion.div>
@@ -1007,11 +1022,11 @@ export default function Domain() {
           </div>
 
           <div className="text-2xl sm:text-4xl font-semibold text-gray-900 dark:text-white px-2">
-            # Component 4 Title
+            Predictive Analytics & Risk Assessment
           </div>
 
           <p className="mt-3 sm:mt-4 max-w-3xl mx-auto text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed px-2">
-            # Comp 4 description goes here.
+      This component introduces a predictive and prescriptive analytics framework that utilizes historical defect data and sequential learning to forecast future defect occurrences, evaluate production risks, and provide explainable insights for proactive decision-making in fabric quality management.
           </p>
         </div>
 
@@ -1038,7 +1053,7 @@ export default function Domain() {
               {/* Caption */}
               <div className="p-3 sm:p-4 text-center">
                 <p className="text-xs text-gray-500 dark:text-gray-400">
-                  Figure 6: Component 4 architecture diagram.
+            Figure 6: Predictive analytics architecture for defect forecasting and risk evaluation.
                 </p>
               </div>
 
@@ -1046,6 +1061,16 @@ export default function Domain() {
               <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300 rounded-2xl">
                 <div className="absolute -inset-px rounded-2xl bg-gradient-to-br from-indigo-500/10 via-blue-500/10 to-transparent" />
               </div>
+              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed mt-4">
+  The implemented predictive analytics pipeline integrates three tightly
+  coupled novelties: sequence-based defect forecasting using LSTM models,
+  structured risk scoring through machine learning techniques, and
+  explainable root cause analysis for transparent decision support.
+  Together, these stages enable the system to not only predict future
+  defect occurrences along fabric rolls but also quantify risk levels and
+  provide actionable insights, ensuring proactive quality management and
+  informed operational decision-making.
+</p>
             </motion.div>
 
             {/* Right Side: Text + Glass Cards */}
@@ -1061,21 +1086,34 @@ export default function Domain() {
                 {/* Card 1 */}
                 <div className="rounded-2xl border border-white/20 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur-xl shadow-lg shadow-indigo-500/5 p-4 sm:p-5">
                   <h4 className="text-base sm:text-lg font-semibold text-indigo-700 dark:text-indigo-400 mb-1 sm:mb-2">
-                    Novelty 1:
+              Novelty 1: Sequence-Based Defect Forecasting
                   </h4>
                   <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-                    # Description of novelty 1 goes here.
+              A Long Short-Term Memory (LSTM) model is utilized to analyze sequential defect patterns based on spatial positions along fabric rolls. By learning temporal and spatial dependencies, the system predicts future defect occurrences, enabling early identification of high-risk regions before defects physically appear.
                   </p>
                 </div>
 
                 {/* Card 2 */}
                 <div className="rounded-2xl border border-white/20 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur-xl shadow-lg shadow-indigo-500/5 p-4 sm:p-5">
                   <h4 className="text-base sm:text-lg font-semibold text-indigo-700 dark:text-indigo-400 mb-1 sm:mb-2">
-                    Novelty 2:
+              Novelty 2: Risk Scoring & Explainable Analytics
                   </h4>
                   <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-                    # Description of novelty 2 goes here.
+              The system computes Roll Risk Score (RRS) and Supplier Risk Score (SRS) using structured machine learning techniques, while integrating root cause analysis and explainability mechanisms. This provides transparent reasoning behind predictions, allowing supervisors to understand defect trends and take proactive quality control decisions.
                   </p>
+                </div>
+                {/* Card 3 */}
+                <div className="rounded-2xl border border-white/20 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur-xl shadow-lg shadow-indigo-500/5 p-4 sm:p-5">
+                  <h4 className="text-base sm:text-lg font-semibold text-indigo-700 dark:text-indigo-400 mb-1 sm:mb-2">
+    Novelty 3: Integrated Predictive–Prescriptive Decision Support
+                  </h4>
+                  <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+Beyond prediction, the system transforms analytical outputs into actionable
+    insights by combining forecasting results, risk scores, and root cause
+    analysis. This enables the generation of preventive recommendations, helping
+    supervisors take timely decisions such as inspecting high-risk fabric
+    sections or evaluating supplier performance, thereby shifting quality
+    control from reactive detection to proactive management.                  </p>
                 </div>
               </div>
             </motion.div>
