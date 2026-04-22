@@ -38,13 +38,13 @@ import TensorflowLogo from "@/app/images/tools/TensorFlow.png";
 import GitLogo from "@/app/images/tools/GitHub.png";
 import OpencvLogo from "@/app/images/tools/OpenCV.png";
 import NumpyLogo from "@/app/images/tools/NumPy.png";
-import NextjsLogo from "@/app/images/tools/NextWhite.png";
+import NextjsLogo from "@/app/images/tools/Next.js.png";
 import TailwindcssLogo from "@/app/images/tools/Tailwind CSS.png";
 import FigmaLogo from "@/app/images/tools/Figma.png";
 import WebstormLogo from "@/app/images/tools/WebStorm.png";
 import TrelloLogo from "@/app/images/tools/Trello.png";
 import VSCodeLogo from "@/app/images/tools/VS Code.png";
-import VercelLogo from "@/app/images/tools/Vercel_white.png";
+import VercelLogo from "@/app/images/tools/Vercel.png";
 import PostmanLogo from "@/app/images/tools/Postman.png";
 
 const fadeUp: Variants = {
@@ -488,11 +488,25 @@ export default function Domain() {
             </div>
 
             <p className="relative z-10 mt-3 sm:mt-4 text-xs sm:text-sm text-gray-400 dark:text-gray-500 leading-relaxed flex-1 flex items-center justify-center">
-              Implements a real-time AI-driven defect detection module that accurately identifies fabric defects such as holes, stains, cuts, and line irregularities using a YOLO-based deep learning model. The system processes enhanced fabric frames and outputs defect classifications along with bounding box coordinates and confidence scores, ensuring high-speed and reliable detection during continuous fabric movement.
-              <br /><br />
-              To enable precise localization, the system integrates an IoT-based rotary encoder mechanism that tracks fabric displacement in real time. Encoder pulse signals are synchronized with captured frames, allowing detected defects to be mapped to exact physical positions along the fabric roll, eliminating the need for manual searching.
-              <br /><br />
-          In addition, the component provides real-time alerts, feedback and automatically pauses fabric movement when defects are detected, allowing immediate inspection and improving quality control.
+              Implements a real-time AI-driven defect detection module that
+              accurately identifies fabric defects such as holes, stains, cuts,
+              and line irregularities using a YOLO-based deep learning model.
+              The system processes enhanced fabric frames and outputs defect
+              classifications along with bounding box coordinates and confidence
+              scores, ensuring high-speed and reliable detection during
+              continuous fabric movement.
+              <br />
+              <br />
+              To enable precise localization, the system integrates an IoT-based
+              rotary encoder mechanism that tracks fabric displacement in real
+              time. Encoder pulse signals are synchronized with captured frames,
+              allowing detected defects to be mapped to exact physical positions
+              along the fabric roll, eliminating the need for manual searching.
+              <br />
+              <br />
+              In addition, the component provides real-time alerts, feedback and
+              automatically pauses fabric movement when defects are detected,
+              allowing immediate inspection and improving quality control.
             </p>
 
             <div className="absolute bottom-0 left-1/2 h-0.5 w-0 bg-gradient-to-r from-transparent via-blue-500 to-transparent transition-all duration-300 group-hover:w-24 -translate-x-1/2" />
@@ -523,23 +537,24 @@ export default function Domain() {
             </div>
 
             <p className="relative z-10 mt-3 sm:mt-4 text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed flex-1">
-    Introduces an intelligent predictive analytics module that transforms
-    fabric inspection from a reactive process into a proactive
-    decision-support system by forecasting future defect occurrences based
-    on historical defect sequences.
-    <br />
-    <br />
-    A sequence-based Long Short-Term Memory (LSTM) model analyzes spatial
-    defect patterns to predict upcoming defect positions along the fabric
-    roll, enabling early identification of high-risk regions before defects
-    actually occur.
-    <br />
-    <br />
-    Additionally, structured machine learning models generate Roll Risk
-    Scores (RRS) and Supplier Risk Scores (SRS), while integrated root cause
-    analysis and explainable AI techniques provide transparent insights and
-    actionable recommendations for improving production quality.
-  </p>
+              Introduces an intelligent predictive analytics module that
+              transforms fabric inspection from a reactive process into a
+              proactive decision-support system by forecasting future defect
+              occurrences based on historical defect sequences.
+              <br />
+              <br />
+              A sequence-based Long Short-Term Memory (LSTM) model analyzes
+              spatial defect patterns to predict upcoming defect positions along
+              the fabric roll, enabling early identification of high-risk
+              regions before defects actually occur.
+              <br />
+              <br />
+              Additionally, structured machine learning models generate Roll
+              Risk Scores (RRS) and Supplier Risk Scores (SRS), while integrated
+              root cause analysis and explainable AI techniques provide
+              transparent insights and actionable recommendations for improving
+              production quality.
+            </p>
 
             <div className="absolute bottom-0 left-1/2 h-0.5 w-0 bg-gradient-to-r from-transparent via-blue-500 to-transparent transition-all duration-300 group-hover:w-24 -translate-x-1/2" />
           </motion.div>
@@ -955,128 +970,125 @@ export default function Domain() {
       </motion.div>
 
       {/* ================= METHODOLOGY SECTION - COMPONENT 3 ================= */}
-         <motion.div
-  initial={{ opacity: 0, y: 40 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  viewport={{ once: true }}
-  transition={{ duration: 0.6 }}
-  className="mt-20 sm:mt-24 relative"
->
-  {/* Header */}
-  <div className="max-w-6xl mx-auto text-center mb-10 sm:mb-14">
-    <div className="flex items-center justify-center gap-2 mb-4 text-sm text-indigo-600 dark:text-indigo-400">
-      <span className="font-medium">Component 03</span>
-    </div>
-
-    <div className="text-2xl sm:text-4xl font-semibold text-gray-900 dark:text-white px-2">
-      Real-Time Defect Detection & Localization
-    </div>
-
-    <p className="mt-3 sm:mt-4 max-w-3xl mx-auto text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed px-2">
-      This component represents the core stage of the FabricVision
-      pipeline, where enhanced fabric frames are analyzed in real time
-      to detect defects and accurately map them to their physical
-      positions along the moving fabric roll.
-    </p>
-  </div>
-
-  {/* Side-by-side layout: Text | Image */}
-  <div className="max-w-6xl mx-auto">
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-      
-      {/* Left Side: Text + Glass Cards */}
       <motion.div
-        initial={{ opacity: 0, x: -30 }}
-        whileInView={{ opacity: 1, x: 0 }}
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.1 }}
-        className="space-y-4 sm:space-y-5 order-2 lg:order-1"
+        transition={{ duration: 0.6 }}
+        className="mt-20 sm:mt-24 relative"
       >
-        {/* Novelty Cards */}
-        <div className="space-y-3 sm:space-y-4 pt-2">
-          
-          {/* Card 1 */}
-          <div className="rounded-2xl border border-white/20 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur-xl shadow-lg shadow-indigo-500/5 p-4 sm:p-5">
-            <h4 className="text-base sm:text-lg font-semibold text-indigo-700 dark:text-indigo-400 mb-1 sm:mb-2">
-              Novelty 1: Real-Time YOLO-Based Detection
-            </h4>
-            <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-              A YOLO-based deep learning model detects fabric defects such as
-              holes, stains, cuts, and line irregularities from enhanced
-              frames, producing bounding boxes, labels, and confidence scores
-              with high-speed real-time inference.
-            </p>
+        {/* Header */}
+        <div className="max-w-6xl mx-auto text-center mb-10 sm:mb-14">
+          <div className="flex items-center justify-center gap-2 mb-4 text-sm text-indigo-600 dark:text-indigo-400">
+            <span className="font-medium">Component 03</span>
           </div>
 
-          {/* Card 2 */}
-          <div className="rounded-2xl border border-white/20 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur-xl shadow-lg shadow-indigo-500/5 p-4 sm:p-5">
-            <h4 className="text-base sm:text-lg font-semibold text-indigo-700 dark:text-indigo-400 mb-1 sm:mb-2">
-              Novelty 2: Encoder-Based Localization
-            </h4>
-            <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-              Rotary encoder pulse signals are synchronized with captured
-              frames to convert detected defects into exact physical positions
-              along the fabric roll, enabling precise tracking without manual
-              searching.
-            </p>
+          <div className="text-2xl sm:text-4xl font-semibold text-gray-900 dark:text-white px-2">
+            Real-Time Defect Detection & Localization
           </div>
 
-          {/* Card 3 */}
-          <div className="rounded-2xl border border-white/20 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur-xl shadow-lg shadow-indigo-500/5 p-4 sm:p-5">
-            <h4 className="text-base sm:text-lg font-semibold text-indigo-700 dark:text-indigo-400 mb-1 sm:mb-2">
-              Novelty 3: Real-Time Feedback & Control
-            </h4>
-            <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-              The system provides instant alerts and automatically pauses fabric
-              movement when defects are detected, allowing immediate inspection
-              and improving overall quality control.
-            </p>
-          </div>
-
-        </div>
-      </motion.div>
-
-      {/* Right Side: Image */}
-      <motion.div
-        initial={{ opacity: 0, x: 30 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-        className="group relative order-1 lg:order-2"
-      >
-        <div className="relative rounded-2xl overflow-hidden border border-white/20 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur-xl shadow-xl shadow-indigo-500/10">
-          <Image
-            src={ComponentThreeDiagram}
-            alt="Component 3 Architecture Diagram"
-            className="w-full h-auto rounded-2xl"
-            style={{ borderRadius: "1rem" }}
-          />
-          
-          {/* Hover glow */}
-          <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300 rounded-2xl">
-            <div className="absolute -inset-px rounded-2xl bg-gradient-to-br from-indigo-500/10 via-blue-500/10 to-transparent" />
-          </div>
-        </div>
-
-        {/* Caption */}
-        <div className="p-3 sm:p-4 text-center">
-          <p className="text-xs text-gray-500 dark:text-gray-400">
-            Figure 5: Component 3 architecture diagram.
+          <p className="mt-3 sm:mt-4 max-w-3xl mx-auto text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed px-2">
+            This component represents the core stage of the FabricVision
+            pipeline, where enhanced fabric frames are analyzed in real time to
+            detect defects and accurately map them to their physical positions
+            along the moving fabric roll.
           </p>
         </div>
 
-        {/* Description under image */}
-        <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed mt-4">
-          The implemented inspection pipeline combines real-time YOLO-based
-          defect detection, encoder-synchronized localization, and automated
-          machine control. Together, these stages enable accurate defect
-          identification, precise position mapping, and immediate operator
-          response during continuous fabric inspection.
-        </p>
+        {/* Side-by-side layout: Text | Image */}
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            {/* Left Side: Text + Glass Cards */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="space-y-4 sm:space-y-5 order-2 lg:order-1"
+            >
+              {/* Novelty Cards */}
+              <div className="space-y-3 sm:space-y-4 pt-2">
+                {/* Card 1 */}
+                <div className="rounded-2xl border border-white/20 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur-xl shadow-lg shadow-indigo-500/5 p-4 sm:p-5">
+                  <h4 className="text-base sm:text-lg font-semibold text-indigo-700 dark:text-indigo-400 mb-1 sm:mb-2">
+                    Novelty 1: Real-Time YOLO-Based Detection
+                  </h4>
+                  <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                    A YOLO-based deep learning model detects fabric defects such
+                    as holes, stains, cuts, and line irregularities from
+                    enhanced frames, producing bounding boxes, labels, and
+                    confidence scores with high-speed real-time inference.
+                  </p>
+                </div>
+
+                {/* Card 2 */}
+                <div className="rounded-2xl border border-white/20 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur-xl shadow-lg shadow-indigo-500/5 p-4 sm:p-5">
+                  <h4 className="text-base sm:text-lg font-semibold text-indigo-700 dark:text-indigo-400 mb-1 sm:mb-2">
+                    Novelty 2: Encoder-Based Localization
+                  </h4>
+                  <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                    Rotary encoder pulse signals are synchronized with captured
+                    frames to convert detected defects into exact physical
+                    positions along the fabric roll, enabling precise tracking
+                    without manual searching.
+                  </p>
+                </div>
+
+                {/* Card 3 */}
+                <div className="rounded-2xl border border-white/20 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur-xl shadow-lg shadow-indigo-500/5 p-4 sm:p-5">
+                  <h4 className="text-base sm:text-lg font-semibold text-indigo-700 dark:text-indigo-400 mb-1 sm:mb-2">
+                    Novelty 3: Real-Time Feedback & Control
+                  </h4>
+                  <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                    The system provides instant alerts and automatically pauses
+                    fabric movement when defects are detected, allowing
+                    immediate inspection and improving overall quality control.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Right Side: Image */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="group relative order-1 lg:order-2"
+            >
+              <div className="relative rounded-2xl overflow-hidden border border-white/20 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur-xl shadow-xl shadow-indigo-500/10">
+                <Image
+                  src={ComponentThreeDiagram}
+                  alt="Component 3 Architecture Diagram"
+                  className="w-full h-auto rounded-2xl"
+                  style={{ borderRadius: "1rem" }}
+                />
+
+                {/* Hover glow */}
+                <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300 rounded-2xl">
+                  <div className="absolute -inset-px rounded-2xl bg-gradient-to-br from-indigo-500/10 via-blue-500/10 to-transparent" />
+                </div>
+              </div>
+
+              {/* Caption */}
+              <div className="p-3 sm:p-4 text-center">
+                <p className="text-xs text-gray-500 dark:text-gray-400">
+                  Figure 5: Component 3 architecture diagram.
+                </p>
+              </div>
+
+              {/* Description under image */}
+              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed mt-4">
+                The implemented inspection pipeline combines real-time
+                YOLO-based defect detection, encoder-synchronized localization,
+                and automated machine control. Together, these stages enable
+                accurate defect identification, precise position mapping, and
+                immediate operator response during continuous fabric inspection.
+              </p>
+            </motion.div>
+          </div>
+        </div>
       </motion.div>
-    </div>
-  </div>
-</motion.div>
 
       {/* ================= HARDWARE SHOWCASE - COMPONENT 3 ================= */}
       <motion.div
@@ -1108,7 +1120,6 @@ export default function Domain() {
             { title: "Relay Module", img: relayImage },
             { title: "Power Adapters", img: powerAdapterImage },
             { title: "Fabric Movement Setup", img: setupImagePro },
-            
           ].map((item, i) => (
             <motion.div
               key={i}
@@ -1158,7 +1169,11 @@ export default function Domain() {
           </div>
 
           <p className="mt-3 sm:mt-4 max-w-3xl mx-auto text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed px-2">
-      This component introduces a predictive and prescriptive analytics framework that utilizes historical defect data and sequential learning to forecast future defect occurrences, evaluate production risks, and provide explainable insights for proactive decision-making in fabric quality management.
+            This component introduces a predictive and prescriptive analytics
+            framework that utilizes historical defect data and sequential
+            learning to forecast future defect occurrences, evaluate production
+            risks, and provide explainable insights for proactive
+            decision-making in fabric quality management.
           </p>
         </div>
 
@@ -1185,7 +1200,8 @@ export default function Domain() {
               {/* Caption */}
               <div className="p-3 sm:p-4 text-center">
                 <p className="text-xs text-gray-500 dark:text-gray-400">
-            Figure 6: Predictive analytics architecture for defect forecasting and risk evaluation.
+                  Figure 6: Predictive analytics architecture for defect
+                  forecasting and risk evaluation.
                 </p>
               </div>
 
@@ -1194,15 +1210,16 @@ export default function Domain() {
                 <div className="absolute -inset-px rounded-2xl bg-gradient-to-br from-indigo-500/10 via-blue-500/10 to-transparent" />
               </div>
               <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed mt-4">
-  The implemented predictive analytics pipeline integrates three tightly
-  coupled novelties: sequence-based defect forecasting using LSTM models,
-  structured risk scoring through machine learning techniques, and
-  explainable root cause analysis for transparent decision support.
-  Together, these stages enable the system to not only predict future
-  defect occurrences along fabric rolls but also quantify risk levels and
-  provide actionable insights, ensuring proactive quality management and
-  informed operational decision-making.
-</p>
+                The implemented predictive analytics pipeline integrates three
+                tightly coupled novelties: sequence-based defect forecasting
+                using LSTM models, structured risk scoring through machine
+                learning techniques, and explainable root cause analysis for
+                transparent decision support. Together, these stages enable the
+                system to not only predict future defect occurrences along
+                fabric rolls but also quantify risk levels and provide
+                actionable insights, ensuring proactive quality management and
+                informed operational decision-making.
+              </p>
             </motion.div>
 
             {/* Right Side: Text + Glass Cards */}
@@ -1218,34 +1235,48 @@ export default function Domain() {
                 {/* Card 1 */}
                 <div className="rounded-2xl border border-white/20 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur-xl shadow-lg shadow-indigo-500/5 p-4 sm:p-5">
                   <h4 className="text-base sm:text-lg font-semibold text-indigo-700 dark:text-indigo-400 mb-1 sm:mb-2">
-              Novelty 1: Sequence-Based Defect Forecasting
+                    Novelty 1: Sequence-Based Defect Forecasting
                   </h4>
                   <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-              A Long Short-Term Memory (LSTM) model is utilized to analyze sequential defect patterns based on spatial positions along fabric rolls. By learning temporal and spatial dependencies, the system predicts future defect occurrences, enabling early identification of high-risk regions before defects physically appear.
+                    A Long Short-Term Memory (LSTM) model is utilized to analyze
+                    sequential defect patterns based on spatial positions along
+                    fabric rolls. By learning temporal and spatial dependencies,
+                    the system predicts future defect occurrences, enabling
+                    early identification of high-risk regions before defects
+                    physically appear.
                   </p>
                 </div>
 
                 {/* Card 2 */}
                 <div className="rounded-2xl border border-white/20 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur-xl shadow-lg shadow-indigo-500/5 p-4 sm:p-5">
                   <h4 className="text-base sm:text-lg font-semibold text-indigo-700 dark:text-indigo-400 mb-1 sm:mb-2">
-              Novelty 2: Risk Scoring & Explainable Analytics
+                    Novelty 2: Risk Scoring & Explainable Analytics
                   </h4>
                   <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-              The system computes Roll Risk Score (RRS) and Supplier Risk Score (SRS) using structured machine learning techniques, while integrating root cause analysis and explainability mechanisms. This provides transparent reasoning behind predictions, allowing supervisors to understand defect trends and take proactive quality control decisions.
+                    The system computes Roll Risk Score (RRS) and Supplier Risk
+                    Score (SRS) using structured machine learning techniques,
+                    while integrating root cause analysis and explainability
+                    mechanisms. This provides transparent reasoning behind
+                    predictions, allowing supervisors to understand defect
+                    trends and take proactive quality control decisions.
                   </p>
                 </div>
                 {/* Card 3 */}
                 <div className="rounded-2xl border border-white/20 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur-xl shadow-lg shadow-indigo-500/5 p-4 sm:p-5">
                   <h4 className="text-base sm:text-lg font-semibold text-indigo-700 dark:text-indigo-400 mb-1 sm:mb-2">
-    Novelty 3: Integrated Predictive–Prescriptive Decision Support
+                    Novelty 3: Integrated Predictive–Prescriptive Decision
+                    Support
                   </h4>
                   <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-Beyond prediction, the system transforms analytical outputs into actionable
-    insights by combining forecasting results, risk scores, and root cause
-    analysis. This enables the generation of preventive recommendations, helping
-    supervisors take timely decisions such as inspecting high-risk fabric
-    sections or evaluating supplier performance, thereby shifting quality
-    control from reactive detection to proactive management.                  </p>
+                    Beyond prediction, the system transforms analytical outputs
+                    into actionable insights by combining forecasting results,
+                    risk scores, and root cause analysis. This enables the
+                    generation of preventive recommendations, helping
+                    supervisors take timely decisions such as inspecting
+                    high-risk fabric sections or evaluating supplier
+                    performance, thereby shifting quality control from reactive
+                    detection to proactive management.{" "}
+                  </p>
                 </div>
               </div>
             </motion.div>
