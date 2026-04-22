@@ -216,13 +216,13 @@ export default function Contact() {
         <p className="text-gray-700 -mt-6 dark:text-white/80">
           You can contact us directly at{" "}
           <a
-            href="mailto:janiduchamod25@gmail.com"
+            href="mailto:fabricvision452@gmail.com"
             className={`underline font-semibold italic dark:text-blue-200 text-blue-800 ${
               isSending ? "pointer-events-none opacity-50" : ""
             }`}
             tabIndex={isSending ? -1 : 0}
           >
-            janiduchamod25@gmail.com
+            fabricvision452@gmail.com
           </a>{" "}
           or through this form.
         </p>
@@ -239,7 +239,7 @@ export default function Contact() {
             {
               icon: Mail,
               label: "Email",
-              value: "janiduchamod25@gmail.com",
+              value: "fabricvision452@gmail.com",
             },
             {
               icon: Phone,
