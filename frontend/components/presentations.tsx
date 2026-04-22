@@ -45,7 +45,7 @@ const presentations: PresentationDoc[] = [
     description:
       "Initial research proposal presentation covering problem statement, methodology, expected outcomes, and preliminary literature review.",
     thumbnail: ProposalPresThumb,
-    fileUrl: "/presentations/25-26J-452 - Progress Presentation 1.pdf",
+    fileUrl: "/presentations/25-26J-452 - RP_Proposal Presentation",
     fileSize: "4.2 MB",
     duration: "25 minutes",
     attendees: "30+",
