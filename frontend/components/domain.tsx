@@ -1192,9 +1192,14 @@ export default function Domain() {
                 <Image
                   src={ComponentFourDiagram}
                   alt="Component 4 Architecture Diagram"
-                  className="w-full h-auto rounded-2xl"
+                  className="w-full h-auto rounded-2xl p-2"
                   style={{ borderRadius: "1rem" }}
                 />
+
+                {/* Hover glow */}
+                <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300 rounded-2xl">
+                  <div className="absolute -inset-px rounded-2xl bg-gradient-to-br from-indigo-500/10 via-blue-500/10 to-transparent" />
+                </div>
               </div>
 
               {/* Caption */}
@@ -1205,10 +1210,6 @@ export default function Domain() {
                 </p>
               </div>
 
-              {/* Hover glow */}
-              <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300 rounded-2xl">
-                <div className="absolute -inset-px rounded-2xl bg-gradient-to-br from-indigo-500/10 via-blue-500/10 to-transparent" />
-              </div>
               <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed mt-4">
                 The implemented predictive analytics pipeline integrates three
                 tightly coupled novelties: sequence-based defect forecasting
