@@ -122,7 +122,7 @@ export default function About() {
               key={i}
               whileHover={{ y: -6 }}
               transition={{ duration: 0.2 }}
-              className="rounded-3xl border border-gray-200 dark:border-gray-800 bg-white/80 dark:bg-gray-900/70 backdrop-blur-sm p-6 flex gap-6 items-center shadow-sm hover:shadow-lg transition"
+              className="rounded-3xl border border-gray-400/50 dark:border-gray-800 bg-white/80 dark:bg-gray-900/70 backdrop-blur-sm p-6 flex gap-6 items-center  hover:shadow-lg transition"
             >
               <div className="relative w-[130px] h-[130px] rounded-2xl overflow-hidden">
                 <Image
@@ -167,7 +167,7 @@ export default function About() {
           {members.map((member, i) => (
             <div
               key={i}
-              className="group relative rounded-3xl border border-gray-200/60 dark:border-gray-800 bg-white/70 dark:bg-gray-900/60 backdrop-blur-xl p-6 text-center overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2"
+              className="group relative rounded-3xl border border-gray-400/60 dark:border-gray-800 bg-white/70 dark:bg-gray-900/60 backdrop-blur-xl p-6 text-center overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2"
             >
               {/* Glow */}
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300 pointer-events-none">

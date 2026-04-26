@@ -281,7 +281,7 @@ export default function Presentations() {
               viewport={{ once: true, amount: 0.2 }}
               transition={{ delay: i * 0.1 }}
               whileHover={{ y: -8 }}
-              className="group relative bg-white dark:bg-gray-800/50 rounded-3xl overflow-hidden border border-orange-200/50 dark:border-orange-800/30 hover:border-orange-300 dark:hover:border-orange-700 transition-all duration-300"
+              className="group relative bg-white dark:bg-gray-800/50 rounded-3xl overflow-hidden border border-orange-500/50 dark:border-orange-800/30 hover:border-orange-300 dark:hover:border-orange-700 transition-all duration-300"
             >
               {/* Thumbnail Section */}
               <div className="relative h-48 bg-gradient-to-br from-orange-50 to-amber-50 dark:from-orange-950/30 dark:to-amber-950/30 overflow-hidden">

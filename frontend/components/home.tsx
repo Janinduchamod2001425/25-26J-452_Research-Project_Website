@@ -51,7 +51,7 @@ export default function HomePage() {
       >
         {/* Glitch effect layers (delayed for better perception) */}
         <div className="absolute top-0 left-1/2 transform -translate-x-1/2 opacity-20">
-          <h1 className="text-7xl sm:text-9xl font-black tracking-tighter text-red-400 blur-sm animate-pulse delay-300">
+          <h1 className="text-6xl sm:text-9xl font-black tracking-tighter text-red-400 blur-sm animate-pulse delay-300">
             FabricVision
           </h1>
         </div>
@@ -59,7 +59,7 @@ export default function HomePage() {
         <div className="relative">
           {/* Main Title */}
           <motion.h1
-            className="text-7xl sm:text-8xl font-black mb-4 tracking-tighter text-gray-900 dark:text-white relative"
+            className="text-6xl sm:text-8xl font-black mb-4 tracking-tighter text-gray-900 dark:text-white relative"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
@@ -116,7 +116,7 @@ export default function HomePage() {
           Research Overview
         </h2>
 
-        <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+        <p className="sm:p-0 p-4 text-sm sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
           FabricVision is an AI-driven fabric quality monitoring system designed
           to enhance fabric inspection processes within Sri Lanka’s apparel
           industry. Traditional fabric inspection methods are largely manual,

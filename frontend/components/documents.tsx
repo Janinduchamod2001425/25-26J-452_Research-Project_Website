@@ -216,7 +216,7 @@ export default function Documents() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 whileHover={{ y: -8 }}
-                className={`group relative bg-white dark:bg-gray-800/50 rounded-3xl overflow-hidden border border-gray-200/50 dark:border-gray-700 hover:border-indigo-300 dark:hover:border-indigo-700 transition-all duration-300 ${
+                className={`group relative bg-white dark:bg-gray-800/50 rounded-3xl overflow-hidden border border-gray-500/50 dark:border-gray-700 hover:border-indigo-300 dark:hover:border-indigo-700 transition-all duration-300 ${
                   documents.length === 6 && i === 4 ? "lg:col-start-2" : ""
                 } ${documents.length === 6 && i === 5 ? "lg:col-start-3" : ""}`}
               >

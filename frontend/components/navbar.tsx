@@ -98,7 +98,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-full px-6">
           <div className="flex items-center gap-2">
             <h1 className="text-lg font-medium text-gray-900 dark:text-white">
-              <span className="font-bold text-xl">Dev</span>Plux
+              <span className="font-bold text-xl">Fabric</span>Vision
             </h1>
           </div>
 

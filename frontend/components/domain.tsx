@@ -91,7 +91,7 @@ export default function Domain() {
     <section
       ref={ref}
       id="domain"
-      className="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-18 scroll-mt-28"
+      className="w-full max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-18 scroll-mt-28 overflow-x-hidden"
     >
       {/* ================= HEADER ================= */}
       <div className="text-center mb-12 sm:mb-16">
@@ -485,7 +485,7 @@ export default function Domain() {
               y: -8,
               scale: 1.01,
             }}
-            className="group relative rounded-3xl border border-gray-200/60 dark:border-gray-800 bg-white/80 dark:bg-blue-900/40 backdrop-blur-sm p-5 sm:p-6 text-left overflow-hidden h-full min-h-[280px] flex flex-col"
+            className="group relative rounded-3xl border border-gray-400/60 dark:border-gray-800 bg-white/80 dark:bg-blue-900/40 backdrop-blur-sm p-5 sm:p-6 text-left overflow-hidden h-full min-h-[280px] flex flex-col"
           >
             <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300">
               <div className="absolute -inset-px bg-gradient-to-br from-blue-500/10 via-indigo-500/10 to-transparent" />
@@ -530,7 +530,7 @@ export default function Domain() {
               y: -8,
               scale: 1.01,
             }}
-            className="group relative rounded-3xl border border-gray-200/60 dark:border-gray-800 bg-white/80 dark:bg-green-900/40 backdrop-blur-sm p-5 sm:p-6 text-left overflow-hidden h-full min-h-[280px] flex flex-col"
+            className="group relative rounded-3xl border border-gray-400/60 dark:border-gray-800 bg-white/80 dark:bg-green-900/40 backdrop-blur-sm p-5 sm:p-6 text-left overflow-hidden h-full min-h-[280px] flex flex-col"
           >
             <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300">
               <div className="absolute -inset-px bg-gradient-to-br from-blue-500/10 via-indigo-500/10 to-transparent" />
@@ -571,7 +571,7 @@ export default function Domain() {
               y: -8,
               scale: 1.01,
             }}
-            className="group relative rounded-3xl border border-gray-200/60 dark:border-gray-800 bg-white/80 dark:bg-orange-900/40 backdrop-blur-sm p-5 sm:p-6 text-left overflow-hidden h-full min-h-[280px] flex flex-col"
+            className="group relative rounded-3xl border border-gray-400/60 dark:border-gray-800 bg-white/80 dark:bg-orange-900/40 backdrop-blur-sm p-5 sm:p-6 text-left overflow-hidden h-full min-h-[280px] flex flex-col"
           >
             <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300">
               <div className="absolute -inset-px bg-gradient-to-br from-blue-500/10 via-indigo-500/10 to-transparent" />
@@ -618,7 +618,7 @@ export default function Domain() {
               y: -8,
               scale: 1.01,
             }}
-            className="group relative rounded-3xl border border-gray-200/60 dark:border-gray-800 bg-white/80 dark:bg-purple-900/40 backdrop-blur-sm p-5 sm:p-6 text-left overflow-hidden h-full min-h-[280px] flex flex-col"
+            className="group relative rounded-3xl border border-gray-400/60 dark:border-gray-800 bg-white/80 dark:bg-purple-900/40 backdrop-blur-sm p-5 sm:p-6 text-left overflow-hidden h-full min-h-[280px] flex flex-col"
           >
             <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300">
               <div className="absolute -inset-px bg-gradient-to-br from-blue-500/10 via-indigo-500/10 to-transparent" />
@@ -1442,7 +1442,7 @@ export default function Domain() {
                 y: -6,
                 scale: 1.05,
               }}
-              className="group flex flex-col items-center justify-center rounded-3xl border border-gray-200/60 dark:border-gray-800 bg-white/70 dark:bg-gray-900/60 backdrop-blur-sm p-5"
+              className="group flex flex-col items-center justify-center rounded-3xl border border-gray-400/60 dark:border-gray-800 bg-white/70 dark:bg-gray-900/60 backdrop-blur-sm p-5"
             >
               <div className="relative h-14 w-14 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
                 <Image
