@@ -471,7 +471,7 @@ export default function Domain() {
           A unified edge-level framework integrating intelligent frame
           acquisition, anomaly pre-screening, quality validation, and predictive
           analytics for the{" "}
-          <strong className="font-semibold text-blue-600 dark:text-blue-400">
+          <strong className="font-semibold text-blue-600 dark:text-blue-400 whitespace-nowrap inline-block">
             F A B R I C V I S I O N
           </strong>{" "}
           system.
