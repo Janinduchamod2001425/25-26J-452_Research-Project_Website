@@ -10,7 +10,7 @@ import Milestones from "@/components/milestones";
 
 export default function Home() {
   return (
-    <main className="flex flex-col items-center px-4 overflow-x-hidden">
+    <main className="flex flex-col items-center px-4">
       <HomePage />
       <Domain />
       <Milestones />
