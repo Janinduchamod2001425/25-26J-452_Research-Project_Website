@@ -33,6 +33,7 @@ type PresentationDoc = {
   duration?: string;
   attendees?: string;
   feedback?: string;
+  isComingSoon?: boolean;
 };
 
 // Research Presentations Data
@@ -92,6 +93,7 @@ const presentations: PresentationDoc[] = [
     duration: "45 minutes",
     attendees: "35+",
     feedback: "Outstanding achievement",
+    isComingSoon: true, // Mark as coming soon
   },
 ];
 
@@ -187,6 +189,8 @@ export default function Presentations() {
 
   // Handle document download
   const handleDownload = (pres: PresentationDoc) => {
+    if (pres.isComingSoon) return; // Prevent download if coming soon
+
     const link = document.createElement("a");
     link.href = pres.fileUrl;
     link.download = `${pres.title.toLowerCase().replace(/\s+/g, "-")}.pdf`;
@@ -197,6 +201,8 @@ export default function Presentations() {
 
   // Handle document view
   const handleView = (pres: PresentationDoc) => {
+    if (pres.isComingSoon) return; // Prevent view if coming soon
+
     window.open(pres.fileUrl, "_blank");
   };
 
@@ -289,6 +295,18 @@ export default function Presentations() {
                 {/* Overlay gradient */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
 
+                {/* Coming Soon Overlay for Final Presentation */}
+                {pres.isComingSoon && (
+                  <div className="absolute inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center">
+                    <div className="text-center">
+                      <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-500 text-white text-sm font-bold shadow-lg">
+                        <Calendar className="w-4 h-4" />
+                        Coming Soon - May 2025
+                      </span>
+                    </div>
+                  </div>
+                )}
+
                 {/* Date Badge */}
                 <div className="absolute top-3 left-3">
                   <span className="inline-flex items-center gap-1 rounded-lg bg-orange-600/90 backdrop-blur-sm px-2 py-1 text-xs font-medium text-white">
@@ -342,25 +360,51 @@ export default function Presentations() {
 
                 {/* Action Buttons */}
                 <div className="flex gap-2 justify-end">
-                  <motion.button
-                    onClick={() => handleView(pres)}
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-orange-50 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 hover:bg-orange-100 dark:hover:bg-orange-900/50 transition-all duration-300 border border-orange-200 dark:border-orange-800"
-                    aria-label="View presentation"
-                  >
-                    <Eye className="w-3.5 h-3.5" />
-                  </motion.button>
+                  {pres.isComingSoon ? (
+                    // Disabled buttons with tooltip on hover
+                    <div className="relative group/btn">
+                      <div className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-600 cursor-not-allowed border border-gray-200 dark:border-gray-700">
+                        <Eye className="w-3.5 h-3.5" />
+                      </div>
+                      {/* Tooltip */}
+                      <div className="absolute bottom-full right-0 mb-2 px-2 py-1 bg-gray-900 text-white text-xs rounded-md opacity-0 invisible group-hover/btn:opacity-100 group-hover/btn:visible transition-all duration-200 whitespace-nowrap z-10 pointer-events-none">
+                        Added soon
+                      </div>
+                    </div>
+                  ) : (
+                    <motion.button
+                      onClick={() => handleView(pres)}
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-orange-50 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 hover:bg-orange-100 dark:hover:bg-orange-900/50 transition-all duration-300 border border-orange-200 dark:border-orange-800"
+                      aria-label="View presentation"
+                    >
+                      <Eye className="w-3.5 h-3.5" />
+                    </motion.button>
+                  )}
 
-                  <motion.button
-                    onClick={() => handleDownload(pres)}
-                    whileHover={{ scale: 1.1, rotate: -5 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300 border border-gray-200 dark:border-gray-700"
-                    aria-label="Download presentation"
-                  >
-                    <Download className="w-3.5 h-3.5" />
-                  </motion.button>
+                  {pres.isComingSoon ? (
+                    // Disabled download button with tooltip
+                    <div className="relative group/btn">
+                      <div className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-600 cursor-not-allowed border border-gray-200 dark:border-gray-700">
+                        <Download className="w-3.5 h-3.5" />
+                      </div>
+                      {/* Tooltip */}
+                      <div className="absolute bottom-full right-0 mb-2 px-2 py-1 bg-gray-900 text-white text-xs rounded-md opacity-0 invisible group-hover/btn:opacity-100 group-hover/btn:visible transition-all duration-200 whitespace-nowrap z-10 pointer-events-none">
+                        Added soon
+                      </div>
+                    </div>
+                  ) : (
+                    <motion.button
+                      onClick={() => handleDownload(pres)}
+                      whileHover={{ scale: 1.1, rotate: -5 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300 border border-gray-200 dark:border-gray-700"
+                      aria-label="Download presentation"
+                    >
+                      <Download className="w-3.5 h-3.5" />
+                    </motion.button>
+                  )}
                 </div>
               </div>
 

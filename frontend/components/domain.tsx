@@ -152,15 +152,116 @@ export default function Domain() {
           and reliability.
         </p>
 
-        {/* Example Image Placeholder */}
-        <div className="mt-6">
-          <Image
-            src="/images/literature-placeholder.png"
-            alt="Literature Survey Illustration"
-            width={800}
-            height={400}
-            className="rounded-2xl border border-gray-200 dark:border-gray-700 w-full h-auto"
-          />
+        {/* Literature Survey Table */}
+        <div className="mt-6 overflow-x-auto rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm">
+          <motion.table
+            className="w-full text-xs sm:text-sm min-w-[760px]"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+          >
+            <thead>
+              <tr className="bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900">
+                <th className="p-3 sm:p-4 text-left font-semibold text-gray-900 dark:text-white rounded-tl-2xl">
+                  Study / Approach
+                </th>
+                <th className="p-3 sm:p-4 text-left font-semibold text-gray-900 dark:text-white">
+                  Method Used
+                </th>
+                <th className="p-3 sm:p-4 text-left font-semibold text-gray-900 dark:text-white">
+                  Strengths
+                </th>
+                <th className="p-3 sm:p-4 text-left font-semibold text-gray-900 dark:text-white rounded-tr-2xl">
+                  Limitations
+                </th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {[
+                {
+                  study: "Manual Fabric Inspection",
+                  method:
+                    "Human visual inspection under lighting tables or manual checking environments",
+                  strengths:
+                    "Simple to perform and commonly used in small and medium-scale factories",
+                  limitations:
+                    "Slow, subjective, fatigue-prone, and inconsistent under long inspection periods",
+                },
+                {
+                  study:
+                    "Stojanović et al. – Real-time Vision-Based Textile Inspection",
+                  method:
+                    "Continuous image acquisition with traditional image processing and texture-based analysis",
+                  strengths:
+                    "Demonstrated real-time fabric monitoring and automated defect identification",
+                  limitations:
+                    "Relies on continuous capture and does not optimize frame acquisition or data reduction",
+                },
+                {
+                  study: "Li et al. – Fabric Defect Detection Survey",
+                  method:
+                    "Review of classical image processing and deep learning methods for fabric defect detection",
+                  strengths:
+                    "Provides broad comparison of automated defect detection techniques",
+                  limitations:
+                    "Focuses mainly on detection accuracy rather than acquisition efficiency or edge filtering",
+                },
+                {
+                  study: "CNN / YOLO-Based Fabric Defect Detection",
+                  method:
+                    "Deep learning models for defect classification, localization, and real-time detection",
+                  strengths:
+                    "High detection accuracy and faster localization of visible defects",
+                  limitations:
+                    "Assumes continuous and usable input frames; lacks early anomaly and quality pre-screening",
+                },
+                {
+                  study: "Autoencoder-Based Surface Anomaly Detection",
+                  method:
+                    "Unsupervised reconstruction-error-based anomaly detection",
+                  strengths:
+                    "Can detect irregular regions without requiring labeled defect datasets",
+                  limitations:
+                    "Mostly applied after image acquisition and rarely integrated as edge-level pre-screening",
+                },
+                {
+                  study: "Fog / Edge-Based Image Processing",
+                  method:
+                    "Local preprocessing and enhancement before final defect detection",
+                  strengths:
+                    "Reduces latency and improves image quality before downstream processing",
+                  limitations:
+                    "Often does not address intelligent capture, frame selection, or acquisition-stage filtering",
+                },
+              ].map((row, idx) => (
+                <motion.tr
+                  key={idx}
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: idx * 0.05 }}
+                  whileHover={{
+                    backgroundColor: "rgba(59, 130, 246, 0.05)",
+                    transition: { duration: 0.2 },
+                  }}
+                  className="border-b border-gray-200 dark:border-gray-700 hover:bg-blue-50/50 dark:hover:bg-blue-900/10 transition-all duration-200"
+                >
+                  <td className="p-2.5 sm:p-3.5 text-gray-900 dark:text-white font-medium">
+                    {row.study}
+                  </td>
+                  <td className="p-2.5 sm:p-3.5 text-gray-600 dark:text-gray-400">
+                    {row.method}
+                  </td>
+                  <td className="p-2.5 sm:p-3.5 text-gray-600 dark:text-gray-400">
+                    {row.strengths}
+                  </td>
+                  <td className="p-2.5 sm:p-3.5 text-gray-600 dark:text-gray-400">
+                    {row.limitations}
+                  </td>
+                </motion.tr>
+              ))}
+            </tbody>
+          </motion.table>
         </div>
       </motion.div>
 
@@ -487,7 +588,7 @@ export default function Domain() {
               </div>
             </div>
 
-            <p className="relative z-10 mt-3 sm:mt-4 text-xs sm:text-sm text-gray-400 dark:text-gray-500 leading-relaxed flex-1 flex items-center justify-center">
+            <p className="relative z-10 mt-3 sm:mt-4 text-xs sm:text-sm text-gray-500 dark:text-gray-400  leading-relaxed flex-1">
               Implements a real-time AI-driven defect detection module that
               accurately identifies fabric defects such as holes, stains, cuts,
               and line irregularities using a YOLO-based deep learning model.
@@ -502,8 +603,6 @@ export default function Domain() {
               time. Encoder pulse signals are synchronized with captured frames,
               allowing detected defects to be mapped to exact physical positions
               along the fabric roll, eliminating the need for manual searching.
-              <br />
-              <br />
               In addition, the component provides real-time alerts, feedback and
               automatically pauses fabric movement when defects are detected,
               allowing immediate inspection and improving quality control.

@@ -59,7 +59,8 @@ const documents: Document[] = [
     description:
       "Complete project proposal reports from all 4 team members with individual research contributions.",
     thumbnail: ProposalDoc,
-    fileUrl: "https://drive.google.com/drive/folders/YOUR_FOLDER_ID", // Replace with actual Google Drive folder link
+    fileUrl:
+      "https://drive.google.com/drive/folders/1UIM_-CDiDUEBUEIs8pyNuljo3swnVm27?usp=drive_link",
     fileSize: "Multiple Files",
     isGoogleDrive: true,
     icon: <Cloud className="w-5 h-5" />,
@@ -109,7 +110,8 @@ const documents: Document[] = [
     description:
       "Final thesis reports and presentations from all 4 team members with complete research outcomes.",
     thumbnail: FinalreportDoc,
-    fileUrl: "https://drive.google.com/drive/folders/YOUR_FOLDER_ID", // Replace with actual Google Drive folder link
+    fileUrl:
+      "https://drive.google.com/drive/folders/1K6bzWZR04pwtdYraogpHna8qnpxhtWXU?usp=drive_link",
     fileSize: "Multiple Files",
     isGoogleDrive: true,
     icon: <Cloud className="w-5 h-5" />,
@@ -275,6 +277,7 @@ export default function Documents() {
                       </motion.button>
                     ) : (
                       <motion.div
+                        onClick={() => handleView(doc)}
                         whileHover={{ scale: 1.1 }}
                         className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 border dark:border-gray-700"
                         aria-label="Google Drive link"

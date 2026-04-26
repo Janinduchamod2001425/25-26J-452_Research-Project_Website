@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { useSectionInView } from "@/lib/hook";
 import SectionHeading from "@/components/section-heading";
 import Image from "next/image";
-import { Users } from "lucide-react";
+import { BookOpen, Users } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 import JennyMadam from "@/app/images/team_profiles/jenny madam.jpeg";
@@ -14,6 +14,13 @@ import Janindu from "@/app/images/team_profiles/Janindu.jpg";
 import Sachintha from "@/app/images/team_profiles/sachintha.jpg";
 import Duvindu from "@/app/images/team_profiles/duvindu.jpg";
 import Thisara from "@/app/images/team_profiles/Thisara.jpg";
+
+import img1 from "@/app/images/appendix/image1.jpeg";
+import img2 from "@/app/images/appendix/image1.jpeg";
+import img3 from "@/app/images/appendix/image1.jpeg";
+import img4 from "@/app/images/appendix/image1.jpeg";
+import img5 from "@/app/images/appendix/image1.jpeg";
+import img6 from "@/app/images/appendix/image1.jpeg";
 
 /* ================= DATA ================= */
 
@@ -237,6 +244,97 @@ export default function About() {
       <div className="mt-20 flex justify-center">
         <div className="h-px w-full max-w-xl bg-gradient-to-r from-transparent via-gray-300 to-transparent dark:via-gray-700" />
       </div>
+
+      {/* ================= RESEARCH APPENDIX ================= */}
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="mt-16 sm:mt-20"
+      >
+        {/* HEADER */}
+        <div className="text-center mb-10">
+          <div className="flex items-center justify-center gap-2 text-blue-600 dark:text-blue-400">
+            <BookOpen className="w-5 h-5" />
+            <span className="text-sm font-medium">Visual Documentation</span>
+          </div>
+
+          <SectionHeading>Research Appendix</SectionHeading>
+
+          <p className="mt-4 text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            This section presents visual evidences of the FabricVision system
+            including hardware setup, captured frames, anomaly detection
+            outputs, enhancement results, and real-time processing stages across
+            all components.
+          </p>
+        </div>
+
+        {/* MIXED GALLERY GRID */}
+        <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[180px] gap-5">
+          {[
+            {
+              src: img1,
+              title: "Research Team",
+              span: "col-span-2 row-span-2",
+            },
+            {
+              src: img2,
+              title: "Hardware Setup",
+              span: "col-span-1 row-span-2",
+            },
+            {
+              src: img3,
+              title: "Captured Frames",
+              span: "col-span-1 row-span-1",
+            },
+            {
+              src: img4,
+              title: "Enhanced Output",
+              span: "col-span-1 row-span-1",
+            },
+            {
+              src: img5,
+              title: "Defect Detection",
+              span: "col-span-1 row-span-1",
+            },
+            {
+              src: img5,
+              title: "Defect Detection",
+              span: "col-span-1 row-span-1",
+            },
+            {
+              src: img6,
+              title: "System Dashboard",
+              span: "col-span-2 row-span-1",
+            }, // WIDE
+          ].map((item, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ delay: index * 0.05 }}
+              whileHover={{ y: -6 }}
+              className={`group relative rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-xl transition-all duration-300 ${item.span}`}
+            >
+              {/* IMAGE */}
+              <div className="relative w-full h-full">
+                <Image
+                  src={item.src}
+                  alt={item.title}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+              </div>
+
+              {/* DARK OVERLAY */}
+              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4">
+                <p className="text-white text-sm font-semibold">{item.title}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
     </section>
   );
 }
