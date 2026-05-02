@@ -275,7 +275,9 @@ export default function Domain() {
       >
         <div className="flex gap-2 text-blue-600 dark:text-blue-100 mb-2">
           <Search className="w-6 sm:w-8 h-6 sm:h-8 sm:mt-1 flex-shrink-0" />
-          <h2 className="text-2xl sm:text-3xl font-semibold">Research Gap</h2>
+          <h2 className="text-2xl sm:text-3xl font-semibold sm:-mt-0 sm:mt-0.5 -mt-1">
+            Research Gap
+          </h2>
         </div>
 
         <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed">
@@ -417,7 +419,7 @@ export default function Domain() {
       >
         <div className="flex gap-2 text-blue-600 dark:text-blue-100 mb-2">
           <AlertTriangle className="w-6 sm:w-8 h-6 sm:h-8 sm:mt-1 flex-shrink-0" />
-          <h2 className="text-2xl sm:text-3xl font-semibold">
+          <h2 className="text-2xl sm:text-3xl font-semibold sm:-mt-0 sm:mt-1 -mt-1">
             Research Problem
           </h2>
         </div>
@@ -462,7 +464,7 @@ export default function Domain() {
       >
         <div className="flex gap-2 text-blue-600 dark:text-blue-100 mb-2">
           <Microscope className="w-6 sm:w-8 h-6 sm:h-8 flex-shrink-0" />
-          <h2 className="text-2xl sm:text-3xl font-semibold">
+          <h2 className="text-2xl sm:text-3xl font-semibold sm:-mt-0 -mt-1">
             Research Objectives
           </h2>
         </div>

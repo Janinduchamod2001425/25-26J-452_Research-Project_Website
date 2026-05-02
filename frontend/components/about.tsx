@@ -140,7 +140,7 @@ export default function About() {
               key={i}
               whileHover={{ y: -6 }}
               transition={{ duration: 0.2 }}
-              className="rounded-3xl border border-gray-400/50 dark:border-gray-800 bg-white/80 dark:bg-gray-900/70 backdrop-blur-sm p-6 flex gap-6 items-center hover:shadow-lg transition"
+              className="rounded-3xl border border-gray-400/50 dark:border-gray-800 bg-white/80 dark:bg-gray-900/70 backdrop-blur-sm p-6 hover:shadow-lg transition flex flex-col md:flex-row gap-6 items-center md:items-start"
             >
               <div className="relative w-[130px] h-[130px] rounded-2xl overflow-hidden flex-shrink-0">
                 <Image
@@ -151,7 +151,7 @@ export default function About() {
                 />
               </div>
 
-              <div>
+              <div className="text-center md:text-left">
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
                   {sup.name}
                 </h3>
@@ -184,7 +184,7 @@ export default function About() {
           <motion.div
             whileHover={{ y: -6 }}
             transition={{ duration: 0.2 }}
-            className="rounded-3xl border border-green-400/50 dark:border-green-800/50 bg-white/80 dark:bg-gray-900/70 backdrop-blur-sm p-6 flex gap-6 items-center hover:shadow-lg transition"
+            className="rounded-3xl border border-green-400/50 dark:border-green-800/50 bg-white/80 dark:bg-gray-900/70 backdrop-blur-sm p-6 hover:shadow-lg transition flex flex-col md:flex-row gap-6 items-center md:items-start"
           >
             <div className="relative w-[130px] h-[130px] rounded-2xl overflow-hidden flex-shrink-0 bg-gradient-to-br from-green-100 to-blue-100 dark:from-green-900/30 dark:to-blue-900/30 flex items-center justify-center">
               {externalSupervisor.image ? (
@@ -201,7 +201,7 @@ export default function About() {
               )}
             </div>
 
-            <div>
+            <div className="text-center md:text-left">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
                 {externalSupervisor.name}
               </h3>
@@ -215,7 +215,7 @@ export default function About() {
                 {externalSupervisor.company}
               </p>
               <p className="text-sm text-gray-600 dark:text-gray-400">
-                Expertise: {externalSupervisor.expertise}
+                {externalSupervisor.expertise}
               </p>
               <p className="text-xs text-gray-500 mt-1">
                 {externalSupervisor.email}
