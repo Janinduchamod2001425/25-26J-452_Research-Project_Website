@@ -15,12 +15,13 @@ import Sachintha from "@/app/images/team_profiles/sachintha.jpg";
 import Duvindu from "@/app/images/team_profiles/duvindu.jpg";
 import Thisara from "@/app/images/team_profiles/Thisara.jpg";
 
-import img1 from "@/app/images/appendix/image1.jpeg";
-import img2 from "@/app/images/appendix/image1.jpeg";
-import img3 from "@/app/images/appendix/image1.jpeg";
-import img4 from "@/app/images/appendix/image1.jpeg";
-import img5 from "@/app/images/appendix/image1.jpeg";
-import img6 from "@/app/images/appendix/image1.jpeg";
+import img1 from "@/app/images/appendix/group.jpg";
+import img2 from "@/app/images/appendix/finalproduct.jpeg";
+import img3 from "@/app/images/appendix/evaluation_setup.jpg";
+import img4 from "@/app/images/appendix/sewing section of the garment.jpg";
+import img5 from "@/app/images/appendix/sample fabrics after cutting.jpg";
+import img6 from "@/app/images/appendix/sample fabrics.jpg";
+import img7 from "@/app/images/appendix/logs.jpeg";
 
 /* ================= DATA ================= */
 
@@ -280,32 +281,32 @@ export default function About() {
             },
             {
               src: img2,
-              title: "Hardware Setup",
+              title: "Finalized Product",
               span: "col-span-1 row-span-2",
             },
             {
               src: img3,
-              title: "Captured Frames",
+              title: "Evaluation Environment",
               span: "col-span-1 row-span-1",
             },
             {
               src: img4,
-              title: "Enhanced Output",
+              title: "Sewing Section",
               span: "col-span-1 row-span-1",
             },
             {
               src: img5,
-              title: "Defect Detection",
-              span: "col-span-1 row-span-1",
-            },
-            {
-              src: img5,
-              title: "Defect Detection",
+              title: "Fabrics before cutting",
               span: "col-span-1 row-span-1",
             },
             {
               src: img6,
-              title: "System Dashboard",
+              title: "Fabrics after cutting",
+              span: "col-span-1 row-span-1",
+            },
+            {
+              src: img7,
+              title: "Pipeline Logs",
               span: "col-span-2 row-span-1",
             }, // WIDE
           ].map((item, index) => (
