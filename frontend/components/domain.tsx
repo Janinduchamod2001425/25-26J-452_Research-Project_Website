@@ -117,7 +117,7 @@ export default function Domain() {
       >
         <div className="flex gap-2 text-blue-600 dark:text-blue-100 mb-2">
           <BookOpen className="w-6 sm:w-8 h-6 sm:h-8 sm:mt-1 flex-shrink-0" />
-          <h2 className="text-2xl sm:text-3xl font-semibold">
+          <h2 className="text-2xl sm:text-3xl font-semibold sm:-mt-0 -mt-1">
             Literature Survey
           </h2>
         </div>
