@@ -5,11 +5,12 @@ import { motion } from "framer-motion";
 import { useSectionInView } from "@/lib/hook";
 import SectionHeading from "@/components/section-heading";
 import Image from "next/image";
-import { BookOpen, Users } from "lucide-react";
+import { BookOpen, Users, Building2 } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 import JennyMadam from "@/app/images/team_profiles/jenny madam.jpeg";
 import AparnaMadam from "@/app/images/team_profiles/AparnaMadam.jpg";
+import ExternalSupervisor from "@/app/images/team_profiles/External Supervisor.jpg";
 import Janindu from "@/app/images/team_profiles/Janindu.jpg";
 import Sachintha from "@/app/images/team_profiles/sachintha.jpg";
 import Duvindu from "@/app/images/team_profiles/duvindu.jpg";
@@ -25,7 +26,8 @@ import img7 from "@/app/images/appendix/logs.jpeg";
 
 /* ================= DATA ================= */
 
-const supervisors = [
+// Academic Supervisors
+const academicSupervisors = [
   {
     name: "Ms. Jenny Krishara",
     role: "Supervisor",
@@ -34,6 +36,7 @@ const supervisors = [
     uni: "Sri Lanka Institute of Information Technology",
     email: "jenny.k@sliit.lk",
     image: JennyMadam,
+    type: "academic",
   },
   {
     name: "Ms. Aparna Jayawardena",
@@ -43,8 +46,21 @@ const supervisors = [
     uni: "Sri Lanka Institute of Information Technology",
     email: "aparna.j@sliit.lk",
     image: AparnaMadam,
+    type: "academic",
   },
 ];
+
+// External Supervisor (Garment Owner)
+const externalSupervisor = {
+  name: "Mr. S.G. Ranjith Dayananda",
+  role: "External Supervisor",
+  title: "Garment Owner / Industry Partner",
+  company: "SGR Garments (Pvt) Ltd",
+  expertise: "Textile Manufacturing & Quality Control",
+  email: "sgrgarments@gmail.com",
+  image: ExternalSupervisor,
+  type: "external",
+};
 
 const members = [
   {
@@ -107,25 +123,26 @@ export default function About() {
 
         <p className="mt-4 text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
           The FabricVision project is developed by a dedicated research team
-          under the guidance of experienced academic supervisors from SLIIT.
+          under the guidance of experienced academic supervisors and industry
+          experts from SLIIT.
         </p>
       </div>
 
-      {/* ================= SUPERVISORS ================= */}
-      <div className="mb-10">
+      {/* ================= ACADEMIC SUPERVISORS ================= */}
+      <div className="mb-16">
         <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-8 text-center">
-          Supervisors
+          Academic Supervisors
         </h2>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          {supervisors.map((sup, i) => (
+        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          {academicSupervisors.map((sup, i) => (
             <motion.div
               key={i}
               whileHover={{ y: -6 }}
               transition={{ duration: 0.2 }}
-              className="rounded-3xl border border-gray-400/50 dark:border-gray-800 bg-white/80 dark:bg-gray-900/70 backdrop-blur-sm p-6 flex gap-6 items-center  hover:shadow-lg transition"
+              className="rounded-3xl border border-gray-400/50 dark:border-gray-800 bg-white/80 dark:bg-gray-900/70 backdrop-blur-sm p-6 flex gap-6 items-center hover:shadow-lg transition"
             >
-              <div className="relative w-[130px] h-[130px] rounded-2xl overflow-hidden">
+              <div className="relative w-[130px] h-[130px] rounded-2xl overflow-hidden flex-shrink-0">
                 <Image
                   src={sup.image}
                   alt={sup.name}
@@ -138,7 +155,6 @@ export default function About() {
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
                   {sup.name}
                 </h3>
-
                 <p className="text-sm text-blue-600 dark:text-blue-400">
                   ({sup.role})
                 </p>
@@ -155,6 +171,57 @@ export default function About() {
               </div>
             </motion.div>
           ))}
+        </div>
+      </div>
+
+      {/* ================= EXTERNAL SUPERVISOR ================= */}
+      <div className="mb-16">
+        <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-8 text-center">
+          External Supervisor
+        </h2>
+
+        <div className="max-w-2xl mx-auto">
+          <motion.div
+            whileHover={{ y: -6 }}
+            transition={{ duration: 0.2 }}
+            className="rounded-3xl border border-green-400/50 dark:border-green-800/50 bg-white/80 dark:bg-gray-900/70 backdrop-blur-sm p-6 flex gap-6 items-center hover:shadow-lg transition"
+          >
+            <div className="relative w-[130px] h-[130px] rounded-2xl overflow-hidden flex-shrink-0 bg-gradient-to-br from-green-100 to-blue-100 dark:from-green-900/30 dark:to-blue-900/30 flex items-center justify-center">
+              {externalSupervisor.image ? (
+                <Image
+                  src={externalSupervisor.image}
+                  alt={externalSupervisor.name}
+                  fill
+                  className="object-cover"
+                />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center">
+                  <Building2 className="w-12 h-12 text-green-600 dark:text-green-400 opacity-60" />
+                </div>
+              )}
+            </div>
+
+            <div>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                {externalSupervisor.name}
+              </h3>
+              <p className="text-sm text-green-600 dark:text-green-400">
+                ({externalSupervisor.role})
+              </p>
+              <p className="text-sm text-gray-600 dark:text-gray-400">
+                {externalSupervisor.title}
+              </p>
+              <p className="text-sm text-gray-600 dark:text-gray-400">
+                {externalSupervisor.company}
+              </p>
+              <p className="text-sm text-gray-600 dark:text-gray-400">
+                Expertise: {externalSupervisor.expertise}
+              </p>
+              <p className="text-xs text-gray-500 mt-1">
+                {externalSupervisor.email}
+              </p>
+            </div>
+          </motion.div>
         </div>
       </div>
 
@@ -308,7 +375,7 @@ export default function About() {
               src: img7,
               title: "Pipeline Logs",
               span: "col-span-2 row-span-1",
-            }, // WIDE
+            },
           ].map((item, index) => (
             <motion.div
               key={index}
