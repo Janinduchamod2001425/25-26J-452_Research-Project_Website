@@ -19,7 +19,7 @@ import {
 import ProposalPresThumb from "@/app/images/presentation_thumbnails/proposal.png";
 import Progress1Thumb from "@/app/images/presentation_thumbnails/pp1.png";
 import Progress2Thumb from "@/app/images/presentation_thumbnails/pp2.png";
-import FinalPresThumb from "@/app/images/presentation_thumbnails/pp2.png";
+import FinalPresThumb from "@/app/images/presentation_thumbnails/final.png";
 
 type PresentationDoc = {
   id: number;
@@ -62,7 +62,7 @@ const presentations: PresentationDoc[] = [
     thumbnail: Progress1Thumb,
     fileUrl: "/presentations/25-26J-452 - Progress Presentation 1.pdf",
     fileSize: "1355 KB",
-    duration: "30 minutes",
+    duration: "10 minutes",
     attendees: "25+",
     feedback: "Good progress, on track",
   },
@@ -76,7 +76,7 @@ const presentations: PresentationDoc[] = [
     thumbnail: Progress2Thumb,
     fileUrl: "/presentations/25-26J-452 - Progress Presentation 2.pdf",
     fileSize: "933 KB",
-    duration: "30 minutes",
+    duration: "5 minutes",
     attendees: "28+",
     feedback: "Receive good feedback for IOT build",
   },
@@ -88,12 +88,11 @@ const presentations: PresentationDoc[] = [
     description:
       "Comprehensive final presentation covering complete research findings, system demonstration, evaluation results, and conclusions.",
     thumbnail: FinalPresThumb,
-    fileUrl: "/presentations/final-presentation.pdf",
-    fileSize: "8.5 MB",
-    duration: "45 minutes",
+    fileUrl: "/presentations/25-26J-452 - Final Presentation Slides.pdf",
+    fileSize: "784 KB",
+    duration: "5 minutes",
     attendees: "35+",
     feedback: "Outstanding achievement",
-    isComingSoon: true, // Mark as coming soon
   },
 ];
 
