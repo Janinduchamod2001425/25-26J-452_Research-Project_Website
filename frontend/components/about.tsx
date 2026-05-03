@@ -55,9 +55,9 @@ const externalSupervisor = {
   name: "Mr. S.G. Ranjith Dayananda",
   role: "External Supervisor",
   title: "Garment Owner / Industry Partner",
-  company: "SGR Garments (Pvt) Ltd",
+  company: "Harsha Textiles (Pvt) Ltd",
   expertise: "Textile Manufacturing & Quality Control",
-  email: "sgrgarments@gmail.com",
+  email: "harshatextiles@gmail.com",
   image: ExternalSupervisor,
   type: "external",
 };
